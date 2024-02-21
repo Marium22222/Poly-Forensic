@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "839164558889",
+    "project_id": "poly-forensic",
+    "storage_bucket": "poly-forensic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839164558889:android:c6bb0ad0fe516ef204e638",
+        "android_client_info": {
+          "package_name": "com.example.poly_forensic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIb2CUN77FMkMQa_5wNqZR7vboAPVrwUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839164558889:android:13fa00b297ad5b8d04e638",
+        "android_client_info": {
+          "package_name": "com.example.polyforensic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIb2CUN77FMkMQa_5wNqZR7vboAPVrwUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839164558889:android:f19399c599d4b9c004e638",
+        "android_client_info": {
+          "package_name": "com.example.polyforensics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIb2CUN77FMkMQa_5wNqZR7vboAPVrwUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
