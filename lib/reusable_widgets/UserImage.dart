@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/round_image.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -24,7 +25,6 @@ class UserImage extends StatefulWidget {
 class _UserImageState extends State<UserImage> {
 
   final ImagePicker _picker = ImagePicker();
-  String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class _UserImageState extends State<UserImage> {
     //   return "false";
     // }
     //file = (await compressImage(file.path, 35)) as CroppedFile?;
-    // await _uploadFile(file!.path);
+    await _uploadFile(pickedFile!.path);
     print(pickedFile!.path);
   }
 
@@ -115,18 +115,18 @@ class _UserImageState extends State<UserImage> {
     return result!;
   }*/
 
-  // Future _uploadFile(String path) async {
-  //   final ref = storage.FirebaseStorage.instance.ref()
-  //       .child('image')
-  //       .child('${DateTime.now().toIso8601String() + p.basename(path)}');
-  //
-  //   final result = await ref.putFile(File(path));
-  //   final fileUrl = await result.ref.getDownloadURL();
-  //
-  //   setState(() {
-  //     imageUrl = fileUrl;
-  //   });
-  //
-  //   widget.onFileChanged(fileUrl);
-  // }
+  Future _uploadFile(String path) async {
+    final ref = storage.FirebaseStorage.instance.ref()
+        .child('image')
+        .child('${DateTime.now().toIso8601String() + p.basename(path)}');
+
+    final result = await ref.putFile(File(path));
+    final fileUrl = await result.ref.getDownloadURL();
+
+    setState(() {
+      imageUrl = fileUrl;
+    });
+
+    widget.onFileChanged(fileUrl);
+  }
 }

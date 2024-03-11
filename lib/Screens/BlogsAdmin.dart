@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/UserImage.dart';
 
 class BlogsAdminScreen extends StatefulWidget {
@@ -9,7 +12,15 @@ class BlogsAdminScreen extends StatefulWidget {
 }
 
 class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
-  String imageUrl = "";
+  String nameofIcon = "info_outline";
+  TextEditingController title = new TextEditingController();
+  TextEditingController author = new TextEditingController();
+  TextEditingController description = new TextEditingController();
+  TextEditingController sources = new TextEditingController();
+  void saveFunc() {
+    print(FirebaseFirestore.instance.collection("awareness").count());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,43 +33,95 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return Column(
-            children: [
-              SizedBox(
-                  // width: constraints.maxWidth*0.8,
-                  child: Divider(
-                color: Colors.grey,
-                thickness: 2.0,
-              )),
-              Container(
-                // padding: EdgeInsets.all(2.0),
-                width: constraints.maxWidth * 0.95,
-                height: constraints.maxHeight * 0.4,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  // shape: BoxShape.rectangle
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                    // width: constraints.maxWidth*0.8,
+                    child: Divider(
+                  color: Colors.grey,
+                  thickness: 2.0,
+                )),
+                Container(
+                  // padding: EdgeInsets.all(2.0),
+                  width: constraints.maxWidth * 0.95,
+                  height: constraints.maxHeight * 0.4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    // shape: BoxShape.rectangle
+                  ),
+                  child: UserImage(
+                    onFileChanged: (imageUrl) {
+                      setState(() {
+                        imageUrl = imageUrl;
+                      });
+                    },
+                  ),
                 ),
-                child: UserImage(
-                  onFileChanged: (imageUrl) {
-                    setState(() {
-                      this.imageUrl = imageUrl;
-                    });
-                  },
+                Container(
+                  width: constraints.maxWidth * 0.95,
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("Author Name"),
+                      TextField(
+                        controller: author,
+                        decoration:
+                            InputDecoration(border: OutlineInputBorder()),
+                      ),
+                      Text("Title"),
+                      TextField(
+                        controller: title,
+                        decoration:
+                            InputDecoration(border: OutlineInputBorder()),
+                      ),
+                      Text("Description"),
+                      TextField(
+                        controller: description,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      Text("Sources"),
+                      TextField(
+                        controller: sources,
+                        decoration:
+                            InputDecoration(border: OutlineInputBorder()),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () async{
+                                Map<String, dynamic> dataToAdd = {
+                                  "Title": title.text,
+                                  "Author": author.text,
+                                  "Image": imageUrl,
+                                  "Description": description.text,
+                                  "Sources": sources.text,
+                                };
+
+                                FirebaseFirestore.instance
+                                    .collection("awareness").doc(DateTime.timestamp().toString()).set(dataToAdd);
+                              },
+                              child: Text("Publish"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo[900],
+                              foregroundColor: Colors.white
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                width: constraints.maxWidth*0.95,
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text("Title"),
-                    TextField()
-                  ],
-                ),
-              )
-            ],
+              ],
+            ),
           );
         },
       ),
