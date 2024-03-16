@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.red,
                           image: DecorationImage(
                               image: AssetImage(
-                                'images/LoginBg.png',
+                                'assets/images/LoginBg.png',
                               ),
                               fit: BoxFit.fill),
                         ),
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Positioned(
                           top: constraints.maxHeight * 0.13,
                           child: Container(
-                            child: Image.asset('images/doctor.png'),
+                            child: Image.asset('assets/images/doctor.png'),
                             height: constraints.maxHeight * 0.34,
                           )),
                     ],

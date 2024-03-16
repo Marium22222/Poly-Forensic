@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:poly_forensic/Custom%20Widgets/periodsSymptomDialogOptions.dart';
 import 'package:poly_forensic/globals.dart' as globals;
+
+import '../globals.dart';
 
 class PeriodsSymptomsDialog extends StatefulWidget {
   final DateTime dateToday;
@@ -354,6 +357,11 @@ class _PeriodsSymptomsDialogState extends State<PeriodsSymptomsDialog> {
                             onPressed: () {
                               globals.objectsList[3]=_notes.value.text;
                               print(globals.objectsList);
+                              String dateNow="${widget.dateToday.day}-${widget.dateToday.month}-${widget.dateToday.year}";
+                              Map<String,dynamic> dataToAdd={"Bleeding":objectsList[0],"pain":objectsList[1],"skin":objectsList[2],"notes":objectsList[3]};
+                              FirebaseFirestore.instance.collection("users").doc("shaikhnaila488@gmail.com").collection("symptoms").doc("periods_symptoms").collection(dateNow).add(dataToAdd);
+
+                              // FirebaseFirestore.instance.collection("users").doc("shaikhnaila488@gmail.com").collection("symptoms").doc(dateNow).set(dataToAdd);
 
                             }, child: Text("Save"))
                       ],

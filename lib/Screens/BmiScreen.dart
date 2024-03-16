@@ -8,12 +8,18 @@ class BMIScreen extends StatefulWidget {
   State<BMIScreen> createState() => _BMIScreenState();
 }
 
+const List<String> list = <String>['Lb-in', 'Kg-m'];
+
 class _BMIScreenState extends State<BMIScreen> {
-  TextEditingController weight=new TextEditingController();
-  TextEditingController height=new TextEditingController();
-  double bmi=0.0;
+  TextEditingController weight = new TextEditingController();
+  TextEditingController height = new TextEditingController();
+  double bmi = 0.0;
+  String weightUnit = "Lb";
+  String heightUnit = "in";
+
   @override
   Widget build(BuildContext context) {
+    String dropdownValue = list.first;
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
@@ -22,12 +28,27 @@ class _BMIScreenState extends State<BMIScreen> {
             child: Column(
               children: [
                 Divider(),
-                Text(
-                  "CHECK BMI",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
+                DropdownMenu<String>(
+                  width: constraints.maxWidth*0.9,
+                  initialSelection: list.first,
+                  onSelected: (String? value) {
+                    // This is called when the user selects an item.
+                    if (value == "Lb-in") {
+                      weightUnit = "Lb";
+                      heightUnit = "in";
+                    } else if (value == "Kg-m") {
+                      weightUnit = "Kg";
+                      heightUnit = "m";
+                    }
+                    setState(() {
+                      dropdownValue = value!;
+                    });
+                  },
+                  dropdownMenuEntries:
+                      list.map<DropdownMenuEntry<String>>((String value) {
+                    return DropdownMenuEntry<String>(
+                        value: value, label: value);
+                  }).toList(),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
@@ -41,7 +62,8 @@ class _BMIScreenState extends State<BMIScreen> {
                         children: [
                           Text(
                             "WEIGHT",
-                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 17),
                           ),
                           Container(
                             width: constraints.maxWidth * 0.36,
@@ -52,8 +74,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                 color: Colors.grey[100],
                                 borderRadius: BorderRadius.circular(10)),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Icon(
                                   Icons.monitor_weight_outlined,
@@ -66,7 +87,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                     controller: weight,
                                     decoration: InputDecoration(
                                         border: UnderlineInputBorder(),
-                                        hintText: "In Kg"),
+                                        hintText: "In ${weightUnit}"),
                                   ),
                                 ),
                               ],
@@ -79,7 +100,8 @@ class _BMIScreenState extends State<BMIScreen> {
                         children: [
                           Text(
                             "HEIGHT",
-                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 17),
                           ),
                           Container(
                             width: constraints.maxWidth * 0.36,
@@ -90,8 +112,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                 color: Colors.grey[100],
                                 borderRadius: BorderRadius.circular(10)),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Icon(
                                   Icons.height_outlined,
@@ -104,7 +125,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                     controller: height,
                                     decoration: InputDecoration(
                                         border: UnderlineInputBorder(),
-                                        hintText: "In m"),
+                                        hintText: "In ${heightUnit}"),
                                   ),
                                 ),
                               ],
@@ -118,23 +139,30 @@ class _BMIScreenState extends State<BMIScreen> {
                 // SizedBox(
                 //   height: 40,
                 // ),
-                SizedBox(height: constraints.maxHeight*0.5,),
+                SizedBox(
+                  height: constraints.maxHeight * 0.45,
+                ),
                 SizedBox(
                   width: constraints.maxWidth * 0.9,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pinkAccent,
                           foregroundColor: Colors.black,
-                          shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20))
-                      ),
+                          shape: BeveledRectangleBorder(
+                              borderRadius: BorderRadius.circular(20))),
                       onPressed: () {
-                        double h_squared =
-                            double.parse(height.value.text) *
-                                double.parse(height.value.text);
-                        double weight_new =
-                        double.parse(weight.value.text);
-                        bmi = weight_new / h_squared;
-                        showDialog(context: context,builder: (context) => BMIDialog(bmi: bmi,),);
+                        double h_squared = double.parse(height.value.text) *
+                            double.parse(height.value.text);
+                        double weight_new = double.parse(weight.value.text);
+                        bmi = weightUnit == "Kg"
+                            ? (weight_new / h_squared)
+                            : (703 * (weight_new / h_squared));
+                        showDialog(
+                          context: context,
+                          builder: (context) => BMIDialog(
+                            bmi: bmi,
+                          ),
+                        );
                         setState(() {});
                       },
                       child: Text(
@@ -142,8 +170,7 @@ class _BMIScreenState extends State<BMIScreen> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2.0,
-                            fontSize: 18
-                        ),
+                            fontSize: 18),
                       )),
                 )
               ],
