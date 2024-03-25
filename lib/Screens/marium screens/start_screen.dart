@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:poly_forensic/Screens/third_start_screen.dart';
+import 'package:poly_forensic/Screens/marium%20screens/second_start_screen.dart';
 
-class SecondStart extends StatefulWidget {
-  const SecondStart({Key? key}) : super(key: key);
+class Start extends StatefulWidget {
+  const Start({Key? key}) : super(key: key);
 
   @override
-  State<SecondStart> createState() => _SecondStartState();
+  State<Start> createState() => _StartState();
+
 }
 
-class _SecondStartState extends State<SecondStart> {
+class _StartState extends State<Start> {
   double screenWidth = 0.0;
   double screenHeight = 0.0;
 
@@ -27,53 +28,61 @@ class _SecondStartState extends State<SecondStart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+backgroundColor: Colors.black,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Column(
               children: [
+                SizedBox(
+                  height: screenHeight*0.5,
+                  width: screenWidth,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("images/poly.png",
+                            ), fit: BoxFit.cover
+
+                        )
+                    ),
+                    child: Text(''),),
+                ),
+                Text("Welcome",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40
+                  ),),
                 Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Text("being a female isn't dangerous but being "
-                      "an unhealthy one is!",
+                  padding: const EdgeInsets.fromLTRB(100, 30, 20, 0),
+                  child: Text("Lets Fight PCOS together!",
                     style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                         fontSize: 30
                     ),),
                 ),
-                Container(
-                  width: screenWidth,
-                  height: screenHeight*0.5,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("images/pcos.webp")
-                      )
-                  ),
-                ),
-                SizedBox(height: screenHeight*0.04,),
+                SizedBox(height: screenHeight*0.1,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
+                  padding: const EdgeInsets.only(left: 120.0),
                   child: Container(
-                      width: screenHeight*0.4,
-                      height: screenHeight*0.08,
+                      width: screenHeight*0.2,
+                      height: screenHeight*0.06,
 
                       child: ElevatedButton(onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const StartThird()),
+                              builder: (context) => const SecondStart()),
                         );
-                      }, child: Text("LETS EXPLORE →",
+                      }, child: Text("NEXT →",
                         style: TextStyle(color: Colors.white,
-                            fontSize: 23,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xffD660CA)),)),
                 )
               ],
             );
+
           },
         ),
       ),

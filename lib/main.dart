@@ -9,7 +9,7 @@ import 'package:poly_forensic/screens/loginScreen.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
 
-import 'Screens/start_screen.dart';
+import 'Screens/marium screens/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
