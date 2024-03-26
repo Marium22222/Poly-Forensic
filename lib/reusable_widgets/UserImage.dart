@@ -100,7 +100,8 @@ class _UserImageState extends State<UserImage> {
     //   return "false";
     // }
     //file = (await compressImage(file.path, 35)) as CroppedFile?;
-    await _uploadFile(pickedFile!.path);
+    // await _uploadFile(pickedFile!.path);
+    Picked=pickedFile.path;
     print(pickedFile!.path);
   }
 
@@ -115,18 +116,18 @@ class _UserImageState extends State<UserImage> {
     return result!;
   }*/
 
-  Future _uploadFile(String path) async {
-    final ref = storage.FirebaseStorage.instance.ref()
-        .child('image')
-        .child('${DateTime.now().toIso8601String() + p.basename(path)}');
-
-    final result = await ref.putFile(File(path));
-    final fileUrl = await result.ref.getDownloadURL();
-
-    setState(() {
-      imageUrl = fileUrl;
-    });
-
-    widget.onFileChanged(fileUrl);
-  }
+  // Future _uploadFile(String path) async {
+  //   final ref = storage.FirebaseStorage.instance.ref()
+  //       .child('images')
+  //       .child('${DateTime.now().toIso8601String() + p.basename(path)}');
+  //
+  //   final result = await ref.putFile(File(path));
+  //   final fileUrl = await result.ref.getDownloadURL();
+  //
+  //   setState(() {
+  //     imageUrl = fileUrl;
+  //   });
+  //
+  //   widget.onFileChanged(fileUrl);
+  // }
 }

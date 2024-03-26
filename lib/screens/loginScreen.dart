@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:poly_forensic/screens/ResultsScreen.dart';
 import 'package:poly_forensic/screens/SignUp.dart';
 
+import '../globals.dart';
 import '../reusable_widgets/reusable_widgets.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 
@@ -100,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(builder: (context) => BlogsAdminScreen()));
                       }
                       else{
+                        login =_emailTextController.text;
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => ResultsScreen()));
                       }

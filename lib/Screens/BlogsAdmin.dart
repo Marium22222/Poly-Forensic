@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/UserImage.dart';
+import 'package:path/path.dart' as p;
+import 'package:firebase_storage/firebase_storage.dart' as storage;
+import 'dart:io';
 
 class BlogsAdminScreen extends StatefulWidget {
   const BlogsAdminScreen({Key? key}) : super(key: key);
@@ -98,6 +101,13 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
                         children: [
                           ElevatedButton(
                               onPressed: () async{
+                                final ref = storage.FirebaseStorage.instance.ref()
+                                    .child('images')
+                                    .child('${DateTime.now().toIso8601String() + p.basename(Picked!)}');
+
+                                final result = await ref.putFile(File(Picked!));
+                                final fileUrl = await result.ref.getDownloadURL();
+                                imageUrl=fileUrl;
                                 Map<String, dynamic> dataToAdd = {
                                   "Title": title.text,
                                   "Author": author.text,
@@ -105,6 +115,7 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
                                   "Description": description.text,
                                   "Sources": sources.text,
                                 };
+
 
                                 FirebaseFirestore.instance
                                     .collection("awareness").doc(DateTime.timestamp().toString()).set(dataToAdd);
