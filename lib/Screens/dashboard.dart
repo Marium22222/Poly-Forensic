@@ -2,11 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:poly_forensic/Dialogs/BMIResultDialog.dart';
+import 'package:poly_forensic/Dialogs/RotterdamCardDialog.dart';
+import 'package:poly_forensic/Dialogs/periodsSymptomsDialog.dart';
 import 'package:poly_forensic/Dialogs/storyDialog.dart';
+import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/dashboardCards.dart';
 import 'package:poly_forensic/reusable_widgets/rotterdamCards.dart';
 import 'package:poly_forensic/reusable_widgets/sliderItem.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
+import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
 
 class Dashboard extends StatefulWidget {
@@ -17,11 +22,11 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String appBarText="Dashboard";
+  bool isHover = false;
+  String appBarText = "Dashboard";
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -40,16 +45,44 @@ class _DashboardState extends State<Dashboard> {
               ),
               child: ListView(
                 children: [
-                  DrawerHeader(child: Text("profile")),
+                  DrawerHeader(
+                      child: FutureBuilder<DocumentSnapshot>(
+                    future: FirebaseFirestore.instance
+                        .collection("users")
+                        .doc(login)
+                        .get(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                            child:
+                                CircularProgressIndicator()); //return means the bottom code wont run
+                      }
+                      if (snapshot.data == null || snapshot.hasError) {
+                        return const Center(child: Text("DATA NOT AVAILABLE"));
+                      }
+                      Map<String, dynamic> data =
+                          snapshot.data!.data() as Map<String, dynamic>;
+                      return Text("${data['username']}");
+                    },
+                  )),
                   ListTile(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Dashboard(),
+                          ));
                     },
                     leading: Icon(Icons.home),
                     title: Text("HOME"),
                   ),
                   ListTile(
-                    onTap: (){},
+                    onTap: () {},
+                    leading: Icon(Icons.online_prediction_outlined),
+                    title: Text("PROFILE"),
+                  ),
+                  ListTile(
+                    onTap: () {},
                     leading: Icon(Icons.online_prediction_outlined),
                     title: Text("PREDICTION"),
                   ),
@@ -58,17 +91,24 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("AWARENESS"),
                   ),
                   ListTile(
-                    onTap:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SymptomsTracking(),));
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SymptomsTracking(),
+                          ));
                     },
                     leading: Icon(Icons.track_changes),
                     title: Text("SYMPTOMS TRACKING"),
-                  ),ListTile(
-                    onTap:(){
+                  ),
+                  ListTile(
+                    onTap: () {
                       FirebaseAuth.instance.signOut().then((value) {
                         print("Signed Out!");
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => LoginScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
                       });
                     },
                     leading: Icon(Icons.logout),
@@ -248,30 +288,44 @@ class _DashboardState extends State<Dashboard> {
                       scrollDirection: Axis.horizontal,
                     )),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                  child: Column(
-                    children: [
-                    Text(
-                    "ROTTERDAM CRITERIA",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Merriweather",
-                        // fontStyle: FontStyle.italic,
-                        fontSize: 20),
-                  ),
+                    margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    child: Column(children: [
+                      Text(
+                        "ROTTERDAM CRITERIA",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Merriweather",
+                            // fontStyle: FontStyle.italic,
+                            fontSize: 20),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          RotterdamCards(image: 'assets/images/oligo.png',caption: "Oligoanovulation",color1: Colors.pink.shade300,color2: Colors.pink,),
-                          RotterdamCards(image: 'assets/images/hyper.png',caption: "Hyperandrogenism",color1: Colors.orange.shade300,color2: Colors.orange,),
-                          RotterdamCards(image: 'assets/images/pcom.png',caption: "PCOM",color1: Colors.green.shade300,color2: Colors.green,),
-
+                          RotterdamCards(
+                            image: 'assets/images/oligo.png',
+                            caption: "Oligoanovulation",
+                            color1: Colors.pink.shade300,
+                            color2: Colors.pink,
+                            opt: "oligo",
+                          ),
+                          RotterdamCards(
+                            image: 'assets/images/hyper.png',
+                            caption: "Hyperandrogenism",
+                            color1: Colors.orange.shade300,
+                            color2: Colors.orange,
+                            opt: "hyper",
+                          ),
+                          RotterdamCards(
+                            image: 'assets/images/pcom.png',
+                            caption: "PCOM",
+                            color1: Colors.green.shade300,
+                            color2: Colors.green,
+                            opt: "pcom",
+                          ),
                         ],
                       )
-                  ]
-                )
-                ),
+                    ])),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                   child: Column(
@@ -424,4 +478,3 @@ class _DashboardState extends State<Dashboard> {
         ));
   }
 }
-

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/globals.dart';
 
 class BMIDialog extends StatefulWidget {
   final double bmi;
@@ -31,10 +33,21 @@ class _BMIDialogState extends State<BMIDialog> {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-                height: constraints.maxHeight * 0.4,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                height: constraints.maxHeight * 0.45,
                 width: constraints.maxWidth * 0.8,
                 child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.cancel))
+                    ],
+                  ),
                   Text(
                     "$output",
                     style: TextStyle(
@@ -44,6 +57,20 @@ class _BMIDialogState extends State<BMIDialog> {
                         wordSpacing: 3.0),
                     textAlign: TextAlign.justify,
                   ),
+                  SizedBox(height: 10,),
+                  ElevatedButton(
+                    onPressed: () {
+                      FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(login)
+                          .update({"BMI": "${widget.bmi}"});
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pinkAccent,
+                        foregroundColor: Colors.white),
+                    child: Text("Save BMI"),
+                  )
                 ])));
       },
     );
