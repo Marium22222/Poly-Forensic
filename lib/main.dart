@@ -14,5 +14,5 @@ import 'Screens/marium screens/start_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MaterialApp(home: Dashboard(),));
+  runApp(MaterialApp(home: Start(),));
 }

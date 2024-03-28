@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:poly_forensic/screens/ResultsScreen.dart';
 import 'package:poly_forensic/screens/SignUp.dart';
+import 'package:poly_forensic/screens/dashboard.dart';
+import 'package:poly_forensic/screens/home.dart';
 
 import '../globals.dart';
 import '../reusable_widgets/reusable_widgets.dart';
@@ -61,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Username",
+                          "Email",
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey[600],
@@ -101,29 +103,33 @@ class _LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(builder: (context) => BlogsAdminScreen()));
                       }
                       else{
-                        login =_emailTextController.text;
+                        globals.login =_emailTextController.text;
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ResultsScreen()));
+                            MaterialPageRoute(builder: (context) => Dashboard()));
                       }
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });
                   }),
-                  // signUpOption()
-                  // SizedBox(
-                  //   width:150,
-                  //   height: 50,
-                  //   child: ElevatedButton(
-                  //     onPressed: () {
-                  //
-                  //
-                  //     },
-                  //     child: Text("LOGIN",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-                  //     style: ButtonStyle(backgroundColor:MaterialStatePropertyAll<Color>(Colors.black)
-                  //
-                  //     ),
-                  //   ),
-                  // )
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account?",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => SignUpScreen()));
+                        },
+                        child: const Text(
+                          ' Sign Up',
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -133,24 +139,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Row signUpOption() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: [
-  //       const Text("Don't have an account?",
-  //         style: TextStyle(color: Colors.black),
-  //       ),
-  //       GestureDetector(
-  //         onTap: () {
-  //           Navigator.push(context,
-  //               MaterialPageRoute(builder: (context) => SignUpScreen()));
-  //         },
-  //         child: const Text(
-  //           ' Sign Up',
-  //           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
 }

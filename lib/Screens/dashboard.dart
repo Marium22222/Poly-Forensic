@@ -11,6 +11,8 @@ import 'package:poly_forensic/reusable_widgets/dashboardCards.dart';
 import 'package:poly_forensic/reusable_widgets/rotterdamCards.dart';
 import 'package:poly_forensic/reusable_widgets/sliderItem.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
+import 'package:poly_forensic/screens/marium%20screens/Awareness_blogs.dart';
+import 'package:poly_forensic/screens/marium%20screens/profile_screen.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
 
@@ -77,16 +79,30 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("HOME"),
                   ),
                   ListTile(
-                    onTap: () {},
-                    leading: Icon(Icons.online_prediction_outlined),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileScreen(),
+                          ));
+                    },
+                    leading: Icon(Icons.person),
                     title: Text("PROFILE"),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                    },
                     leading: Icon(Icons.online_prediction_outlined),
                     title: Text("PREDICTION"),
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AwarenessBlogs(),
+                          ));
+                    },
                     leading: Icon(Icons.speaker_group),
                     title: Text("AWARENESS"),
                   ),

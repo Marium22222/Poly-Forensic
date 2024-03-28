@@ -40,7 +40,7 @@ backgroundColor: Colors.black,
                   child: Container(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("images/poly.png",
+                            image: AssetImage("assets/images/poly.png",
                             ), fit: BoxFit.cover
 
                         )

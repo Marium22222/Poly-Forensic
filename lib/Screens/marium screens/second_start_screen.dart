@@ -48,7 +48,7 @@ class _SecondStartState extends State<SecondStart> {
                   height: screenHeight*0.5,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("images/pcos.webp")
+                          image: AssetImage("assets/images/pcos.webp")
                       )
                   ),
                 ),

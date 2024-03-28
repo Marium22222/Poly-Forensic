@@ -216,18 +216,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       });
 
                       await users.doc(_emailTextController.text).set({
-                        "Email":_emailTextController.text,
-                        "Name":_nameTextController.text,
-                        "Password":_passwordTextController.text,
-                        "Phone no":_phnoTextController.text,
+                        "username":_nameTextController.text,
+                        "password":_passwordTextController.text,
+                        "Phoneno":_phnoTextController.text,
                         "age":_ageTextController.text,
                         "height":0,
                         "weight":0,
                         "BMI":0,
                       }).then((value) {
                         print("Added user!");
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ResultsScreen()));
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) => ResultsScreen()));
                       }).onError((error, stackTrace){
                         print("Error ${error.toString()}");
                       });

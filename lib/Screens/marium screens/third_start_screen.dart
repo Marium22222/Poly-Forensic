@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/screens/loginScreen.dart';
 
 class StartThird extends StatefulWidget {
   const StartThird({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _StartThirdState extends State<StartThird> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
-                      Image.asset("images/3d-removebg-preview.png")
+                      Image.asset("assets/images/3d-removebg-preview.png")
                     ],
                   ),
                 ),
@@ -60,10 +61,10 @@ class _StartThirdState extends State<StartThird> {
                       height: 50,
 
                       child: ElevatedButton(onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => const StartThird()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginScreen()),
+                        );
                       }, child: Text("GET STARTED→",
                         style: TextStyle(color: Colors.white,
                             fontSize: 20,
