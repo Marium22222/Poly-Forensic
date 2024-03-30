@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Text(
                             'Marium Amir',
                             style: TextStyle(
-                                fontSize: 18.0,
+                                fontSize: 30.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -164,14 +164,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget headerChild(String header, String value) => Expanded(
           child: Column(
         children: <Widget>[
-          Text(header),
+          Text(header,
+            style: TextStyle(
+                fontSize: 20.0,
+                color:Colors.black,
+                fontWeight: FontWeight.bold),),
           SizedBox(
             height: 8.0,
           ),
           Text(
             '$value',
             style: TextStyle(
-                fontSize: 14.0,
+                fontSize: 18.0,
                 color:Color(0xffD660CA),
                 fontWeight: FontWeight.bold),
           )
@@ -189,12 +193,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Icon(
                 icon,
                 color:Color(0xffD660CA),
-                size: 36.0,
+                size: 40.0,
               ),
               SizedBox(
                 width: width / 20,
               ),
-              Text(data)
+              Text(data,style: TextStyle(fontSize: 21,fontWeight: FontWeight.bold),)
             ],
           ),
           onTap: () {
