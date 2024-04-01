@@ -18,5 +18,5 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: KnowFerriman(),));
+    home: Dashboard(),));
 }

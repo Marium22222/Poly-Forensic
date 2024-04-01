@@ -10,6 +10,7 @@ import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/dashboardCards.dart';
 import 'package:poly_forensic/reusable_widgets/rotterdamCards.dart';
 import 'package:poly_forensic/reusable_widgets/sliderItem.dart';
+import 'package:poly_forensic/screens/ShareExperience.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
 import 'package:poly_forensic/screens/marium%20screens/Awareness_blogs.dart';
 import 'package:poly_forensic/screens/marium%20screens/profile_screen.dart';
@@ -26,6 +27,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool isHover = false;
   String appBarText = "Dashboard";
+  Map<String, dynamic> data={};
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class _DashboardState extends State<Dashboard> {
                       if (snapshot.data == null || snapshot.hasError) {
                         return const Center(child: Text("DATA NOT AVAILABLE"));
                       }
-                      Map<String, dynamic> data =
+                      data =
                           snapshot.data!.data() as Map<String, dynamic>;
                       return Text("${data['username']}");
                     },
@@ -116,6 +118,16 @@ class _DashboardState extends State<Dashboard> {
                     },
                     leading: Icon(Icons.track_changes),
                     title: Text("SYMPTOMS TRACKING"),
+                  ),ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ShareExperience(Name: '${data['username']}',),
+                          ));
+                    },
+                    leading: Icon(Icons.offline_share),
+                    title: Text("SHARE YOUR EXPERIENCE"),
                   ),
                   ListTile(
                     onTap: () {
@@ -397,16 +409,23 @@ class _DashboardState extends State<Dashboard> {
                       return const Center(child: Text("DATA NOT AVAILABLE"));
                     }
 
+
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: snapshot.data!.docs.length,
+
                       itemBuilder: (context, index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];
 
                         Map<String, dynamic> data =
                             documentSnapshot.data() as Map<String, dynamic>;
+
+                        if(data['status']=='pending')
+                          {
+                            return Text("");
+                          }
                         return GestureDetector(
                           onTap: () {
                             showDialog(
@@ -418,7 +437,17 @@ class _DashboardState extends State<Dashboard> {
                             margin: EdgeInsets.all(8),
                             padding: EdgeInsets.all(2),
                             decoration: BoxDecoration(
-                              color: Colors.grey[100],
+                              color: Colors.grey[50],
+                              border:Border(
+                                left: BorderSide(
+                                  color: Colors.grey,
+                                  width: 3
+                                ),  bottom: BorderSide(
+                                  color: Colors.grey,
+                                  width: 3
+                                ),
+
+                              ),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Row(
@@ -437,7 +466,7 @@ class _DashboardState extends State<Dashboard> {
                                 Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.52,
-                                  padding: EdgeInsets.all(8),
+                                  padding: EdgeInsets.all(5),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
