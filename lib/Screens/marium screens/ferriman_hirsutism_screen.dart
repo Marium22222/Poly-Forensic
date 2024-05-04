@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/globals.dart' as globals;
 
 class FerrimanGallwey extends StatefulWidget {
   const FerrimanGallwey({Key? key}) : super(key: key);
@@ -1099,6 +1101,38 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
             ),
         ElevatedButton(onPressed: ()
         {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title:    Text("Score: ${result}",style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ),),
+                content:  Text(resultString,style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ),),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      // FirebaseFirestore.instance
+                      //     .collection("users")
+                      //     .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
+                      //     .update({"ferrimanGallweyScore": result});
+                      FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
+                          .set({"ferrimanGallweyScore": result},
+                          SetOptions(merge: true));
+                      Navigator.pop(context);
+                    },
+                    child: Text('Save'),
+                  ),
+                ],
+              );
+            },
+          );
           print(selectedOption);
           print(selectedOption1);
           print(selectedOption1+selectedOption);
@@ -1121,14 +1155,14 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
         }, child: Text(
           "Calculate Score"
         )),
-            Text("Score: ${result}",style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-            ),),
-            Text(resultString,style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-            ),)
+            // Text("Score: ${result}",style: TextStyle(
+            //   fontSize: 20,
+            //   fontWeight: FontWeight.bold
+            // ),),
+            // Text(resultString,style: TextStyle(
+            //     fontSize: 20,
+            //     fontWeight: FontWeight.bold
+            // ),)
           ],
         ),
       ),
