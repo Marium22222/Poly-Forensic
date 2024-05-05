@@ -19,8 +19,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailTextController=new TextEditingController();
-  TextEditingController _passwordTextController=new TextEditingController();
+  TextEditingController _emailTextController = new TextEditingController();
+  TextEditingController _passwordTextController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -57,8 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -84,48 +84,61 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.grey[600],
                               fontFamily: "Times New Roman"),
                         ),
+
                         TextField(
+                          obscureText: true,
                           controller: _passwordTextController,
                           decoration:
-                              InputDecoration(border: OutlineInputBorder()),
+                              InputDecoration(
+                                border: OutlineInputBorder(),
+
+                              ),
                         ),
                       ],
                     ),
                   ),
                   signinSignupButton(context, true, () {
-                    FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: _emailTextController.text, password: _passwordTextController.text).then((value) {
-
-                      globals.login=_emailTextController.text;
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      globals.login = _emailTextController.text;
                       print(globals.login);
-                      if(globals.login=='admin1@gmail.com'){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => BlogsAdminScreen()));
-                      }
-                      else{
-                        globals.login =_emailTextController.text;
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Dashboard()));
+                      if (globals.login == 'admin1@gmail.com') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BlogsAdminScreen()));
+                      } else {
+                        globals.login = _emailTextController.text;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Dashboard()));
                       }
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });
                   }),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account?",
+                      const Text(
+                        "Don't have an account?",
                         style: TextStyle(color: Colors.black),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => SignUpScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUpScreen()));
                         },
                         child: const Text(
                           ' Sign Up',
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
                         ),
                       )
                     ],
@@ -138,5 +151,4 @@ class _LoginScreenState extends State<LoginScreen> {
       },
     );
   }
-
 }

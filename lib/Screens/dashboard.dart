@@ -14,6 +14,7 @@ import 'package:poly_forensic/screens/ShareExperience.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
 import 'package:poly_forensic/screens/marium%20screens/Awareness_blogs.dart';
 import 'package:poly_forensic/screens/marium%20screens/profile_screen.dart';
+import 'package:poly_forensic/screens/mitigation_dashboard.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
 
@@ -92,6 +93,17 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("PROFILE"),
                   ),
                   ListTile(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AwarenessBlogs(),
+                          ));
+                    },
+                    leading: Icon(Icons.speaker_group),
+                    title: Text("AWARENESS"),
+                  ),
+                  ListTile(
                     onTap: () {
                     },
                     leading: Icon(Icons.online_prediction_outlined),
@@ -102,11 +114,11 @@ class _DashboardState extends State<Dashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AwarenessBlogs(),
+                            builder: (context) => MitigationDashboard(),
                           ));
                     },
-                    leading: Icon(Icons.speaker_group),
-                    title: Text("AWARENESS"),
+                    leading: Icon(Icons.local_hospital),
+                    title: Text("MITIGATION"),
                   ),
                   ListTile(
                     onTap: () {
@@ -306,7 +318,7 @@ class _DashboardState extends State<Dashboard> {
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,
-                      // autoPlay: true,
+                      autoPlay: true,
                       autoPlayInterval: Duration(seconds: 3),
                       autoPlayAnimationDuration: Duration(milliseconds: 800),
                       autoPlayCurve: Curves.fastOutSlowIn,
