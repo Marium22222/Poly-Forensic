@@ -119,6 +119,8 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
 
                                 FirebaseFirestore.instance
                                     .collection("awareness").doc(DateTime.timestamp().toString()).set(dataToAdd);
+
+                                Picked="";
                               },
                               child: Text("Publish"),
                             style: ElevatedButton.styleFrom(

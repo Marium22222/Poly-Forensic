@@ -6,6 +6,7 @@ import 'package:poly_forensic/globals.dart';
 import '../reusable_widgets/UserImage.dart';
 import 'package:path/path.dart' as p;
 import 'package:firebase_storage/firebase_storage.dart' as storage;
+import 'package:toggle_switch/toggle_switch.dart';
 
 class ShareExperience extends StatefulWidget {
   final String Name;
@@ -24,9 +25,11 @@ class _ShareExperienceState extends State<ShareExperience> {
   void saveFunc() {
     print(FirebaseFirestore.instance.collection("stories").count());
   }
+  String _name="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
           "SHARE YOUR EXPERIENCE",
@@ -40,11 +43,11 @@ class _ShareExperienceState extends State<ShareExperience> {
             child: Column(
               children: [
                 SizedBox(
-                  // width: constraints.maxWidth*0.8,
+                    // width: constraints.maxWidth*0.8,
                     child: Divider(
-                      color: Colors.grey,
-                      thickness: 2.0,
-                    )),
+                  color: Colors.grey,
+                  thickness: 2.0,
+                )),
                 Container(
                   // padding: EdgeInsets.all(2.0),
                   width: constraints.maxWidth * 0.95,
@@ -69,22 +72,28 @@ class _ShareExperienceState extends State<ShareExperience> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Title",style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: "Times New Roman",
-                        fontWeight: FontWeight.bold
-                      ),),
+                      Text(
+                        "Title",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold),
+                      ),
                       TextField(
                         controller: title,
                         decoration:
-                        InputDecoration(border: OutlineInputBorder()),
+                            InputDecoration(border: OutlineInputBorder()),
                       ),
-                      SizedBox(height: 20,),
-                      Text("Story",style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Times New Roman",
-                          fontWeight: FontWeight.bold
-                      ),),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Story",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "Times New Roman",
+                            fontWeight: FontWeight.bold),
+                      ),
                       TextField(
                         controller: description,
                         maxLines: 5,
@@ -92,42 +101,74 @@ class _ShareExperienceState extends State<ShareExperience> {
                           border: OutlineInputBorder(),
                         ),
                       ),
-
                       SizedBox(
                         height: 15,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          Text("Want to share your name?",style: TextStyle
+                            (
+                            fontWeight: FontWeight.bold
+                          ),
+                          ),
+                          ToggleSwitch(
+                            customWidths: [50.0, 50.0],
+                            cornerRadius: 20.0,
+                            activeBgColors: [[Colors.cyan], [Colors.redAccent]],
+                            activeFgColor: Colors.white,
+                            inactiveBgColor: Colors.grey,
+                            inactiveFgColor: Colors.white,
+                            totalSwitches: 2,
+                            icons: [Icons.check_outlined, Icons.cancel_sharp],
+                            onToggle: (index) {
+                              if(index==0)
+                                {
+                                  _name=widget.Name;
+                                }
+                              else if(index==1)
+                                {
+                                  _name="Anonymous";
+                                }
+                            },
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
                           ElevatedButton(
-                            onPressed: () async{
-                              final ref = storage.FirebaseStorage.instance.ref()
+                            onPressed: () async {
+                              final ref = storage.FirebaseStorage.instance
+                                  .ref()
                                   .child('images')
-                                  .child('${DateTime.now().toIso8601String() + p.basename(Picked!)}');
+                                  .child(
+                                      '${DateTime.now().toIso8601String() + p.basename(Picked!)}');
 
                               final result = await ref.putFile(File(Picked!));
                               final fileUrl = await result.ref.getDownloadURL();
-                              imageUrl=fileUrl;
+                              imageUrl = fileUrl;
                               Map<String, dynamic> dataToAdd = {
                                 "Title": title.text,
                                 "Author": widget.Name,
                                 "Image": imageUrl,
                                 "story": description.text,
                                 "status": "pending",
-                                "Date":"${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}"
+                                "Date":
+                                    "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}"
                               };
 
-
                               FirebaseFirestore.instance
-                                  .collection("stories").doc(DateTime.timestamp().toString()).set(dataToAdd);
+                                  .collection("stories")
+                                  .doc(DateTime.timestamp().toString())
+                                  .set(dataToAdd);
 
-                              Picked="";
+                              Picked = "";
                             },
                             child: Text("Publish"),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.indigo[900],
-                                foregroundColor: Colors.white
-                            ),
+                                foregroundColor: Colors.white),
                           )
                         ],
                       )
