@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:poly_forensic/Screens/marium%20screens/AdminDashboard.dart';
 import 'package:poly_forensic/screens/ResultsScreen.dart';
 import 'package:poly_forensic/screens/SignUp.dart';
 import 'package:poly_forensic/screens/dashboard.dart';
@@ -98,9 +99,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       globals.login=_emailTextController.text;
                       print(globals.login);
-                      if(globals.login=='admin1@gmail.com'){
+                      if(globals.login=='Admin1@gmail.com'){
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => BlogsAdminScreen()));
+                            MaterialPageRoute(builder: (context) => AdminDashboard()));
                       }
                       else{
                         globals.login =_emailTextController.text;
