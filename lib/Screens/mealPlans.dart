@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/Dialogs/meals_nutritions_dialog.dart';
 
 class MealPlans extends StatefulWidget {
   const MealPlans({Key? key}) : super(key: key);
@@ -79,6 +80,7 @@ class _MealPlansState extends State<MealPlans> {
                                           borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                                         children: [
                                           ClipRRect(
                                             // borderRadius: BorderRadius.circular(200),
@@ -88,7 +90,6 @@ class _MealPlansState extends State<MealPlans> {
                                               height: 90,
                                             ),
                                           ),
-                                          SizedBox(width: MediaQuery.of(context).size.width*0.1,),
                                           SizedBox(
                                             width: 130,
                                             child: Text(
@@ -97,6 +98,12 @@ class _MealPlansState extends State<MealPlans> {
                                                 fontSize: 16,
                                                 fontFamily: "Merriweather",
                                               ),),
+                                          ),
+                                          GestureDetector(
+                                            onTap:(){
+                                              showDialog(context: context, builder: (context) => MealsNutritionDialog(data: data,),);
+                                            },
+                                              child: Icon(Icons.arrow_forward_ios_rounded)
                                           )
                                         ],
                                       ),
