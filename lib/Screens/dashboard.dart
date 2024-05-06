@@ -489,17 +489,18 @@ class _DashboardState extends State<Dashboard> {
                                         children: [
                                           Text(
                                             "${data["Title"]}",
+                                            softWrap: true,
                                             style: TextStyle(
                                               fontSize: 17,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          Text(
-                                            "${data["Date"]}",
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          ),
                                         ],
+                                      ),
+                                      Text(
+                                        "${data["Date"]}",
+                                        style:
+                                        TextStyle(color: Colors.grey),
                                       ),
                                       Text(
                                         "${data["story"]}",
