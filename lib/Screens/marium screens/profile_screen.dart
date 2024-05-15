@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/Screens/marium%20screens/profile_update.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 
 class ProfileScreen extends StatefulWidget {
@@ -148,11 +149,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     offset: Offset(0.0, 1.0))
     ]),
     child: Center(
-    child: Text('UPDATE',
-    style: TextStyle(
-    fontSize: 12.0,
-    color: Colors.white,
-    fontWeight: FontWeight.bold)),
+    child: InkWell(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>ProfileUpdate()),
+        );
+      },
+      child: Text('UPDATE',
+      style: TextStyle(
+      fontSize: 12.0,
+      color: Colors.white,
+      fontWeight: FontWeight.bold)),
+    ),
     ),
     ),
     )

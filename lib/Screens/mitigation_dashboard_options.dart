@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/Screens/marium%20screens/Exercise_Screen.dart';
 import 'package:poly_forensic/screens/diet_dashboard.dart';
 
 class MitigationDashboardOptions extends StatefulWidget {
@@ -87,38 +88,43 @@ class _MitigationDashboardOptionsState
                             ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          width: constraints.maxWidth * 0.37,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.white),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 3,
-                                blurRadius: 7,
-                                offset:
-                                    Offset(0, 3), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                "assets/images/exercise.png",
-                                width: 120,
-                                height: 120,
-                              ),
-                              Text(
-                                "Exercise \nRoutine",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 15,
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ExerciseScreen(),));
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            width: constraints.maxWidth * 0.37,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.white),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 3,
+                                  blurRadius: 7,
+                                  offset:
+                                      Offset(0, 3), // changes position of shadow
                                 ),
-                              )
-                            ],
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/images/exercise.png",
+                                  width: 120,
+                                  height: 120,
+                                ),
+                                Text(
+                                  "Exercise \nRoutine",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
