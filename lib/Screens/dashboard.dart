@@ -6,6 +6,7 @@ import 'package:poly_forensic/Dialogs/BMIResultDialog.dart';
 import 'package:poly_forensic/Dialogs/RotterdamCardDialog.dart';
 import 'package:poly_forensic/Dialogs/periodsSymptomsDialog.dart';
 import 'package:poly_forensic/Dialogs/storyDialog.dart';
+import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
 import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/dashboardCards.dart';
 import 'package:poly_forensic/reusable_widgets/rotterdamCards.dart';
@@ -101,7 +102,13 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("AWARENESS"),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RotterdamSymptomsScreen(),
+                          ));
+                    },
                     leading: Icon(Icons.online_prediction_outlined),
                     title: Text("PREDICTION"),
                   ),

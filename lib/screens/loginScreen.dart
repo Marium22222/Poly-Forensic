@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         .then((value) {
                       globals.login = _emailTextController.text;
                       print(globals.login);
-                      if (globals.login == 'Admin1@gmail.com') {
+                      if (globals.login == 'admin1@gmail.com') {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
