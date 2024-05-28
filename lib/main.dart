@@ -6,6 +6,7 @@ import 'package:poly_forensic/screens/BmiScreen.dart';
 import 'package:poly_forensic/screens/ResultsScreen.dart';
 import 'package:poly_forensic/screens/SignUp.dart';
 import 'package:poly_forensic/screens/dashboard.dart';
+import 'package:poly_forensic/screens/diet_dashboard.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';

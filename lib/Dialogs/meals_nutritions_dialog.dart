@@ -117,6 +117,32 @@ class _MealsNutritionDialogState extends State<MealsNutritionDialog> {
                         ),
                       ],
                     ),
+                  ),Padding(
+                    padding: const EdgeInsets.fromLTRB(0,10,0,10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Protein",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Times New Roman",
+                              fontSize: 18,
+                              letterSpacing: 1.3,
+                              wordSpacing: 3.0),
+                        ),
+                        Text(
+                          "${widget.data['protein']}",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Times New Roman",
+                              letterSpacing: 1.3,
+                              fontSize: 18,
+                              wordSpacing: 3.0),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
+                    ),
                   ),
                 ])));
       },

@@ -12,24 +12,23 @@ class _DietRecommendationsDosState extends State<DietRecommendationsDos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-            padding: EdgeInsets.all(20),
-            child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-              stream: FirebaseFirestore.instance
-                  .collection('cure').doc('Diet').collection('DietToHave').snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                      child:
-                      CircularProgressIndicator()); //return means the bottom code wont run
-                }
-                if (snapshot.data == null || snapshot.hasError) {
-                  return const Center(child: Text("DATA NOT AVAILABLE"));
-                }
+      body: Padding(
+          padding: EdgeInsets.all(20),
+          child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: FirebaseFirestore.instance
+                .collection('cure').doc('Diet').collection('DietToHave').snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                    child:
+                    CircularProgressIndicator()); //return means the bottom code wont run
+              }
+              if (snapshot.data == null || snapshot.hasError) {
+                return const Center(child: Text("DATA NOT AVAILABLE"));
+              }
 
 
-                return ListView.builder(
+              return ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: snapshot.data!.docs.length,
@@ -80,10 +79,10 @@ class _DietRecommendationsDosState extends State<DietRecommendationsDos> {
                       ),
                     );
                   },
-                );
-              },
-            )
-        ),
+
+              );
+            },
+          )
       ),
     );
   }

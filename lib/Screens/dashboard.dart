@@ -28,7 +28,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool isHover = false;
   String appBarText = "Dashboard";
-  Map<String, dynamic> data={};
+  Map<String, dynamic> data = {};
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +44,8 @@ class _DashboardState extends State<Dashboard> {
         drawer: SizedBox(
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width * 0.7,
-          child: DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
+          child: Drawer(
+             backgroundColor: Colors.white,
               child: ListView(
                 children: [
                   DrawerHeader(
@@ -65,8 +63,7 @@ class _DashboardState extends State<Dashboard> {
                       if (snapshot.data == null || snapshot.hasError) {
                         return const Center(child: Text("DATA NOT AVAILABLE"));
                       }
-                      data =
-                          snapshot.data!.data() as Map<String, dynamic>;
+                      data = snapshot.data!.data() as Map<String, dynamic>;
                       return Text("${data['username']}");
                     },
                   )),
@@ -93,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("PROFILE"),
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -104,13 +101,12 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("AWARENESS"),
                   ),
                   ListTile(
-                    onTap: () {
-                    },
+                    onTap: () {},
                     leading: Icon(Icons.online_prediction_outlined),
                     title: Text("PREDICTION"),
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -130,12 +126,15 @@ class _DashboardState extends State<Dashboard> {
                     },
                     leading: Icon(Icons.track_changes),
                     title: Text("SYMPTOMS TRACKING"),
-                  ),ListTile(
+                  ),
+                  ListTile(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ShareExperience(Name: '${data['username']}',),
+                            builder: (context) => ShareExperience(
+                              Name: '${data['username']}',
+                            ),
                           ));
                     },
                     leading: Icon(Icons.offline_share),
@@ -404,9 +403,6 @@ class _DashboardState extends State<Dashboard> {
                       // fontStyle: FontStyle.italic,
                       fontSize: 20),
                 ),
-                Container(
-                  child: Row(),
-                ),
                 StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
                   stream: FirebaseFirestore.instance
                       .collection('stories')
@@ -421,12 +417,11 @@ class _DashboardState extends State<Dashboard> {
                       return const Center(child: Text("DATA NOT AVAILABLE"));
                     }
 
-
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: snapshot.data!.docs.length,
-
+                      physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         DocumentSnapshot documentSnapshot =
                             snapshot.data!.docs[index];
@@ -434,10 +429,9 @@ class _DashboardState extends State<Dashboard> {
                         Map<String, dynamic> data =
                             documentSnapshot.data() as Map<String, dynamic>;
 
-                        if(data['status']=='pending')
-                          {
-                            return Text("");
-                          }
+                        if (data['status'] == 'pending') {
+                          return Text("");
+                        }
                         return GestureDetector(
                           onTap: () {
                             showDialog(
@@ -450,15 +444,10 @@ class _DashboardState extends State<Dashboard> {
                             padding: EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               color: Colors.grey[50],
-                              border:Border(
-                                left: BorderSide(
-                                  color: Colors.grey,
-                                  width: 3
-                                ),  bottom: BorderSide(
-                                  color: Colors.grey,
-                                  width: 3
-                                ),
-
+                              border: Border(
+                                left: BorderSide(color: Colors.grey, width: 3),
+                                bottom:
+                                    BorderSide(color: Colors.grey, width: 3),
                               ),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -467,6 +456,7 @@ class _DashboardState extends State<Dashboard> {
                               // mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 0,vertical: 10),
                                   padding: EdgeInsets.all(8.0),
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.2,
@@ -476,8 +466,7 @@ class _DashboardState extends State<Dashboard> {
                                       height: 100),
                                 ),
                                 Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.52,
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
                                   padding: EdgeInsets.all(5),
                                   child: Column(
                                     crossAxisAlignment:
@@ -499,8 +488,7 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                       Text(
                                         "${data["Date"]}",
-                                        style:
-                                        TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey),
                                       ),
                                       Text(
                                         "${data["story"]}",
@@ -529,7 +517,7 @@ class _DashboardState extends State<Dashboard> {
                       },
                     );
                   },
-                )
+                ),
               ],
             ),
           ),
