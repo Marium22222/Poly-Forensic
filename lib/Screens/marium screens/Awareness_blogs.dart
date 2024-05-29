@@ -13,10 +13,10 @@ class _AwarenessBlogsState extends State<AwarenessBlogs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+
       appBar: AppBar(
         title: Text(
-          "Awareness Blogs",
+          "PCOS Awareness Blogs",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -56,14 +56,8 @@ class _AwarenessBlogsState extends State<AwarenessBlogs> {
                     child: Container(
                       margin: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            // Color(0xFF26CBE6),
-                            Color(0xffD660CA),
-                            Color(0xFF26CBC0),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                       color: Colors.pink[200],
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.white,
@@ -75,38 +69,49 @@ class _AwarenessBlogsState extends State<AwarenessBlogs> {
                       child: ListTile(
                           leading: Image(
                             image: NetworkImage(data["Image"]),
+                            height: 100,
+                            width: 100,
                           ),
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
+
                                 data['Title'],
+
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    fontSize: 20),
+                                    fontSize: 25),
                               ),
                               Text(
-                                "By: "+data["Author"],
-                                style: TextStyle(color: Colors.white),
+                                "Author: "+data["Author"],
+                                style: TextStyle(color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+
+                                    fontSize: 17),
+
                               ),
                               Text(
                                 "Sources: "+data["Sources"],
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+
+                                    fontSize: 17),
                               ),
                               Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.yellow,
-                                    ),
-                                    Text("4.5",
-                                        style: TextStyle(color: Colors.white)),
+                                    // Icon(
+                                    //   Icons.star,
+                                    //   color: Colors.yellow,
+                                    // ),
+                                    // Text("4.5",
+                                    //     style: TextStyle(color: Colors.white)),
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.green),
+                                          backgroundColor: Colors.pinkAccent),
                                       onPressed: () {},
                                       child: Text(
                                         "Read More",

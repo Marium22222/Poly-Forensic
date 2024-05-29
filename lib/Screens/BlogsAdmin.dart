@@ -20,6 +20,7 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
   TextEditingController author = new TextEditingController();
   TextEditingController description = new TextEditingController();
   TextEditingController sources = new TextEditingController();
+  TextEditingController Link = new TextEditingController();
   void saveFunc() {
     print(FirebaseFirestore.instance.collection("awareness").count());
   }
@@ -87,6 +88,13 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
                           border: OutlineInputBorder(),
                         ),
                       ),
+                      Text("Link"),
+                      TextField(
+                        controller: Link,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
                       Text("Sources"),
                       TextField(
                         controller: sources,
@@ -114,8 +122,8 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
                                   "Image": imageUrl,
                                   "Description": description.text,
                                   "Sources": sources.text,
+                                  "Link":Link.text
                                 };
-
 
                                 FirebaseFirestore.instance
                                     .collection("awareness").doc(DateTime.timestamp().toString()).set(dataToAdd);
