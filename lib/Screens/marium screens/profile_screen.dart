@@ -20,12 +20,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Stack(
         children: <Widget>[
           Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-
-              Color(0xffD660CA),
-              Color(0xFF26CBC0),
-            ], begin: Alignment.topCenter, end: Alignment.center)),
+            decoration:  BoxDecoration(
+       color:       Color(0xffffbddb),
+            ),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
@@ -50,8 +47,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     CircleAvatar(
     backgroundImage:
     // AssetImage('assets/profile_img.jpeg'),
-    NetworkImage(
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWomPds9w5emH_C6RY8xF7KRCJe6I5zwVsuw&usqp=CAU"),
+    AssetImage(
+   "assets/images/piccc.png"),
     radius: _height / 10,
     ),
     SizedBox(
@@ -115,9 +112,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-    headerChild('Age',  userDocument!['age'].toString()+"years"),
-    headerChild('Weight',  userDocument!['weight'].toString()+"Kgs"),
-    headerChild('Height', userDocument!['height'].toString()+"Inches"),
+    headerChild('Age',  userDocument!['age'].toString()+" years"),
+    headerChild('Weight',  userDocument!['weight'].toString()+" Kgs"),
+    headerChild('Height ', userDocument!['height'].toString()+" Inch"),
     ]),
     ),
     ),
@@ -139,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     height: _height / 20,
     decoration: BoxDecoration(
     // color: Color(0xFF26CBE6),
-    color:Color(0xffD660CA),
+        color:       Color(0xffffbddb),
     borderRadius: BorderRadius.all(
     Radius.circular(_height / 40)),
     boxShadow: [
@@ -190,9 +187,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: <Widget>[
           Text(header,
             style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 18.0,
                 color:Colors.black,
-                fontWeight: FontWeight.bold),),
+                fontWeight: FontWeight.bold,
+                fontFamily: "Roboto"),),
           SizedBox(
             height: 8.0,
           ),
@@ -200,8 +198,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             '$value',
             style: TextStyle(
                 fontSize: 18.0,
-                color:Color(0xffD660CA),
-                fontWeight: FontWeight.bold),
+                color:       Color(0xffffbddb),
+                fontWeight: FontWeight.bold
+                ,fontFamily: "Roboto"),
           )
         ],
       ));
@@ -216,13 +215,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Icon(
                 icon,
-                color:Color(0xffD660CA),
-                size: 40.0,
+                color:       Color(0xffffbddb),
+                size: 35.0,
               ),
               SizedBox(
                 width: width / 20,
               ),
-              Text(data,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
+              Text(data,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold
+                  ,fontFamily: "Roboto"),)
             ],
           ),
           onTap: () {

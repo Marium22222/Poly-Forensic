@@ -14,12 +14,26 @@ class RotterdamSymptomsScreen extends StatefulWidget {
 
 class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
 
-  String dropdownValue = 'Yes'; // Default value
+  String dropdownValue = 'Yes';
+  String dropdownValue1 = 'Regular';
+  String dropdownValue2 = 'No';
+  String dropdownValue3 = 'No';
+  String dropdownValue4 = 'No';
+  String dropdownValue5 = 'No';
+  String dropdownValue6 = 'No';
+  String dropdownValue7 = 'No';
   TextEditingController priceController = TextEditingController();
   TextEditingController numberoffolliclesController = TextEditingController();
   TextEditingController folliclesinmmController = TextEditingController();
   TextEditingController ovaryVolumeController = TextEditingController();
   TextEditingController _bmiController = TextEditingController();
+  TextEditingController menstrualdays = TextEditingController();
+  TextEditingController abortions= TextEditingController();
+  TextEditingController hipcircumference = TextEditingController();
+  TextEditingController waistcircumference = TextEditingController();
+  TextEditingController waisthipcircumference = TextEditingController();
+  TextEditingController folliclesInL = TextEditingController();
+  TextEditingController folliclesinR = TextEditingController();
   var number="";
   var foll="";
   var volume="";
@@ -319,7 +333,182 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                       )
                     ],
                   ),
+                 Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("5. Other Details",style: TextStyle(fontWeight: FontWeight.bold,
+                          fontSize: 20),),
+                      Text("a) Do you have Regular or Irregular menstrual cycle"),
+                      DropdownButton<String>(
+                        value: dropdownValue1,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue1 = newValue!;
+                          });
+                        },
+                        items: <String>['Regular', 'Irregular'].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                      TextFormField(
+                        controller: menstrualdays,
+                        decoration: InputDecoration(labelText: 'b) Duration of the menstrual cycle in days.'),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("c) Are you pregnant?"),
+                          DropdownButton<String>(
+                            value: dropdownValue2,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue2 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
 
+                        ],
+                      ),
+                      TextFormField(
+                        controller: abortions,
+                        decoration: InputDecoration(labelText: 'd) Number of abortions.'),
+                      ),
+                      TextFormField(
+                        controller: hipcircumference,
+                        decoration: InputDecoration(labelText: 'e) Hip circumference in inches'),
+                      ),
+                      TextFormField(
+                        controller: waistcircumference,
+                        decoration: InputDecoration(labelText: 'f) waist circumference in inches'),
+                      ),
+                      TextFormField(
+                        controller: waisthipcircumference,
+                        decoration: InputDecoration(labelText: 'g) Ratio of the circumference of the waist to the hips'),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("h) Have you experienced weight gain?"),
+                          DropdownButton<String>(
+                            value: dropdownValue3,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue3 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+//four more to go for dropdowns
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("i) Have you experienced hirsutism hairgrowth?"),
+                          DropdownButton<String>(
+                            value: dropdownValue4,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue4 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+//four more to go for dropdowns
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("j) Have you experienced darkening of skin?"),
+                          DropdownButton<String>(
+                            value: dropdownValue5,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue5 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+//four more to go for dropdowns
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("k) Have you experienced pimples or acne?"),
+                          DropdownButton<String>(
+                            value: dropdownValue6,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue6 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+//four more to go for dropdowns
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("l)  Do you frequently consumes fast food ?"),
+                          DropdownButton<String>(
+                            value: dropdownValue7,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue7 = newValue!;
+                              });
+                            },
+                            items: <String>['No', 'Yes'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+//four more to go for dropdowns
+                        ],
+                      ),
+                      TextFormField(
+                        controller: folliclesInL,
+                        decoration: InputDecoration(labelText: 'm) Number of follicles in left ovary'),
+                      ),
+                      TextFormField(
+                        controller: folliclesinR,
+                        decoration: InputDecoration(labelText: 'n) Number of follicles in right ovary'),
+                      ),
+                    ],
+                  ),
                   ElevatedButton(onPressed: (){
                     number=numberoffolliclesController.text;
                     foll=folliclesinmmController.text;
@@ -335,8 +524,32 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                         .collection("users")
                         .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
                         .set({"ultrasonography": values,
-                    "oligoAnovulation": dropdownValue},
-                        SetOptions(merge: true));
+                    "oligoAnovulation": dropdownValue,
+                    "PeriodsRegularity":dropdownValue1,
+                      "menstrualduration":menstrualdays.text,
+                    "pregnancy":dropdownValue2,
+                    "abortions": abortions.text,
+                      "hipcircumference":hipcircumference.text,
+                    "waistcircumference":waistcircumference.text,
+                      "ratiohiptowaist":waisthipcircumference.text,
+                      "weightgain":dropdownValue3,
+                      "hairgrowth":dropdownValue4,
+                      "darkskin":dropdownValue5,
+                      "pimples":dropdownValue6,
+                      "fastfood":dropdownValue7,
+                      "folliclesL":folliclesInL.text,
+                      "folliclesR":folliclesinR.text
+
+
+                    },
+
+                        SetOptions(merge: true))
+                        .then((_) {
+                      print("PCOS symptoms updated successfully");
+                    }).catchError((error) {
+                      print("Error updating PCOS symptoms: $error");
+                    });
+
                   }, child: Text("Submit"))
 
                 ],
