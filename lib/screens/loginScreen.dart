@@ -5,6 +5,7 @@ import 'package:poly_forensic/screens/ResultsScreen.dart';
 import 'package:poly_forensic/screens/SignUp.dart';
 import 'package:poly_forensic/screens/dashboard.dart';
 import 'package:poly_forensic/screens/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../globals.dart';
 import '../reusable_widgets/reusable_widgets.dart';
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         .signInWithEmailAndPassword(
                         email: _emailTextController.text,
                         password: _passwordTextController.text)
-                        .then((value) {
+                        .then((value) async{
                       globals.login = _emailTextController.text;
                       print(globals.login);
                       if (globals.login == 'admin1@gmail.com') {
@@ -113,6 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 builder: (context) => AdminDashboard()));
                       } else {
                         globals.login = _emailTextController.text;
+                        SharedPreferences pref =await SharedPreferences.getInstance();
+                        pref.setString("email", "${_emailTextController.text}");
                         Navigator.push(
                             context,
                             MaterialPageRoute(

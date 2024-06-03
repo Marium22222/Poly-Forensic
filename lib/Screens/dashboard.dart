@@ -18,6 +18,8 @@ import 'package:poly_forensic/screens/marium%20screens/profile_screen.dart';
 import 'package:poly_forensic/screens/mitigation_dashboard.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:poly_forensic/globals.dart' as globals;
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -148,7 +150,10 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("SHARE YOUR EXPERIENCE"),
                   ),
                   ListTile(
-                    onTap: () {
+                    onTap: () async{
+                      SharedPreferences pref = await SharedPreferences.getInstance();
+                      pref.remove("${globals.login}");
+
                       FirebaseAuth.instance.signOut().then((value) {
                         print("Signed Out!");
                         Navigator.push(

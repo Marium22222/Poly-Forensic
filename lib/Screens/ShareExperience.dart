@@ -25,11 +25,12 @@ class _ShareExperienceState extends State<ShareExperience> {
   void saveFunc() {
     print(FirebaseFirestore.instance.collection("stories").count());
   }
-  String _name="";
+
+  String _name = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "SHARE YOUR EXPERIENCE",
@@ -53,10 +54,10 @@ class _ShareExperienceState extends State<ShareExperience> {
                   width: constraints.maxWidth * 0.95,
                   height: constraints.maxHeight * 0.45,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.grey.shade500),
-                    // shape: BoxShape.rectangle
-                  ),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey.shade500),
+                      // shape: BoxShape.rectangle
+                      ),
                   child: UserImage(
                     onFileChanged: (imageUrl) {
                       setState(() {
@@ -82,7 +83,9 @@ class _ShareExperienceState extends State<ShareExperience> {
                       TextField(
                         controller: title,
                         decoration:
-                            InputDecoration(border: OutlineInputBorder()),
+                            InputDecoration(border: OutlineInputBorder(),
+                            fillColor: Colors.grey[100]
+                            ),
                       ),
                       SizedBox(
                         height: 20,
@@ -107,29 +110,28 @@ class _ShareExperienceState extends State<ShareExperience> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("Want to share your name?",style: TextStyle
-                            (
-                            fontWeight: FontWeight.bold
-                          ),
+                          Text(
+                            "Want to share your name?",
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           ToggleSwitch(
                             customWidths: [50.0, 50.0],
                             cornerRadius: 20.0,
-                            activeBgColors: [[Colors.cyan], [Colors.redAccent]],
+                            activeBgColors: [
+                              [Colors.indigo.shade900],
+                              [Colors.redAccent]
+                            ],
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
                             totalSwitches: 2,
                             icons: [Icons.check_outlined, Icons.cancel_sharp],
                             onToggle: (index) {
-                              if(index==0)
-                                {
-                                  _name=widget.Name;
-                                }
-                              else if(index==1)
-                                {
-                                  _name="Anonymous";
-                                }
+                              if (index == 0) {
+                                _name = widget.Name;
+                              } else if (index == 1) {
+                                _name = "Anonymous";
+                              }
                             },
                           ),
                         ],

@@ -29,7 +29,7 @@ class _MealPlansState extends State<MealPlans> {
                   Container(
                     padding: EdgeInsets.all(20),
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight * 0.19,
+                    height: constraints.maxHeight * 0.17,
                     decoration: BoxDecoration(
                       color: Colors.teal[300],
                     ),
@@ -165,38 +165,38 @@ class _MealPlansState extends State<MealPlans> {
                     // ),
                   ),
                   Positioned(
-                      top: constraints.maxHeight * 0.17,
+                      top: constraints.maxHeight * 0.175,
                       // left: constraints.maxWidth * 0.03,
                       // right: constraints.maxWidth * 0.03,
                       child: Container(
                         width: constraints.maxWidth,
 
-                        color: Colors.teal[300],
+                        // color: Colors.teal[300],
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: value==0?Colors.grey[50]:Colors.teal[300],
+                                  color: value==0?Colors.teal[300]:Colors.grey[50],
                                 ),
                                 child: getOption("Breakfast",0)),
                             Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: value==1?Colors.grey[50]:Colors.teal[300],
+                                  color: value==1?Colors.teal[300]:Colors.grey[50],
                                 ),
                                 child: getOption("Lunch",1)),
                             Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: value==2?Colors.grey[50]:Colors.teal[300],
+                                  color: value==2?Colors.teal[300]:Colors.grey[50],
                                 ),
                                 child: getOption("Dinner",2)),
                             Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: value==3?Colors.grey[50]:Colors.teal[300],
+                                  color: value==3?Colors.teal[300]:Colors.grey[50],
                                 ),
                                 child: getOption("Snacks",3)),
                           ],
@@ -227,6 +227,9 @@ class _MealPlansState extends State<MealPlans> {
                         child: PageView(
                           onPageChanged: (page){
                             value=page;
+                            setState(() {
+
+                            });
                           },
                           controller: pageController,
                           children: [BreakfastPlans(),LunchPlans(),DinnerPlans(),SnackPlans()],

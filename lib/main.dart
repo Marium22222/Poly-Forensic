@@ -13,12 +13,19 @@ import 'package:poly_forensic/screens/symptomsTracking.dart';
 
 import 'Screens/marium screens/know_ferriman.dart';
 import 'Screens/marium screens/start_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+import 'globals.dart';
+
+Future<void>  main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  var email = preferences.getString("email");
+  login=email;
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Dashboard(),));
+    home: email == null ? LoginScreen() : Dashboard(),));
 }
