@@ -161,6 +161,8 @@ class _BMIScreenState extends State<BMIScreen> {
                           context: context,
                           builder: (context) => BMIDialog(
                             bmi: bmi,
+                            weight:weight_new,
+                            height:double.parse(height.value.text),
                           ),
                         );
                         setState(() {});

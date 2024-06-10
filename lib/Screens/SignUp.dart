@@ -214,7 +214,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       }).onError((error, stackTrace){
                         print("Error ${error.toString()}");
                       });
-
+                     
                       await users.doc(_emailTextController.text).set({
                         "username":_nameTextController.text,
                         "password":_passwordTextController.text,
@@ -223,12 +223,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "height":0,
                         "weight":0,
                         "BMI":0,
+                        "lastPeriodDate":"",
+                        "expectedPeriodDate":"",
                       }).then((value) {
                         print("Added user!");
                         // Navigator.push(context,
                         //     MaterialPageRoute(builder: (context) => ResultsScreen()));
                       }).onError((error, stackTrace){
                         print("Error ${error.toString()}");
+                      });
+
+                      await users.doc(_emailTextController.text).collection("symptoms").doc("periods_symptoms").set({});
+                      await users.doc(_emailTextController.text).collection("symptoms").doc("pcos_symptoms").set({
+                        "PeriodsRegularity":"",
+                        "abortions":"",
+                        "darkskin":"",
+                        "fastfood":"",
+                        "folliclesL":"",
+                        "folliclesR":"",
+                        "hairgrowth":"",
+                        "hipcircumference":"",
+                        "hyperandrogenism":{""," "},
+                        "oligoAnovulation":"",
+                        "menstrualduration":"",
+                        "pimples":"",
+                        "pregnancy":"",
+                        "ratiohiptowaist":"",
+                        "ultrasonography":{""," ","  "},
+                        "waistcircumference":"",
+                        "weightgain":"",
                       });
                     }}),
                 )
