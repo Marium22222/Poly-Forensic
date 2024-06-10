@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class RotterdamCardDialog extends StatefulWidget {
   final String text;
-  const RotterdamCardDialog({Key? key, required this.text}) : super(key: key);
 
+  const RotterdamCardDialog({Key? key, required this.text, required this.color1, required this.color2}) : super(key: key);
+  final Color color1;
+  final Color color2;
   @override
   State<RotterdamCardDialog> createState() => _StoryDialogState();
 }
@@ -19,17 +21,14 @@ class _StoryDialogState extends State<RotterdamCardDialog> {
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                   gradient: LinearGradient(
-                    colors: [
-                      Colors.deepPurpleAccent.shade100,
-                      Colors.purple.shade200,
-                    ],
+                    colors: [widget.color1, widget.color2],
                     stops: [0.1,0.4],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   )
                 ),
                 padding: EdgeInsets.all(10),
-                height: constraints.maxHeight * 0.5,
+                height: constraints.maxHeight * 0.4,
                 width: constraints.maxWidth * 0.8,
                 child: Column(children: [
                   Row(

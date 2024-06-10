@@ -31,6 +31,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool isHover = false;
   String appBarText = "Dashboard";
+  bool toShowDiff=false;
+  late int difference;
   Map<String, dynamic> data = {};
 
   @override
@@ -67,7 +69,37 @@ class _DashboardState extends State<Dashboard> {
                         return const Center(child: Text("DATA NOT AVAILABLE"));
                       }
                       data = snapshot.data!.data() as Map<String, dynamic>;
-                      return Text("${data['username']}");
+                      if(data['expectedPeriodDate']=="" || data['lastPeriodDate']=="" )
+                        {
+                          toShowDiff=false;
+                        }
+                      else{
+                        toShowDiff=true;
+                        final date_today = DateTime.now();
+                        final year= int.parse(data['expectedPeriodDate'].substring(0,4));
+                        final month=int.parse(data['expectedPeriodDate'].substring(5,7));
+                        final day=int.parse(data['expectedPeriodDate'].substring(8,10));
+                        final expected_date = DateTime(year,month,day);
+
+                        difference= expected_date.difference(date_today).inDays;
+                      }
+
+                      return toShowDiff==true?Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("${data['username']}"),
+                          Text("Periods Due In:"),
+                          Container(
+                            padding:EdgeInsets.all(10),
+                              decoration:BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.red,width: 8)
+                              ),
+                              child: Text("${difference}")),
+                          Text("days"),
+                        ],
+                      ):Text("${data['username']}");
                     },
                   )),
                   ListTile(
@@ -151,8 +183,12 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   ListTile(
                     onTap: () async{
+                      print(globals.login);
                       SharedPreferences pref = await SharedPreferences.getInstance();
-                      pref.remove("${globals.login}");
+                      pref.remove("email");
+                      setState(() {
+
+                      });
 
                       FirebaseAuth.instance.signOut().then((value) {
                         print("Signed Out!");

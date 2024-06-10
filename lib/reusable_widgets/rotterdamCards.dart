@@ -22,7 +22,7 @@ class RotterdamCards extends StatefulWidget {
 
 class _RotterdamCardsState extends State<RotterdamCards> {
   List<String> texts = [
-    "Oligoovulation is a condition that causes irregular or infrequent periods. While women with an average menstrual cycle typically have periods every 28 to 32 days, women experiencing oligoovulation generally have eight or fewer periods each year.",
+    "Oligoanovulation is a condition that causes irregular or infrequent periods. While women with an average menstrual cycle typically have periods every 28 to 32 days, women experiencing oligoovulation generally have eight or fewer periods each year.",
     "Hyperandrogenism is any state with an excess production of “male” hormones, although these hormones are normally found in women at lower levels. \t Signs- hirsutism, acne, androgenic alopecia, and virilization",
     "Polycystic ovary morphology (PCOM) is an ultrasonographic finding that can be present in women with ovulatory disorder and oligomenorrhea due to hypothalamic, pituitary, and ovarian dysfunction."
   ];
@@ -34,21 +34,21 @@ class _RotterdamCardsState extends State<RotterdamCards> {
           showDialog(
             context: context,
             builder: (context) => RotterdamCardDialog(
-              text: texts[0],
+              text: texts[0], color1: widget.color1,color2: widget.color2,
             ),
           );
         } else if (widget.opt == "hyper") {
           showDialog(
             context: context,
             builder: (context) => RotterdamCardDialog(
-              text: texts[1],
+              text: texts[1],color1: widget.color1,color2: widget.color2,
             ),
           );
         } else {
           showDialog(
             context: context,
             builder: (context) => RotterdamCardDialog(
-              text: texts[2],
+              text: texts[2],color1: widget.color1,color2: widget.color2,
             ),
           );
         }

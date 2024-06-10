@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:poly_forensic/globals.dart' as globals;
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../Custom Widgets/periodsSymptomDialogOptions.dart';
 import '../globals.dart';
@@ -23,6 +24,7 @@ class Trial extends StatefulWidget {
 class _TrialState extends State<Trial> {
   TextEditingController _notes = new TextEditingController();
   bool _clicked = false;
+  String _name="";
   int _num11 = 0;
   int _num12 = 0;
   int _num13 = 0;
@@ -109,6 +111,7 @@ class _TrialState extends State<Trial> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 5),
@@ -318,6 +321,7 @@ class _TrialState extends State<Trial> {
                                                 color2: _num32 == 1
                                                     ? Colors.white
                                                     : Colors.black)),
+
                                         GestureDetector(
                                           onTap: () {
                                             _clicked = true;
@@ -379,7 +383,37 @@ class _TrialState extends State<Trial> {
                                         decoration: InputDecoration(
                                             border: OutlineInputBorder()),
                                       ),
-                                    )
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          "Want to mark as first period of month?",
+                                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),
+                                        ),
+                                        ToggleSwitch(
+                                          customWidths: [30.0, 30.0],
+                                          cornerRadius: 20.0,
+                                          activeBgColors: [
+                                            [Colors.redAccent],
+                                            [Colors.indigo.shade900],
+
+                                          ],
+                                          activeFgColor: Colors.white,
+                                          inactiveBgColor: Colors.grey,
+                                          inactiveFgColor: Colors.white,
+                                          totalSwitches: 2,
+                                          icons: [Icons.cancel_sharp,Icons.check_outlined],
+                                          onToggle: (index) {
+                                            if (index == 0) {
+                                              _name = "No";
+                                            } else if (index == 1) {
+                                              _name = "Yes";
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
@@ -397,14 +431,23 @@ class _TrialState extends State<Trial> {
                                     };
                                     FirebaseFirestore.instance
                                         .collection("users")
-                                        .doc("shaikhnaila488@gmail.com")
+                                        .doc(login)
                                         .collection("symptoms")
                                         .doc("periods_symptoms")
                                         .collection(dateNow)
                                         .add(dataToAdd);
-
                                     // FirebaseFirestore.instance.collection("users").doc("shaikhnaila488@gmail.com").collection("symptoms").doc(dateNow).set(dataToAdd);
+                                    if(_name=="Yes")
+                                    {
+                                      DateTime d = widget.dateToday.add(Duration(days: 28));
+                                      print("yes");
+                                      FirebaseFirestore.instance
+                                          .collection("users")
+                                          .doc(login).update({"lastPeriodDate":"${widget.dateToday}","expectedPeriodDate":"${d}"});
+                                    }
+
                                   },
+                                  
                                   child: Text("Save"))
                             ],
                           )
@@ -750,7 +793,8 @@ class _TrialState extends State<Trial> {
                                 ),
 
                               ],
-                            )
+                            ),
+
                           ],
                         ),
                       ),

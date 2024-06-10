@@ -90,12 +90,18 @@ flutter:
     - family: MarckScript
       fonts:
          - asset: assets/fonts/MarckScript-Regular.ttf
+
+#    - family: Roboto
+#      fonts:
+#          - asset: assets/fonts/Roboto-BlackItalic.ttf
+
     - family: Merriweather
       fonts:
           - asset: assets/fonts/Merriweather-Regular.ttf
-    - family: Roboto
-      fonts:
-          - asset: assets/fonts/Roboto-BlackItalic.ttf
+
+
+
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

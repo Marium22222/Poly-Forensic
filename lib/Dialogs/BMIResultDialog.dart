@@ -4,7 +4,9 @@ import 'package:poly_forensic/globals.dart';
 
 class BMIDialog extends StatefulWidget {
   final double bmi;
-  const BMIDialog({super.key, required this.bmi});
+  final double weight;
+  final double height;
+  const BMIDialog({super.key, required this.bmi, required this.weight, required this.height});
 
   @override
   State<BMIDialog> createState() => _BMIDialogState();
@@ -63,7 +65,7 @@ class _BMIDialogState extends State<BMIDialog> {
                       FirebaseFirestore.instance
                           .collection("users")
                           .doc(login)
-                          .update({"BMI": "${widget.bmi}"});
+                          .update({"BMI": "${widget.bmi}","weight":"${widget.weight}","height":"${widget.height}"});
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
