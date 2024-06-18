@@ -29,14 +29,17 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.pink[100],
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
 
 
 
                 child: ListTile(
-                  title: Text("Approval Screen"),
+                  title: Text("User story Approval Screen",
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
                 ),
               ),
             ),
@@ -51,12 +54,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.pink[100],
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
 
                 child: ListTile(
-                  title: Text("Upload Blogs"),
+                  title: Text("Upload Blogs",
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
                 ),
               ),
             ),
@@ -70,12 +76,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.pink[100],
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
 
                 child: ListTile(
-                  title: Text("Logout"),
+                  title: Text("Logout",
+                  style: TextStyle(
+                    color: Colors.white
+                  ),),
                 ),
               ),
             ),

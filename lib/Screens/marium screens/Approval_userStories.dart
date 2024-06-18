@@ -30,7 +30,10 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
           if (snapshot.data == null || snapshot.hasError) {
             return const Center(child: Text("DATA NOT AVAILABLE"));
           }
-
+          var documents = snapshot.data!.docs.where((doc) => doc['status'] != 'approved').toList();
+          if (documents.isEmpty) {
+            return const Center(child: Text("No stories to approve"));
+          }
 
           return ListView.builder(
             scrollDirection: Axis.vertical,
