@@ -14,7 +14,7 @@ class RotterdamSymptomsScreen extends StatefulWidget {
 
 class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
 
-  String dropdownValue = 'Yes';
+  String dropdownValue = 'No';
   String dropdownValue1 = 'Regular';
   String dropdownValue2 = 'No';
   String dropdownValue3 = 'No';
@@ -66,7 +66,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Rotterdam Criteria Symptoms"),
+        title: Text("Prediction Screen"),
         centerTitle: true,
       ),
       body:StreamBuilder(
@@ -105,38 +105,41 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                         },
                       );
                     },
-                    child: Text("Rotterdam criteria",
+                    child: Text("Learn More about Rotterdam Criteria",
                       style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-
+                        color: Colors.blue,
                       ),),
                   ),
-                  Text("1. BMI",style: TextStyle(fontWeight: FontWeight.bold,
-                      fontSize: 20),),
-                  // TextFormField(
-                  //   controller: nameController,
-                  //   decoration: InputDecoration(labelText: ' Enter BMI'),
+                  SizedBox(height: 20,),
+                  Text("1. BMI(Body Mass Index)",style: TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 18),),
+SizedBox(height: 20,),
                   TextField(
                     controller: _bmiController,
                     decoration: InputDecoration(
-                      // labelText: 'BMI',
+                      labelText: 'Enter your BMI',
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'BMI',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
                     ),
-
                   ),
-
-
-                  InkWell(
-                    onTap: (){
+                  SizedBox(height: 20,),
+                  Center(
+                    child: ElevatedButton(onPressed: ()
+                    {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SymptomsTracking()),
-                      );
-                    },
-                    child: Text("Check BMI from here",style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 18),),
+                          context,
+                          MaterialPageRoute(builder: (context) => SymptomsTracking()),        );
+                    },style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue[200]
+                    ),
+                      child: Text("Check BMI from here",style: TextStyle(
+                        color: Colors.white,
+                    ),),),
                   ),
 
                   SizedBox(
@@ -145,8 +148,8 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("2. PCOM",style: TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 20),),
+                      Text("2. Polycystic Ovary Morphology",style: TextStyle(fontWeight: FontWeight.bold,
+                          fontSize: 18),),
                       InkWell(
                         onTap: (){
                           showDialog(
@@ -175,17 +178,52 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: numberoffolliclesController,
-                    decoration: InputDecoration(labelText: 'Number of follicles'),
+                    // decoration: InputDecoration(labelText: 'Number of follicles'),
+                    decoration: InputDecoration(
+                      labelText: 'Enter No. of Follicles',
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'Follicles',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                    ),
                   ),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: folliclesinmmController,
-                    decoration: InputDecoration(labelText: 'Follicles in mm (optional)'),
+                    // decoration: InputDecoration(labelText: 'Follicles in mm (optional)'),
+                    decoration: InputDecoration(
+                      labelText: 'Enter Follicles in mm',
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'Follicles size',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+
+                    ),
                   ),
+                  SizedBox(height: 20,),
                   TextFormField(
                     controller: ovaryVolumeController,
-                    decoration: InputDecoration(labelText: 'Ovary Volume'),
+                    // decoration: InputDecoration(labelText: 'Ovary Volume'),
+                    decoration: InputDecoration(
+                      labelText: 'Enter Ovary Volume',
+                      labelStyle: TextStyle(color: Colors.black),
+                      hintText: 'Ovary Volume',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -222,33 +260,46 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                       )
                     ],
                   ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Do you have oligoovulation"),
-                      DropdownButton<String>(
-                        value: dropdownValue,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            dropdownValue = newValue!;
-                          });
-                        },
-                        items: <String>['Yes', 'No'].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                  SizedBox(height: 20,),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue, // Outline color
+                        width: 2, // Outline width
                       ),
+                      borderRadius: BorderRadius.circular(8), // Rounded corners
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Select if you have Oligoovulation? "),
+                        DropdownButton<String>(
+                          value: dropdownValue,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>['Yes', 'No'].map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
 
-                    ],
+                      ],
+                    ),
                   ),
+                  SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       Text("4. HyperAndrogenism",style: TextStyle(fontWeight: FontWeight.bold,
                           fontSize: 20),),
+
                       InkWell(
                         onTap: (){
                           showDialog(
@@ -276,281 +327,503 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                       )
                     ],
                   ),
+                  SizedBox(height: 20,),
                   Text(" A) Check Acne"),
                   SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      InkWell(
-                          onTap: (){},
-                          child: Text("Capture",
-                            style: TextStyle(
-                                color: Colors.blue
-                            ),)),
-                      InkWell(
-                          onTap: (){},
-                          child: Text("Upload",
-                            style: TextStyle(
-                                color: Colors.blue
-                            ),)),
+                      ElevatedButton(onPressed: (){
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                        // );
+                      },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue[200]
+                        ),
+                        child: Text("Capture",  style: TextStyle(
+                            color: Colors.white
+                        ),),),
+
+                      ElevatedButton(onPressed: (){
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                        // );
+                      },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue[200]
+                        ),
+                        child: Text("Upload",  style: TextStyle(
+                            color: Colors.white
+                        ),),)
                     ],
                   ),
-
+                  SizedBox(height: 20,),
                   Text(" B) Check hirsutism"),
                   SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      InkWell(
-                          onTap: (){},
-                          child: Text("Capture",
-                            style: TextStyle(
-                                color: Colors.blue
-                            ),)),
-                      InkWell(
-                          onTap: (){},
-                          child: Text("Upload",
-                            style: TextStyle(
-                                color: Colors.blue
-                            ),)),
+                      // InkWell(
+                      //     onTap: (){},
+                      //     child: Text("Capture",
+                      //       style: TextStyle(
+                      //           color: Colors.blue
+                      //       ),)),
+                      // InkWell(
+                      //     onTap: (){},
+                      //     child: Text("Upload",
+                      //       style: TextStyle(
+                      //           color: Colors.blue
+                      //       ),)),
+                      ElevatedButton(onPressed: (){
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                        // );
+                      },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue[200]
+                        ),
+                        child: Text("Capture",  style: TextStyle(
+                            color: Colors.white
+                        ),),),
 
+                      ElevatedButton(onPressed: (){
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                        // );
+                      },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue[200]
+                        ),
+                        child: Text("Upload",  style: TextStyle(
+                            color: Colors.white
+                        ),),)
                     ],
                   ),
+                  SizedBox(height: 20,),
+                  Text(" C) Check hirsutism using Ferriman Gallwey Score"),
+                  SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("OR"),
-                      InkWell(
-                        onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>KnowFerriman()),
-                          );
-                        },
-                        child: Text("Open Ferriman Gallwey Screen",  style: TextStyle(
-                            color: Colors.blue
-                        ),),
-                      )
+
+                      ElevatedButton(onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                            );
+                      },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue[200]
+                        ),
+                        child: Text("Check Ferriman Gallwey Score",  style: TextStyle(
+                  color: Colors.white
+              ),),)
                     ],
                   ),
                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 20,),
                       Text("5. Other Details",style: TextStyle(fontWeight: FontWeight.bold,
                           fontSize: 20),),
-                      Text("a) Do you have Regular or Irregular menstrual cycle"),
-                      DropdownButton<String>(
-                        value: dropdownValue1,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            dropdownValue1 = newValue!;
-                          });
-                        },
-                        items: <String>['Regular', 'Irregular'].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
+                          ),
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Select Menstrual Cycle Condition",
+                            style: TextStyle(
+                              fontSize: 15
+                            ),),
+                            DropdownButton<String>(
+                              value: dropdownValue1,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue1 = newValue!;
+                                });
+                              },
+                              items: <String>['Regular', 'Irregular'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
                       ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: menstrualdays,
-                        decoration: InputDecoration(labelText: 'b) Duration of the menstrual cycle in days.'),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("c) Are you pregnant?"),
-                          DropdownButton<String>(
-                            value: dropdownValue2,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue2 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                        // decoration: InputDecoration(labelText: 'b) Duration of the menstrual cycle in days.'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter Menstrual Cycle Duration(days)',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Duration of the menstrual cycle in days.',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
 
-                        ],
+                        ),
                       ),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
+                          ),
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(" Select if you are you pregnant?"),
+                            DropdownButton<String>(
+                              value: dropdownValue2,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue2 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: abortions,
-                        decoration: InputDecoration(labelText: 'd) Number of abortions.'),
+                        // decoration: InputDecoration(labelText: 'd) Number of abortions.'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter Number of abortions.',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Number of abortions.',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+
+                        ),
                       ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: hipcircumference,
-                        decoration: InputDecoration(labelText: 'e) Hip circumference in inches'),
+                        // decoration: InputDecoration(labelText: 'e) Hip circumference in inches'),
+                        decoration: InputDecoration(
+                          labelText: ' Enter Hip circumference in inches.',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: ' Enter Hip circumference in inches.',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+
+                        ),
                       ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: waistcircumference,
-                        decoration: InputDecoration(labelText: 'f) waist circumference in inches'),
+                        // decoration: InputDecoration(labelText: 'f) waist circumference in inches'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter waist circumference in inches',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'waist circumference in inches',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+
+                        ),
                       ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: waisthipcircumference,
-                        decoration: InputDecoration(labelText: 'g) Ratio of the circumference of the waist to the hips'),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("h) Have you experienced weight gain?"),
-                          DropdownButton<String>(
-                            value: dropdownValue3,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue3 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                        // decoration: InputDecoration(
+                        //     labelText: 'g) Ratio of the circumference of the waist to the hips'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter Ratio of circumference waist to hips',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Ratio of circumference waist to hips',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
-//four more to go for dropdowns
-                        ],
+
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("i) Have you experienced hirsutism hairgrowth?"),
-                          DropdownButton<String>(
-                            value: dropdownValue4,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue4 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
                           ),
-//four more to go for dropdowns
-                        ],
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Select if you experienced weight gain?"),
+                            DropdownButton<String>(
+                              value: dropdownValue3,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue3 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                        //four more to go for dropdowns
+                          ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("j) Have you experienced darkening of skin?"),
-                          DropdownButton<String>(
-                            value: dropdownValue5,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue5 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
                           ),
-//four more to go for dropdowns
-                        ],
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Select if experienced hirsutism hairgrowth ?"),
+                            DropdownButton<String>(
+                              value: dropdownValue4,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue4 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                        //four more to go for dropdowns
+                          ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("k) Have you experienced pimples or acne?"),
-                          DropdownButton<String>(
-                            value: dropdownValue6,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue6 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
                           ),
-//four more to go for dropdowns
-                        ],
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(" Select if experienced darkening of skin?"),
+                            DropdownButton<String>(
+                              value: dropdownValue5,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue5 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                        //four more to go for dropdowns
+                          ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("l)  Do you frequently consumes fast food ?"),
-                          DropdownButton<String>(
-                            value: dropdownValue7,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue7 = newValue!;
-                              });
-                            },
-                            items: <String>['No', 'Yes'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
                           ),
-//four more to go for dropdowns
-                        ],
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(" Select if experienced pimples or acne?"),
+                            DropdownButton<String>(
+                              value: dropdownValue6,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue6 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                        //four more to go for dropdowns
+                          ],
+                        ),
                       ),
+                      SizedBox(height: 20,),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.blue, // Outline color
+                            width: 2, // Outline width
+                          ),
+                          borderRadius: BorderRadius.circular(8), // Rounded corners
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(" Select if consumes frequent fast food ?"),
+                            DropdownButton<String>(
+                              value: dropdownValue7,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue7 = newValue!;
+                                });
+                              },
+                              items: <String>['No', 'Yes'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                        //four more to go for dropdowns
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: folliclesInL,
-                        decoration: InputDecoration(labelText: 'm) Number of follicles in left ovary'),
+                        // decoration: InputDecoration(labelText: 'm) Number of follicles in left ovary'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter Number of follicles in left ovary',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Number of follicles in left ovary',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+
+                        ),
                       ),
+                      SizedBox(height: 20,),
                       TextFormField(
                         controller: folliclesinR,
-                        decoration: InputDecoration(labelText: 'n) Number of follicles in right ovary'),
+                        // decoration: InputDecoration(labelText: 'n) Number of follicles in right ovary'),
+                        decoration: InputDecoration(
+                          labelText: 'Enter Number of follicles in right ovary',
+                          labelStyle: TextStyle(color: Colors.black),
+                          hintText: 'Number of follicles in right ovary',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+
+                        ),
                       ),
                     ],
                   ),
-                  ElevatedButton(onPressed: (){
-                    number=numberoffolliclesController.text;
-                    foll=folliclesinmmController.text;
-                    volume=ovaryVolumeController.text;
-                    List<String> values=[number,foll,volume];
-                    print(globals.login);
-                    FirebaseFirestore.instance
-                        .collection("users")
-                        .doc(globals.login)
-                        .set({"BMI": "${_bmiController.text}"},
-                        SetOptions(merge: true));
-                    FirebaseFirestore.instance
-                        .collection("users")
-                        .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
-                        .set({"ultrasonography": values,
-                    "oligoAnovulation": dropdownValue,
-                    "PeriodsRegularity":dropdownValue1,
-                      "menstrualduration":menstrualdays.text,
-                    "pregnancy":dropdownValue2,
-                    "abortions": abortions.text,
-                      "hipcircumference":hipcircumference.text,
-                    "waistcircumference":waistcircumference.text,
-                      "ratiohiptowaist":waisthipcircumference.text,
-                      "weightgain":dropdownValue3,
-                      "hairgrowth":dropdownValue4,
-                      "darkskin":dropdownValue5,
-                      "pimples":dropdownValue6,
-                      "fastfood":dropdownValue7,
-                      "folliclesL":folliclesInL.text,
-                      "folliclesR":folliclesinR.text
+                  SizedBox(height: 20,),
+                  Center(
+                    child: ElevatedButton(onPressed: (){
+                      number=numberoffolliclesController.text;
+                      foll=folliclesinmmController.text;
+                      volume=ovaryVolumeController.text;
+                      List<String> values=[number,foll,volume];
+                      print(globals.login);
+                      FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(globals.login)
+                          .set({"BMI": "${_bmiController.text}"},
+                          SetOptions(merge: true));
+                      FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
+                          .set({"ultrasonography": values,
+                      "oligoAnovulation": dropdownValue,
+                      "PeriodsRegularity":dropdownValue1,
+                        "menstrualduration":menstrualdays.text,
+                      "pregnancy":dropdownValue2,
+                      "abortions": abortions.text,
+                        "hipcircumference":hipcircumference.text,
+                      "waistcircumference":waistcircumference.text,
+                        "ratiohiptowaist":waisthipcircumference.text,
+                        "weightgain":dropdownValue3,
+                        "hairgrowth":dropdownValue4,
+                        "darkskin":dropdownValue5,
+                        "pimples":dropdownValue6,
+                        "fastfood":dropdownValue7,
+                        "folliclesL":folliclesInL.text,
+                        "folliclesR":folliclesinR.text
 
 
-                    },
+                      },
 
-                        SetOptions(merge: true))
-                        .then((_) {
-                      print("PCOS symptoms updated successfully");
-                    }).catchError((error) {
-                      print("Error updating PCOS symptoms: $error");
-                    });
+                          SetOptions(merge: true))
+                          .then((_) {
+                        print("PCOS symptoms updated successfully");
+                      }).catchError((error) {
+                        print("Error updating PCOS symptoms: $error");
+                      });
 
-                  }, child: Text("Submit"))
+                    }, style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue[200]
+                    ),
+                        child: Text("Submit",
+                        style: TextStyle(
+                          color: Colors.white
+                        ),)),
+                  )
 
                 ],
               ),
