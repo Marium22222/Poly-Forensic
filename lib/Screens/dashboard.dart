@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:poly_forensic/Dialogs/BMIResultDialog.dart';
 import 'package:poly_forensic/Dialogs/RotterdamCardDialog.dart';
 import 'package:poly_forensic/Dialogs/periodsSymptomsDialog.dart';
@@ -31,7 +32,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   bool isHover = false;
   String appBarText = "Dashboard";
-  bool toShowDiff=false;
+  bool toShowDiff = false;
   late int difference;
   Map<String, dynamic> data = {};
 
@@ -42,7 +43,7 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           title: Text(
             "POLY-FORENSIC",
-            style: TextStyle(fontFamily: "MarckScript"),
+            style: TextStyle(fontFamily: "Times New Roman"),
           ),
           centerTitle: true,
         ),
@@ -50,7 +51,7 @@ class _DashboardState extends State<Dashboard> {
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width * 0.7,
           child: Drawer(
-             backgroundColor: Colors.white,
+              backgroundColor: Colors.white,
               child: ListView(
                 children: [
                   DrawerHeader(
@@ -69,37 +70,42 @@ class _DashboardState extends State<Dashboard> {
                         return const Center(child: Text("DATA NOT AVAILABLE"));
                       }
                       data = snapshot.data!.data() as Map<String, dynamic>;
-                      if(data['expectedPeriodDate']=="" || data['lastPeriodDate']=="" )
-                        {
-                          toShowDiff=false;
-                        }
-                      else{
-                        toShowDiff=true;
+                      if (data['expectedPeriodDate'] == "" ||
+                          data['lastPeriodDate'] == "") {
+                        toShowDiff = false;
+                      } else {
+                        toShowDiff = true;
                         final date_today = DateTime.now();
-                        final year= int.parse(data['expectedPeriodDate'].substring(0,4));
-                        final month=int.parse(data['expectedPeriodDate'].substring(5,7));
-                        final day=int.parse(data['expectedPeriodDate'].substring(8,10));
-                        final expected_date = DateTime(year,month,day);
+                        final year = int.parse(
+                            data['expectedPeriodDate'].substring(0, 4));
+                        final month = int.parse(
+                            data['expectedPeriodDate'].substring(5, 7));
+                        final day = int.parse(
+                            data['expectedPeriodDate'].substring(8, 10));
+                        final expected_date = DateTime(year, month, day);
 
-                        difference= expected_date.difference(date_today).inDays;
+                        difference =
+                            expected_date.difference(date_today).inDays;
                       }
 
-                      return toShowDiff==true?Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("${data['username']}"),
-                          Text("Periods Due In:"),
-                          Container(
-                            padding:EdgeInsets.all(10),
-                              decoration:BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.red,width: 8)
-                              ),
-                              child: Text("${difference}")),
-                          Text("days"),
-                        ],
-                      ):Text("${data['username']}");
+                      return toShowDiff == true
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("${data['username']}"),
+                                Text("Periods Due In:"),
+                                Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            color: Colors.red, width: 8)),
+                                    child: Text("${difference}")),
+                                Text("days"),
+                              ],
+                            )
+                          : Text("${data['username']}");
                     },
                   )),
                   ListTile(
@@ -182,13 +188,12 @@ class _DashboardState extends State<Dashboard> {
                     title: Text("SHARE YOUR EXPERIENCE"),
                   ),
                   ListTile(
-                    onTap: () async{
+                    onTap: () async {
                       print(globals.login);
-                      SharedPreferences pref = await SharedPreferences.getInstance();
+                      SharedPreferences pref =
+                          await SharedPreferences.getInstance();
                       pref.remove("email");
-                      setState(() {
-
-                      });
+                      setState(() {});
 
                       FirebaseAuth.instance.signOut().then((value) {
                         print("Signed Out!");
@@ -320,52 +325,126 @@ class _DashboardState extends State<Dashboard> {
                               )
                             ],
                           )),
+
+                      // Container(
+                      //     width: MediaQuery.sizeOf(context).width * 0.9,
+                      //     decoration: BoxDecoration(
+                      //         image: DecorationImage(
+                      //             image:
+                      //                 AssetImage("assets/images/statsBg.png"))),
+                      //     child: Stack(
+                      //       children: [
+                      //         Positioned(
+                      //             left:
+                      //                 MediaQuery.sizeOf(context).width * 0.235,
+                      //             top: 10,
+                      //             child: Text("52%",
+                      //                 style: TextStyle(
+                      //                     fontWeight: FontWeight.bold,
+                      //                     fontSize: 20))),
+                      //         Positioned(
+                      //             left: MediaQuery.sizeOf(context).width * 0.4,
+                      //             top: MediaQuery.sizeOf(context).height * 0.12,
+                      //             child: SizedBox(
+                      //                 width: MediaQuery.sizeOf(context).width *
+                      //                     0.5,
+                      //                 child: Text.rich(TextSpan(
+                      //                     style: TextStyle(
+                      //                         fontSize: 16,
+                      //                         fontFamily: "Merriweather"),
+                      //                     children: [
+                      //                       TextSpan(
+                      //                           text: "More than 52% ",
+                      //                           style: TextStyle(
+                      //                               fontWeight:
+                      //                                   FontWeight.bold)),
+                      //                       TextSpan(
+                      //                           text:
+                      //                               "of Pakistani Women are suffering from PCOS.")
+                      //                     ]))))
+                      //       ],
+                      //     )),
                       Container(
-                          width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/statsBg.png"))),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                  left:
-                                      MediaQuery.sizeOf(context).width * 0.235,
-                                  top: 10,
-                                  child: Text("52%",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20))),
-                              Positioned(
-                                  left: MediaQuery.sizeOf(context).width * 0.4,
-                                  top: MediaQuery.sizeOf(context).height * 0.12,
-                                  child: SizedBox(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.5,
-                                      child: Text.rich(TextSpan(
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontFamily: "Merriweather"),
-                                          children: [
-                                            TextSpan(
-                                                text: "More than 52% ",
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            TextSpan(
-                                                text:
-                                                    "of Pakistani Women are suffering from PCOS.")
-                                          ]))))
-                            ],
-                          ))
+                        width: MediaQuery.sizeOf(context).width * 0.9,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Colors.black12, Colors.grey],
+                                stops: [0.5, 0.5],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                  "Unhealthy Lifestyle",
+                                  style: TextStyle(
+                                      fontFamily: "Times New Roman",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text("")
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Image.asset('assets/images/lazy_women.png',
+                                    width: 180, height: 150),
+                                Image.asset('assets/images/unhealthy_diet.png',
+                                    width: 180, height: 150)
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(""),
+                                Text(
+                                  "Poor Diet",
+                                  style: TextStyle(
+                                      fontFamily: "Times New Roman",
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 0.9,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[50],
+                          border: Border.all(color: Colors.grey,width: 0.5),
+                        ),
+                        child: new CircularPercentIndicator(
+                          radius: 50.0,
+                          lineWidth: 13.0,
+                          animation: true,
+                          percent: 0.52,
+                          footer: Text(
+                            "More than 52% of Pakistani women are suffering from PCOS.",
+                            style: TextStyle(
+                                fontFamily: "Times New Roman",
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                          center: new Text(
+                            "52.0%",
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20.0),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+                          progressColor: Colors.pink,
+                        ),
+                      ),
                     ],
                     options: CarouselOptions(
-                      aspectRatio: 16 / 9,
-                      viewportFraction: 0.9,
+                      // aspectRatio: 16 / 9,
+                      viewportFraction: 0.95,
                       initialPage: 0,
                       enableInfiniteScroll: true,
                       reverse: false,
-                      autoPlay: true,
+                      autoPlay: false,
                       autoPlayInterval: Duration(seconds: 3),
                       autoPlayAnimationDuration: Duration(milliseconds: 800),
                       autoPlayCurve: Curves.fastOutSlowIn,
@@ -429,17 +508,17 @@ class _DashboardState extends State<Dashboard> {
                           image: "assets/images/awareness.png",
                           title: "Awareness",
                           descritpion:
-                              "Tracking your periods and ovulation with Flo can help you calculate and predict symptoms ahead of time, getting you prepared for the days ahead."),
+                              "Our app serves as a comprehensive resource to educate users about PCOS, offering detailed information on symptoms, treatments, and lifestyle adjustments. By providing personalized insights and interactive tools, it empowers users to take proactive steps in managing their health and spreading awareness about PCOS in their communities."),
                       DashboardCards(
                           image: "assets/images/prediction.png",
                           title: "Efficient Predictions",
                           descritpion:
-                              "Tracking your periods and ovulation with Flo can help you calculate and predict symptoms ahead of time, getting you prepared for the days ahead."),
+                              "With advanced predictive analytics, our app enables efficient forecasting of PCOS symptom patterns and potential flare-ups. This empowers users to take timely preventive measures, enhancing their ability to manage the condition proactively."),
                       DashboardCards(
                           image: "assets/images/mitigation.png",
                           title: "Mitigation Plan",
                           descritpion:
-                              "Tracking your periods and ovulation with Flo can help you calculate and predict symptoms ahead of time, getting you prepared for the days ahead.")
+                              "Our app equips users with tailored mitigation plans for PCOS, including diet and exercise to help manage symptoms effectively. By offering personalized strategies, it supports users in making informed decisions to improve their overall well-being.")
                     ],
                   ),
                 ),
@@ -504,7 +583,8 @@ class _DashboardState extends State<Dashboard> {
                               // mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 0,vertical: 10),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 0, vertical: 10),
                                   padding: EdgeInsets.all(8.0),
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.2,

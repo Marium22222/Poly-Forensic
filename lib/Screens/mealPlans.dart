@@ -203,7 +203,7 @@ class _MealPlansState extends State<MealPlans> {
                         ),
                       )),
                   Positioned(
-                      top: constraints.maxHeight * 0.2290,
+                      top: constraints.maxHeight * 0.240,
                       child: Container(
                         width: constraints.maxWidth,
                         height: constraints.maxHeight * 0.06,

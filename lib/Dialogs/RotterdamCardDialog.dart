@@ -28,7 +28,7 @@ class _StoryDialogState extends State<RotterdamCardDialog> {
                   )
                 ),
                 padding: EdgeInsets.all(10),
-                height: constraints.maxHeight * 0.4,
+                height: constraints.maxHeight * 0.45,
                 width: constraints.maxWidth * 0.8,
                 child: Column(children: [
                   Row(
