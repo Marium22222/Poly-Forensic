@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         onTap: (value){
           // if(value==0)
           //   {
-              pageController.animateToPage(value, duration: Duration(milliseconds: 500), curve: Curves.bounceIn);
+              pageController.animateToPage(value, duration: Duration(milliseconds: 20), curve: Curves.bounceIn);
           //   }
           // else if(value==1)
           //   {

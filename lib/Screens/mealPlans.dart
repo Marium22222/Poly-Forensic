@@ -247,7 +247,7 @@ class _MealPlansState extends State<MealPlans> {
   GestureDetector getOption(text,page) {
     return GestureDetector(
       onTap: (){
-        pageController.animateToPage(page, duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+        pageController.animateToPage(page, duration: Duration(milliseconds: 50), curve: Curves.bounceIn);
         value=page;
         setState(() {
 

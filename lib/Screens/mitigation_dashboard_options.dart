@@ -64,7 +64,7 @@ class _MitigationDashboardOptionsState
                           child: Container(
                             padding: EdgeInsets.all(10),
                             width: constraints.maxWidth * 0.4,
-                            height: constraints.maxHeight*0.26,
+                            height: constraints.maxHeight*0.35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(color: Colors.white),
@@ -104,7 +104,7 @@ class _MitigationDashboardOptionsState
                           child: Container(
                             padding: EdgeInsets.all(10),
                             width: constraints.maxWidth * 0.4,
-                            height: constraints.maxHeight*0.26,
+                            height: constraints.maxHeight*0.35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(color: Colors.white),

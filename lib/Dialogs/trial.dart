@@ -121,7 +121,7 @@ class _TrialState extends State<Trial> {
                                     Text(
                                       "BLEEDING",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -196,7 +196,7 @@ class _TrialState extends State<Trial> {
                                     Text(
                                       "PAIN",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -271,7 +271,7 @@ class _TrialState extends State<Trial> {
                                     Text(
                                       "SKIN",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -370,13 +370,13 @@ class _TrialState extends State<Trial> {
                                     Text(
                                       "KEY NOTES",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
+                                    // SizedBox(
+                                    //   height: 10,
+                                    // ),
                                     Card(
                                       child: TextField(
                                         controller: _notes,
@@ -447,7 +447,6 @@ class _TrialState extends State<Trial> {
                                     }
 
                                   },
-                                  
                                   child: Text("Save"))
                             ],
                           )
