@@ -17,7 +17,6 @@ class _DashboardCardsState extends State<DashboardCards> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 0,vertical: 20),
-      color: Colors.white,
       child: Column(
         children: [
           Image.asset(

@@ -28,7 +28,7 @@ TextField textField(String text, IconData icon, bool isPasswordType,
       labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      fillColor: Colors.pink[200],
+      fillColor: Colors.pink[100],
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(width: 0, style: BorderStyle.none)
