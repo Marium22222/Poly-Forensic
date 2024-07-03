@@ -19,128 +19,135 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         title: Text("Workouts"),
       ),
       body: SingleChildScrollView(
-        child: Column(
-        
-          children: [
-            InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    StressBusterScreen(),));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Stack(
-        
-                  children: [
-                    Container(
-                      width: 200.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/busters.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 200.0,
-                      height: 200.0,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Stress Busters',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-        
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-        
-            ),
-            InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    PreYogaScreen(),));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Stack(
-                            children: [
-                            Container(
-                            width: 200.0,
-                            height: 200.0,
-                            decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                            image: AssetImage('assets/images/yogapic.webp'),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StressBusterScreen(),
+                      ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/busters.jpg'),
                             fit: BoxFit.cover,
-                            ),
-                            ),
-                            ),
-                            Container(
-                            width: 200.0,
-                            height: 200.0,
-                            alignment: Alignment.center,
-                            child: Text(
-                            'Yoga',
-                            style: TextStyle(
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Stress Busters',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
-
-                            ),
-                            ),
-                            ),
-                            ],
-                            ),
-              ),
-        
-            ),
-            InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                    BenefitsExercises(),));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 200.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/benfits.jpg'),
-                          fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 200.0,
-                      height: 200.0,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Benefits',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PreYogaScreen(),
+                      ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/yogapic.webp'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Yoga',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BenefitsExercises(),
+                      ));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/benfits.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 200.0,
+                        height: 200.0,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Benefits',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

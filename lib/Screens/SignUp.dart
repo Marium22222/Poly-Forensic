@@ -69,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: Colors.pink[300],
+          color: Colors.pink[200],
         ),
         child: SingleChildScrollView(
           child: Padding(
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Text(
                   'User please fill the input below',
                   style: TextStyle(
-                    color: Colors.deepPurple,
+                    color: Colors.blueGrey,
                     fontSize: 18,
                   ),
                 ),

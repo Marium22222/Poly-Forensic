@@ -28,7 +28,7 @@ appBar: AppBar(title: Text("PCOS Blogs"),),
               ),),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Text( widget.data["Description"]),
+                child: Text( widget.data["Description"],textAlign: TextAlign.justify,),
               ),
            //    Text("FAQs"
            //      "1. What is best food during periods?"

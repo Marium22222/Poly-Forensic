@@ -360,53 +360,9 @@ SizedBox(height: 20,),
                         ),),)
                     ],
                   ),
-                  SizedBox(height: 20,),
-                  Text(" B) Check hirsutism"),
-                  SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // InkWell(
-                      //     onTap: (){},
-                      //     child: Text("Capture",
-                      //       style: TextStyle(
-                      //           color: Colors.blue
-                      //       ),)),
-                      // InkWell(
-                      //     onTap: (){},
-                      //     child: Text("Upload",
-                      //       style: TextStyle(
-                      //           color: Colors.blue
-                      //       ),)),
-                      ElevatedButton(onPressed: (){
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
-                        // );
-                      },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[200]
-                        ),
-                        child: Text("Capture",  style: TextStyle(
-                            color: Colors.white
-                        ),),),
 
-                      ElevatedButton(onPressed: (){
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
-                        // );
-                      },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[200]
-                        ),
-                        child: Text("Upload",  style: TextStyle(
-                            color: Colors.white
-                        ),),)
-                    ],
-                  ),
                   SizedBox(height: 20,),
-                  Text(" C) Check hirsutism using Ferriman Gallwey Score"),
+                  Text(" B) Check hirsutism using Ferriman Gallwey Score"),
                   SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
