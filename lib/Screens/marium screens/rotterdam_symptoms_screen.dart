@@ -44,23 +44,6 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
 
   String result = '';
   void getPrediction(data) async {
-    /*final inputData = {
-      "BMI": [19.3],
-      "Cycle(R/I)": [2],
-      "Cycle length(days)": [5],
-      "Pregnant(Y/N)": [0],
-      "No. of aborptions": [0],
-      "Hip(inch)": [36],
-      "Waist(inch)": [30],
-      "Waist:Hip Ratio": [0.833333],
-      "Weight gain(Y/N)": [0],
-      "hair growth(Y/N)": [0],
-      "Skin darkening (Y/N)": [0],
-      "Pimples(Y/N)": [0],
-      "Fast food (Y/N)": [1],
-      "Follicle No. (L)": [3],
-      "Follicle No. (R)": [3]
-    };*/
     final inputData = {
       "BMI": [_bmiController.text],
       "Cycle(R/I)": [data["PeriodsRegularity"]],
@@ -85,12 +68,12 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
       setState(() {
         result = response['PCOS_Y/N'].toString();
       });
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultsScreen(result: result),));
     } catch (e) {
       setState(() {
         result = 'Failed to load prediction';
       });
     }
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultsScreen(result: result),));
   }
 
   Future<void> openCamera() async {

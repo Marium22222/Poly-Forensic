@@ -220,9 +220,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "password":_passwordTextController.text,
                         "Phoneno":_phnoTextController.text,
                         "age":_ageTextController.text,
-                        "height":0,
-                        "weight":0,
-                        "BMI":0,
+                        "height":"",
+                        "weight":"",
+                        "BMI":"",
                         "lastPeriodDate":"",
                         "expectedPeriodDate":"",
                       }).then((value) {
