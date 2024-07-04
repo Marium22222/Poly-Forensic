@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:poly_forensic/Screens/marium%20screens/ferriman_hirsutism_screen.dart';
 import 'package:poly_forensic/Screens/marium%20screens/know_ferriman.dart';
+import 'Detection_Camera.dart';
 import 'package:poly_forensic/Screens/symptomsTracking.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 class RotterdamSymptomsScreen extends StatefulWidget {
@@ -334,10 +335,10 @@ SizedBox(height: 20,),
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ElevatedButton(onPressed: (){
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
-                        // );
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) =>TestGalCam()),
+                         );
                       },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue[200]
