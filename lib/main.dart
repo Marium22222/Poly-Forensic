@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:poly_forensic/Screens/marium%20screens/AdminDashboard.dart';
+import 'package:poly_forensic/Screens/marium%20screens/splash_screen.dart';
 import 'package:poly_forensic/screens/BlogsAdmin.dart';
 import 'package:poly_forensic/screens/BmiScreen.dart';
 import 'package:poly_forensic/screens/ResultsScreen.dart';
@@ -32,6 +33,6 @@ Future<void>  main() async {
 // }
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Start(),
+    home: SplashScreen(),
   ));
 }
