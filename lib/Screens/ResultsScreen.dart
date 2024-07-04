@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 
 class ResultsScreen extends StatefulWidget {
-  const ResultsScreen({Key? key}) : super(key: key);
+  final String result;
+  const ResultsScreen({Key? key, required this.result}) : super(key: key);
 
   @override
   State<ResultsScreen> createState() => _ResultsScreenState();
@@ -47,8 +48,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 )
                 ,
                ListTile(
-                 leading: Text("PREDICTION",style: TextStyle(fontSize: 18),),
-                 trailing: Text(globals.prediction,style: TextStyle(fontSize: 18),),
+                 leading: Text("PREDICTION:",style: TextStyle(fontSize: 18),),
+                 trailing: Text(widget.result == '1'?"POSITIVE":"NEGATIVE",style: TextStyle(fontSize: 18),),
                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),

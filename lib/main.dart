@@ -10,6 +10,7 @@ import 'package:poly_forensic/screens/diet_dashboard.dart';
 import 'package:poly_forensic/screens/loginScreen.dart';
 import 'package:poly_forensic/screens/periodsSymptoms.dart';
 import 'package:poly_forensic/screens/symptomsTracking.dart';
+import 'package:poly_forensic/Screens/marium%20screens/Prediction_Page.dart';
 
 import 'Screens/marium screens/know_ferriman.dart';
 import 'Screens/marium screens/start_screen.dart';

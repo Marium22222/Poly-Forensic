@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:poly_forensic/Screens/marium%20screens/Prediction_Page.dart';
 import 'package:poly_forensic/Screens/marium%20screens/ferriman_hirsutism_screen.dart';
 import 'package:poly_forensic/Screens/marium%20screens/know_ferriman.dart';
 import 'Detection_Camera.dart';
 import 'package:poly_forensic/Screens/symptomsTracking.dart';
+import 'package:poly_forensic/Screens/ResultsScreen.dart';
 import 'package:poly_forensic/globals.dart' as globals;
+import 'function.dart';
 class RotterdamSymptomsScreen extends StatefulWidget {
   const RotterdamSymptomsScreen({Key? key}) : super(key: key);
 
@@ -16,7 +19,7 @@ class RotterdamSymptomsScreen extends StatefulWidget {
 class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
 
   String dropdownValue = 'No';
-  String dropdownValue1 = 'Regular';
+  String dropdownValue1 = '2 months';
   String dropdownValue2 = 'No';
   String dropdownValue3 = 'No';
   String dropdownValue4 = 'No';
@@ -39,6 +42,56 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
   var foll="";
   var volume="";
 
+  String result = '';
+  void getPrediction(data) async {
+    /*final inputData = {
+      "BMI": [19.3],
+      "Cycle(R/I)": [2],
+      "Cycle length(days)": [5],
+      "Pregnant(Y/N)": [0],
+      "No. of aborptions": [0],
+      "Hip(inch)": [36],
+      "Waist(inch)": [30],
+      "Waist:Hip Ratio": [0.833333],
+      "Weight gain(Y/N)": [0],
+      "hair growth(Y/N)": [0],
+      "Skin darkening (Y/N)": [0],
+      "Pimples(Y/N)": [0],
+      "Fast food (Y/N)": [1],
+      "Follicle No. (L)": [3],
+      "Follicle No. (R)": [3]
+    };*/
+    final inputData = {
+      "BMI": [_bmiController.text],
+      "Cycle(R/I)": [data["PeriodsRegularity"]],
+      "Cycle length(days)": [data["menstrualduration"]],
+      "Pregnant(Y/N)": [data["pregnancy"]],
+      "No. of aborptions": [data["abortions"]],
+      "Hip(inch)": [data["hipcircumference"]],
+      "Waist(inch)": [data["waistcircumference"]],
+      "Waist:Hip Ratio": [data["ratiohiptowaist"]],
+      "Weight gain(Y/N)": [data["weightgain"]],
+      "hair growth(Y/N)": [data["hairgrowth"]],
+      "Skin darkening (Y/N)": [data["darkskin"]],
+      "Pimples(Y/N)": [data["pimples"]],
+      "Fast food (Y/N)": [data["fastfood"]],
+      "Follicle No. (L)": [data["folliclesL"]],
+      "Follicle No. (R)": [data["folliclesR"]]
+    };
+
+    print(data);
+    try {
+      final response = await fetchPrediction(inputData);
+      setState(() {
+        result = response['PCOS_Y/N'].toString();
+      });
+    } catch (e) {
+      setState(() {
+        result = 'Failed to load prediction';
+      });
+    }
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultsScreen(result: result),));
+  }
 
   Future<void> openCamera() async {
     final picker = ImagePicker();
@@ -413,7 +466,7 @@ SizedBox(height: 20,),
                                   dropdownValue1 = newValue!;
                                 });
                               },
-                              items: <String>['Regular', 'Irregular'].map((String value) {
+                              items: <String>['2 months', '4 months', '5 months'].map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -772,7 +825,36 @@ SizedBox(height: 20,),
                       }).catchError((error) {
                         print("Error updating PCOS symptoms: $error");
                       });
-
+                      int dv = 0;
+                      if (dropdownValue1 == '2 months')
+                      {
+                        dv = 2;
+                      }
+                      else if (dropdownValue1 == '4 months')
+                      {
+                        dv = 4;
+                      }
+                      else
+                      {
+                        dv = 5;
+                      }
+                      Map<String,dynamic> data = {"ultrasonography": values,
+                        "oligoAnovulation": dropdownValue,
+                        "PeriodsRegularity":dv,
+                        "menstrualduration":menstrualdays.text,
+                        "pregnancy":dropdownValue2 == "Yes"?1:0,
+                        "abortions": abortions.text,
+                        "hipcircumference":hipcircumference.text,
+                        "waistcircumference":waistcircumference.text,
+                        "ratiohiptowaist":waisthipcircumference.text,
+                        "weightgain":dropdownValue3 == "Yes"?1:0,
+                        "hairgrowth":dropdownValue4 == "Yes"?1:0,
+                        "darkskin":dropdownValue5 == "Yes"?1:0,
+                        "pimples":dropdownValue6 == "Yes"?1:0,
+                        "fastfood":dropdownValue7 == "Yes"?1:0,
+                        "folliclesL":folliclesInL.text,
+                        "folliclesR":folliclesinR.text};
+                      getPrediction(data);
                     }, style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue[200]
                     ),
