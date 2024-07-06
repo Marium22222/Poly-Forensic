@@ -28,6 +28,12 @@ class _ShareExperienceState extends State<ShareExperience> {
 
   String _name = "";
   @override
+  void initState() {
+    // TODO: implement initState
+    // super.initState();
+  imageUrl=null;
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

@@ -23,11 +23,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _emailTextController = new TextEditingController();
   TextEditingController _passwordTextController = new TextEditingController();
+  bool signed=true;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -42,19 +44,54 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: constraints.maxHeight * 0.4,
                         padding: EdgeInsets.all(0),
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          // color: Colors.red,
                           image: DecorationImage(
                               image: AssetImage(
-                                'assets/images/LoginBg.png',
+                                'assets/images/loginBack.png',
                               ),
                               fit: BoxFit.fill),
                         ),
                       ),
+                      // Positioned(
+                      //     top: constraints.maxHeight * 0.15,
+                      //     child: Container(
+                      //       child: Image.asset('assets/images/doctor.png'),
+                      //       height: constraints.maxHeight * 0.3,
+                      //     )),
                       Positioned(
-                          top: constraints.maxHeight * 0.13,
-                          child: Container(
-                            child: Image.asset('assets/images/doctor.png'),
-                            height: constraints.maxHeight * 0.34,
+                          top: constraints.maxHeight * 0.12,
+                          left: constraints.maxWidth*0.1,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: Text("LOGIN",
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontFamily: "Times New Roman",
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(1,2),
+                                        blurRadius: 2
+                                      )
+                                    ]
+
+                                  ),)
+                              ),
+                              Text("Please login to your account.",style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  // color: Colors.grey[600],
+                                  fontFamily: "Times New Roman",
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0
+
+                              ),)
+                            ],
                           )),
                     ],
                   ),
@@ -99,7 +136,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                  signinSignupButton(context, true, () {
+                  Text("Invalid Credentials",
+                      style:TextStyle(
+                       color:signed==true?Colors.white:Colors.red,
+                        fontWeight: FontWeight.bold
+                  )),
+                  signinSignupButton(
+                      context, true, () {
                     FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                         email: _emailTextController.text,
@@ -120,8 +163,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Dashboard()));
+                        setState(() {
+                          signed=true;
+                        });
                       }
                     }).onError((error, stackTrace) {
+                      setState(() {
+                        signed=false;
+                      });
                       print("Error ${error.toString()}");
                     });
                   }),

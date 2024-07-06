@@ -28,39 +28,44 @@ class _UserImageState extends State<UserImage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (imageUrl == null)
-          Icon(Icons.image, size: 80, color: Theme.of(context).primaryColor),
+    return SingleChildScrollView(
+      child: Container(
+        height: MediaQuery.of(context).size.height*0.35,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (imageUrl == null)
+              Icon(Icons.image, size: 80, color: Theme.of(context).primaryColor),
 
-        if (imageUrl != null)
-          InkWell(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () => _pickImage(ImageSource.gallery),
-            child: Image.file(File(imageUrl!),height: MediaQuery.sizeOf(context).height*0.3,width:MediaQuery.sizeOf(context).height*0.95,fit: BoxFit.fill,),
-            // child: AppRoundImage.url(
-            //     imageUrl!,
-            //     height: 80,
-            //     width: 80
-            // ),
-          ),
-
-        InkWell(
-            onTap: () => _pickImage(ImageSource.gallery),
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(imageUrl != null
-                  ? "Change Photo"
-                  : "Select Photo",
-                style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),
+            if (imageUrl != null)
+              InkWell(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () => _pickImage(ImageSource.gallery),
+                child: Image.file(File(imageUrl!),height: MediaQuery.sizeOf(context).height*0.3,width:MediaQuery.sizeOf(context).height*0.95,fit: BoxFit.fill,),
+                // child: AppRoundImage.url(
+                //     imageUrl!,
+                //     height: 80,
+                //     width: 80
+                // ),
               ),
-            )
-        )
 
-      ],
+            InkWell(
+                onTap: () => _pickImage(ImageSource.gallery),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(imageUrl != null
+                      ? "Change Photo"
+                      : "Select Photo",
+                    style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),
+                  ),
+                )
+            )
+
+          ],
+        ),
+      ),
     );
   }
 

@@ -40,12 +40,21 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
             "POLY-FORENSIC",
-            style: TextStyle(fontFamily: "Times New Roman"),
+            style: TextStyle(fontFamily: "Merriweather",
+              shadows: [
+                Shadow(
+                  color: Colors.grey,
+                  offset: Offset(1,1)
+                )
+              ]
+            ),
           ),
           centerTitle: true,
+          // backgroundColor: Colors.white,
         ),
         drawer: SizedBox(
           height: MediaQuery.sizeOf(context).height,
@@ -213,249 +222,424 @@ class _DashboardState extends State<Dashboard> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CarouselSlider(
-                    items: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(
-                            8, MediaQuery.sizeOf(context).height * 0.1, 120, 8),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                opacity: 0.7,
-                                image:
-                                    AssetImage("assets/images/pcosSlideBg.png"),
-                                fit: BoxFit.cover)),
-                        child: Column(
-                          children: [
-                            Text(
-                              "What Is PCOS?",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "PCOS is a common hormonal condition that affects women of reproductive age.",
-                              style: TextStyle(
-                                  // fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  letterSpacing: 2.0,
-                                  fontFamily: "Merriweather"),
-                              textAlign: TextAlign.left,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 3, vertical: 10),
-                          width: MediaQuery.sizeOf(context).width * 0.85,
-                          // decoration: BoxDecoration(
-                          //   color:Colors.lightBlue[50],
-                          //     image: DecorationImage(
-                          //         image: AssetImage("assets/images/randomBg.png"),
-                          //         opacity: 0.5,
-                          //         fit: BoxFit.cover)),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 0,vertical: 10),
+                  child: CarouselSlider(
+                      items: [
+                        Container(
+                          padding: EdgeInsets.fromLTRB(
+                              8, MediaQuery.sizeOf(context).height * 0.1, 120, 8),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.7,
+                                  image:
+                                      AssetImage("assets/images/pcosSlideBg.png"),
+                                  fit: BoxFit.cover)),
                           child: Column(
                             children: [
                               Text(
-                                "Severe Consequences",
+                                "What Is PCOS?",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/infertility.jpg',
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.27,
-                                      ),
-                                      Text(
-                                        "INFERTILITY",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
-                                      )
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Image.asset('assets/images/diabetes.png',
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.27,
-                                          height: 100),
-                                      SizedBox(
-                                        width: 67,
-                                        child: Text(
-                                          "TYPE-2 DIABETES",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Image.asset(
-                                          'assets/images/uterusCancer.jpg',
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.27,
-                                          height: 100),
-                                      SizedBox(
-                                        width: 67,
-                                        child: Text(
-                                          "UTERINE CANCER",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                              Text(
+                                "PCOS is a common hormonal condition that affects women of reproductive age.",
+                                style: TextStyle(
+                                    // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
                               )
                             ],
-                          )),
+                          ),
+                        ),
+                        Container(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+                            width: MediaQuery.sizeOf(context).width * 0.85,
+                            // decoration: BoxDecoration(
+                            //   color:Colors.lightBlue[50],
+                            //     image: DecorationImage(
+                            //         image: AssetImage("assets/images/randomBg.png"),
+                            //         opacity: 0.5,
+                            //         fit: BoxFit.cover)),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Severe Consequences",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 20),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/infertility.jpg',
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.27,
+                                        ),
+                                        Text(
+                                          "INFERTILITY",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14),
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Image.asset('assets/images/diabetes.png',
+                                            width:
+                                                MediaQuery.sizeOf(context).width *
+                                                    0.27,
+                                            height: 100),
+                                        SizedBox(
+                                          width: 67,
+                                          child: Text(
+                                            "TYPE-2 DIABETES",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Image.asset(
+                                            'assets/images/uterusCancer.jpg',
+                                            width:
+                                                MediaQuery.sizeOf(context).width *
+                                                    0.27,
+                                            height: 100),
+                                        SizedBox(
+                                          width: 67,
+                                          child: Text(
+                                            "UTERINE CANCER",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )),
 
-                      // Container(
-                      //     width: MediaQuery.sizeOf(context).width * 0.9,
-                      //     decoration: BoxDecoration(
-                      //         image: DecorationImage(
-                      //             image:
-                      //                 AssetImage("assets/images/statsBg.png"))),
-                      //     child: Stack(
-                      //       children: [
-                      //         Positioned(
-                      //             left:
-                      //                 MediaQuery.sizeOf(context).width * 0.235,
-                      //             top: 10,
-                      //             child: Text("52%",
-                      //                 style: TextStyle(
-                      //                     fontWeight: FontWeight.bold,
-                      //                     fontSize: 20))),
-                      //         Positioned(
-                      //             left: MediaQuery.sizeOf(context).width * 0.4,
-                      //             top: MediaQuery.sizeOf(context).height * 0.12,
-                      //             child: SizedBox(
-                      //                 width: MediaQuery.sizeOf(context).width *
-                      //                     0.5,
-                      //                 child: Text.rich(TextSpan(
-                      //                     style: TextStyle(
-                      //                         fontSize: 16,
-                      //                         fontFamily: "Merriweather"),
-                      //                     children: [
-                      //                       TextSpan(
-                      //                           text: "More than 52% ",
-                      //                           style: TextStyle(
-                      //                               fontWeight:
-                      //                                   FontWeight.bold)),
-                      //                       TextSpan(
-                      //                           text:
-                      //                               "of Pakistani Women are suffering from PCOS.")
-                      //                     ]))))
-                      //       ],
-                      //     )),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Colors.black12, Colors.grey],
-                                stops: [0.5, 0.5],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  "Unhealthy Lifestyle",
-                                  style: TextStyle(
-                                      fontFamily: "Times New Roman",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text("")
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Image.asset('assets/images/lazy_women.png',
-                                    width: 180, height: 150),
-                                Image.asset('assets/images/unhealthy_diet.png',
-                                    width: 180, height: 150)
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(""),
-                                Text(
-                                  "Poor Diet",
-                                  style: TextStyle(
-                                      fontFamily: "Times New Roman",
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
+                        // Container(
+                        //     width: MediaQuery.sizeOf(context).width * 0.9,
+                        //     decoration: BoxDecoration(
+                        //         image: DecorationImage(
+                        //             image:
+                        //                 AssetImage("assets/images/statsBg.png"))),
+                        //     child: Stack(
+                        //       children: [
+                        //         Positioned(
+                        //             left:
+                        //                 MediaQuery.sizeOf(context).width * 0.235,
+                        //             top: 10,
+                        //             child: Text("52%",
+                        //                 style: TextStyle(
+                        //                     fontWeight: FontWeight.bold,
+                        //                     fontSize: 20))),
+                        //         Positioned(
+                        //             left: MediaQuery.sizeOf(context).width * 0.4,
+                        //             top: MediaQuery.sizeOf(context).height * 0.12,
+                        //             child: SizedBox(
+                        //                 width: MediaQuery.sizeOf(context).width *
+                        //                     0.5,
+                        //                 child: Text.rich(TextSpan(
+                        //                     style: TextStyle(
+                        //                         fontSize: 16,
+                        //                         fontFamily: "Merriweather"),
+                        //                     children: [
+                        //                       TextSpan(
+                        //                           text: "More than 52% ",
+                        //                           style: TextStyle(
+                        //                               fontWeight:
+                        //                                   FontWeight.bold)),
+                        //                       TextSpan(
+                        //                           text:
+                        //                               "of Pakistani Women are suffering from PCOS.")
+                        //                     ]))))
+                        //       ],
+                        //     )),
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: [Colors.black12, Colors.grey],
+                                  stops: [0.5, 0.5],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    "Unhealthy Lifestyle",
+                                    style: TextStyle(
+                                        fontFamily: "Times New Roman",
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text("")
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset('assets/images/lazy_women.png',
+                                      width: 170, height: 150),
+                                  Image.asset('assets/images/unhealthy_diet.png',
+                                      width: 170, height: 150)
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(""),
+                                  Text(
+                                    "Poor Diet",
+                                    style: TextStyle(
+                                        fontFamily: "Times New Roman",
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 0.9,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[50],
-                          border: Border.all(color: Colors.grey,width: 0.5),
-                        ),
-                        child: new CircularPercentIndicator(
-                          radius: 50.0,
-                          lineWidth: 13.0,
-                          animation: true,
-                          percent: 0.52,
-                          footer: Text(
-                            "More than 52% of Pakistani women are suffering from PCOS.",
-                            style: TextStyle(
+
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          decoration: BoxDecoration(
+                          color: Colors.grey
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("PCOS SYMPTOMS",textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30,
+                                color:Colors.white,
                                 fontFamily: "Times New Roman",
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          center: new Text(
-                            "52.0%",
-                            style: new TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20.0),
-                          ),
-                          circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Colors.pink,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.white70,
+                                    offset: Offset(1,2),
+
+                                  )
+                                ]
+                              ),),
+                            ],
+                          )
                         ),
-                      ),
-                    ],
-                    options: CarouselOptions(
-                      // aspectRatio: 16 / 9,
-                      viewportFraction: 0.95,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: false,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.3,
-                      // onPageChanged: callbackFunction,
-                      scrollDirection: Axis.horizontal,
-                    )),
+
+                        Container(
+                          width:MediaQuery.of(context).size.width*0.9,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.7,
+                                  image:
+                                  AssetImage("assets/images/acne.png"),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "SEVERE ACNE",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width:MediaQuery.of(context).size.width*0.9,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.7,
+                                  image:
+                                  AssetImage("assets/images/missedPeriods.jpg"),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "IRREGULAR PERIODS",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width:MediaQuery.of(context).size.width*0.9,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.7,
+                                  image:
+                                  AssetImage("assets/images/weightGain.jpg"),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "WEIGHT GAIN",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width:MediaQuery.of(context).size.width*0.9,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.7,
+                                  image:
+                                  AssetImage("assets/images/hirsutism.png"),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "FACIAL HAIR",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width:MediaQuery.of(context).size.width*0.9,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  opacity: 0.6,
+                                  image:
+                                  AssetImage("assets/images/infertility.webp"),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "INFERTILITY",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    fontFamily: "Times New Roman"),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[50],
+                            // border: Border.all(color: Colors.grey,width: 0.5),
+                            gradient: LinearGradient(
+                              colors: [Colors.pink.shade100,Colors.pink.shade200],
+                              stops: [0,0.4],
+                              begin: Alignment.topLeft,
+                              end:Alignment.bottomRight
+                            ),
+                          ),
+                          child: new CircularPercentIndicator(
+                            radius: 50.0,
+                            lineWidth: 13.0,
+                            animation: true,
+                            percent: 0.52,
+                            footer: Text(
+                              "More than 52% of Pakistani women are suffering from PCOS.",
+                              style: TextStyle(
+                                  fontFamily: "Times New Roman",
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            center: new Text(
+                              "52.0%",
+                              style: new TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20.0),
+                            ),
+                            circularStrokeCap: CircularStrokeCap.round,
+                            progressColor: Colors.pink,
+                          ),
+                        ),
+                      ],
+                      options: CarouselOptions(
+                        // aspectRatio: 16 / 9,
+                        viewportFraction: 0.95,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        reverse: false,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enlargeCenterPage: true,
+                        enlargeFactor: 0.3,
+                        // onPageChanged: callbackFunction,
+                        scrollDirection: Axis.horizontal,
+                      )),
+                ),
                 Container(
-                    margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    margin: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: Column(children: [
                       Text(
                         "ROTTERDAM CRITERIA",
@@ -465,6 +649,7 @@ class _DashboardState extends State<Dashboard> {
                             // fontStyle: FontStyle.italic,
                             fontSize: 20),
                       ),
+                      SizedBox(height: 30,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -572,7 +757,7 @@ class _DashboardState extends State<Dashboard> {
                             decoration: BoxDecoration(
                               color: Colors.grey[50],
                               border: Border(
-                                left: BorderSide(color: Colors.grey, width: 3),
+                                right: BorderSide(color: Colors.grey, width: 3),
                                 bottom:
                                     BorderSide(color: Colors.grey, width: 3),
                               ),

@@ -26,13 +26,9 @@ Future<void>  main() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var email = preferences.getString("email");
   login = email;
-//
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     home: email == null ? LoginScreen() : Dashboard(),));
-// }
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SplashScreen(),
-  ));
+    home: email == null ? SplashScreen() : Dashboard(),));
 }
+

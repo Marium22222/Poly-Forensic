@@ -15,6 +15,7 @@ class _MitigationDashboardState extends State<MitigationDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: PageView(
           controller: pageController,

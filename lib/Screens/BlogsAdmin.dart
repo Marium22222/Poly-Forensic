@@ -24,10 +24,15 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
   void saveFunc() {
     print(FirebaseFirestore.instance.collection("awareness").count());
   }
-
+@override
+  void initState() {
+    // TODO: implement initState
+    imageUrl=null;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "UPLOAD NEW ARTICLE",
@@ -129,6 +134,7 @@ class _BlogsAdminScreenState extends State<BlogsAdminScreen> {
                                     .collection("awareness").doc(DateTime.timestamp().toString()).set(dataToAdd);
 
                                 Picked="";
+                                imageUrl=null;
                               },
                               child: Text("Publish"),
                             style: ElevatedButton.styleFrom(

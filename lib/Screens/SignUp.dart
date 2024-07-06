@@ -51,7 +51,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   // String imageUrl = '';
-
+  bool emailValid=true;
+  bool phoneValid=true;
+  bool passValid=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Text(
                   'Enter Your Full Name',
@@ -113,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 textField("", Icons.person_outline, false,
                     _nameTextController),
                 const SizedBox(
-                  height: 30,
+                  height: 25,
                 ),
                 Text(
                   'Enter Email ID',
@@ -127,9 +129,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 textField("", Icons.email_outlined, false,
                     _emailTextController),
-                const SizedBox(
-                  height: 30,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
+                  child: Text("Incorrect Email",style:TextStyle(
+                    color: emailValid==true?Colors.pink.shade200:Colors.black,
+                    fontWeight: FontWeight.bold
+                  )),
                 ),
+
                 Text(
                   'Enter Pasword',
                   style: TextStyle(
@@ -137,14 +144,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     fontSize: 18,
                   ),
                 ),
+
                 const SizedBox(
                   height: 10,
                 ),
                 textField("", Icons.lock_outline, true,
                     _passwordTextController),
-                const SizedBox(
-                  height: 30,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
+                  child: Text("Incorrect Password",style:TextStyle(
+                      color: passValid==true?Colors.pink.shade200:Colors.black,
+                      fontWeight: FontWeight.bold
+                  )),
                 ),
+
                 Text(
                   'Enter Phone no.',
                   style: TextStyle(
@@ -157,24 +170,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 textField("", Icons.phone_android_outlined, false,
                     _phnoTextController),
-                const SizedBox(
-                  height: 30,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
+                  child: Text("Incorrect Phone Number",style:TextStyle(
+                      color: phoneValid==true?Colors.pink.shade200:Colors.black,
+                      fontWeight: FontWeight.bold
+                  )),
                 ),
-                // Text(
-                //   'Enter Department',
-                //   style: TextStyle(
-                //     color: Colors.white,
-                //     fontSize: 18,
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
-                // textField("", Icons.house_siding_outlined, false,
-                //     _deptTextController),
-                // const SizedBox(
-                //   height: 30,
-                // ),
                 Text(
                   'Enter Age',
                   style: TextStyle(
@@ -204,6 +206,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // ),
                 Center(
                   child: signinSignupButton(context, false, () async {
+                    if(!validPhoneNumber())
+                      {
+                        setState(() {
+                          phoneValid=false;
+                        });
+                      }
+                    else{
+                      setState(() {
+                        phoneValid=true;
+                      });
+                    }
+                    if(!validEmail())
+                    {
+                      setState(() {
+                        emailValid=false;
+                      });
+                    }
+                    else{
+                      setState(() {
+                        emailValid=true;
+                      });
+                    }
+                    if(!validPassword())
+                    {
+                      setState(() {
+                        passValid=false;
+                      });
+                    }
+                    else{
+                      setState(() {
+                        passValid=true;
+                      });
+                    }
                     if(validPhoneNumber()&&validEmail()&&validPassword()){
                       await FirebaseAuth.instance.createUserWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -214,7 +249,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       }).onError((error, stackTrace){
                         print("Error ${error.toString()}");
                       });
-                     
+
                       await users.doc(_emailTextController.text).set({
                         "username":_nameTextController.text,
                         "password":_passwordTextController.text,

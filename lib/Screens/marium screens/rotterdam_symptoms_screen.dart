@@ -64,7 +64,9 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
 
     print(data);
     try {
+      print("hit");
       final response = await fetchPrediction(inputData);
+      print("hit after");
       setState(() {
         result = response['PCOS_Y/N'].toString();
       });
