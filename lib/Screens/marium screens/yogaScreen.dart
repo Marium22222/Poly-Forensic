@@ -12,17 +12,18 @@ class _YogaScreenState extends State<YogaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title:Text(widget.data['Text'],style: TextStyle(
             fontSize: 22,
             color: Colors.black,
             fontWeight: FontWeight.bold
         ),),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(40.0),
           child: Column(
             children: [
 
@@ -33,6 +34,9 @@ class _YogaScreenState extends State<YogaScreen> {
               // ),),
             //  Image.asset("assets/images/pcos yoga.webp"),
               Image.network(widget.data['Image']),
+              Divider(
+                height: 20,
+              ),
               Text("Description",style: TextStyle(
                   fontSize: 22,
                   color: Colors.black,
@@ -43,6 +47,9 @@ class _YogaScreenState extends State<YogaScreen> {
                   color: Colors.black,
                   //fontWeight: FontWeight.bold
               ),),
+              Divider(
+                height: 20,
+              ),
               Text("How to do it",style: TextStyle(
                   fontSize: 22,
                   color: Colors.black,

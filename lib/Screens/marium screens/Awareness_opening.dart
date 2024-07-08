@@ -16,40 +16,60 @@ class _AwarenessOpeningState extends State<AwarenessOpening> {
     return Scaffold(
       appBar: AppBar(
         title: Text("PCOS Blogs"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image(image: NetworkImage(widget.data["Image"])),
-              Text(
-                "${widget.data['Title']}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              Image(image: NetworkImage(widget.data["Image"]),height: 200,
+              width: 200,),
+              Divider(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  "${widget.data['Title']}",
+                  style: TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                      fontFamily: "Times New Roman"),
+                ),
+
+              ),
+              Divider(
+                height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
                   widget.data["Description"],
+                  style: TextStyle(
+                    fontFamily: "Times New Roman"
+                  ),
                   textAlign: TextAlign.justify,
+
                 ),
               ),
-              //    Text("FAQs"
-              //      "1. What is best food during periods?"
-              //      "Foods that reduce inflammation, have high levels of antioxidants, rich in fiber, protein, vitamins, magnesium, iron and other important minerals are considered the best during periods. These include, leafy green vegetables, fish, eggs, chicken, yogurt and low GI fruits."
-              //
-              //     " 2. Which food is good for correct periods?"
-              //      "There is a considerable number of women who dwell on what should we eat during periods to have a healthy and regular cycle. Foods that support estrogen levels are the ones that support the regular cycle. Foods like papaya, pineapple, carom seeds, aloe vera, cinnamon or fennels are great choices that promote a healthy menstrual cycle."
-              //
-              // ),
+Divider(
+  height: 100,
+),
               Text(
-                "AUTHOR: " + widget.data["Author"],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                "Written By : " + widget.data["Author"],
+                style: TextStyle(fontWeight: FontWeight.bold,
+                fontSize: 15),
               ),
               Text(
-                "SOURCE: " + widget.data["Sources"],
-                style: TextStyle(fontWeight: FontWeight.bold),
+                "Sources : " + widget.data["Sources"],
+                style: TextStyle(fontWeight: FontWeight.bold,
+                    fontSize: 15),
               ),
+              Divider(
+                height: 50,
+              ),
+              Text("Was this helpful?"),
               ElevatedButton(
                   onPressed: () async {
                     final Uri url = Uri.parse(widget.data['Link']);
@@ -59,7 +79,13 @@ class _AwarenessOpeningState extends State<AwarenessOpening> {
                       throw 'Could not launch $url';
                     }
                   },
-                  child: Text("Learn More")),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  Color(0xfffFF91A4),
+                  ),
+                  child: Text("Learn More",
+                  style: TextStyle(
+                    color: Colors.white
+                  ),)),
             ],
           ),
         ),

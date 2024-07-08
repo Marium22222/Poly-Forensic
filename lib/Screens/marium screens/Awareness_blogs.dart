@@ -68,7 +68,7 @@ class _AwarenessBlogsState extends State<AwarenessBlogs> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 2, vertical: 14),
                           // decoration: BoxDecoration(color: rand_color),
-                          decoration: BoxDecoration(color: Colors.pink.shade100),
+                          decoration: BoxDecoration(color: Color(0xfffFF91A4)),
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(

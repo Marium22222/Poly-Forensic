@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 
 class FerrimanGallwey extends StatefulWidget {
@@ -26,1078 +27,1124 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Ferriman Gallwey Screen"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
+
         child: Column(
         
           children: [
-            Text("select your upper lip hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                        "assets/images/UpperLip_0.jpeg"
-                                    ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperLip_1.jpeg"
+            Text("Select your upper lip hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                          "assets/images/UpperLip_0.jpeg"
+                                      ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperLip_2.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperLip_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperLip_3.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperLip_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperLip_4.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperLip_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperLip_4.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
         
         
         
         //----------------------next pic of hirsutism-----------------------------------
-        
-            Text("select your chin hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/chin_0.jpeg"
+        Divider(
+          height: 20,
+        ),
+            Text("Select your chin hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/chin_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption1,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption1 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/chin_1.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption1 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/chin_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption1,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption1 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/chin_2.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption1 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/chin_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption1,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption1 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/chin_3.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption1 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/chin_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption1,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption1 = value!;
-        
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/chin_4.jpeg"
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption1 = value!;
+
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/chin_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption1,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption1 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption1 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
         
         //----------------------next pic of hirsutism-----------------------------------
-        
-            Text("select your Upper Chest hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperChest_0.jpeg"
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Upper Chest hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperChest_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption2,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption2 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperChest_1.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption2,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption2 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperChest_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption2,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption2 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperChest_2.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption2,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption2 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperChest_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption2,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption2 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperChest_3.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption2,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption2 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperChest_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption2,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption2 = value!;
-        
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperChest_4.jpeg"
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption2,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption2 = value!;
+
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperChest_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption2,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption2 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption2,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption2 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
         
         
         //----------------------next pic of hirsutism-----------------------------------
-        
-            Text("select your Lower Abdomen hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerAbdomen_0.jpeg"
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Lower Abdomen hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerAbdomen_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption4,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption4 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerAbdomen_1.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption4,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption4 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerAbdomen_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption4,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption4 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerAbdomen_2.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption4,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption4 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerAbdomen_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption4,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption4 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerAbdomen_3.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption4,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption4 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerAbdomen_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption4,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption4 = value!;
-        
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerAbdomen_4.jpeg"
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption4,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption4 = value!;
+
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerAbdomen_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption4,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption4 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption4,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption4 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
         //----------------------next pic of hirsutism-----------------------------------
-        
-            Text("select your Upper Abdomen hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperAbdomen_0.jpeg"
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Upper Abdomen hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperAbdomen_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption3,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption3 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperAbdomen_1.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption3,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption3 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperAbdomen_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption3,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption3 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperAbdomen_2.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption3,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption3 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperAbdomen_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption3,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption3 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperAbdomen_3.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption3,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption3 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperAbdomen_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption3,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption3 = value!;
-        
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperAbdomen_4.jpeg"
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption3,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption3 = value!;
+
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperAbdomen_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption3,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption3 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption3,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption3 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
 
             //----------------------next pic of hirsutism-----------------------------------
-
-            Text("select your Upper Back hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperBack_0.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption5,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption5 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperBack_1.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption5,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption5 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperBack_2.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption5,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption5 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperBack_3.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption5,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption5 = value!;
-
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperBack_4.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption5,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption5 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+            Divider(
+              height: 20,
             ),
-
-
-
-            //----------------------next pic of hirsutism-----------------------------------
-
-            Text("select your Lower Back hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerBack_0.jpeg"
+            Text("Select your Upper Back hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperBack_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption6,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption6 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerBack_1.jpeg"
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption5,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption5 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperBack_1.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption6,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption6 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerBack_2.jpeg"
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption5,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption5 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperBack_2.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption6,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption6 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerBack_3.jpeg"
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption5,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption5 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperBack_3.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption6,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption6 = value!;
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption5,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption5 = value!;
 
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/LowerBack_4.jpeg"
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperBack_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption6,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption6 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption5,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption5 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
 
 
 
             //----------------------next pic of hirsutism-----------------------------------
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Lower Back hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerBack_0.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption6,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption6 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerBack_1.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption6,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption6 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerBack_2.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption6,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption6 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerBack_3.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption6,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption6 = value!;
 
-            Text("select your Upper Arms hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperArms_0.jpeg"
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/LowerBack_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption7,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption7 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperArms_1.jpeg"
-                        ),
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption6,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption6 = value!;
+                            print("Button value: $value");
+                          });   },
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption7,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption7 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperArms_2.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption7,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption7 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperArms_3.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption7,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption7 = value!;
-
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/UpperArms_4.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption7,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption7 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
 
 
 
             //----------------------next pic of hirsutism-----------------------------------
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Upper Arms hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperArms_0.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption7,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption7 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperArms_1.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption7,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption7 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperArms_2.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption7,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption7 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperArms_3.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption7,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption7 = value!;
 
-            Text("select your Thighs hair 0-4"),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/Thighs_0.jpeg"
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/UpperArms_4.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 0,
-                      groupValue: selectedOption8,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption8= value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/Thighs_1.jpeg"
-                        ),
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption7,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption7 = value!;
+                            print("Button value: $value");
+                          });   },
                       ),
-                    ),
-                    Radio<int>(
-                      value: 1,
-                      groupValue: selectedOption8,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption8 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/Thighs_2.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 2,
-                      groupValue: selectedOption8,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption8= value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/Thighs_3.jpeg"
-                        ),
-                      ),
-                    ),
-                    Radio<int>(
-                      value: 3,
-                      groupValue: selectedOption8,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption8 = value!;
+                    ],
+                  )
+                ],
+              ),
+            ),
 
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                ), Column(
-                  children: [
-                    InkWell(
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                            "assets/images/Thighs_4.jpeg"
+
+
+            //----------------------next pic of hirsutism-----------------------------------
+            Divider(
+              height: 20,
+            ),
+            Text("Select your Thighs hair 0-4"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/Thighs_0.jpeg"
+                          ),
                         ),
                       ),
-                    ),
-                    Radio<int>(
-                      value: 4,
-                      groupValue: selectedOption8,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedOption8 = value!;
-                          print("Button value: $value");
-                        });   },
-                    ),
-                  ],
-                )
-              ],
+                      Radio<int>(
+                        value: 0,
+                        groupValue: selectedOption8,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption8= value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/Thighs_1.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 1,
+                        groupValue: selectedOption8,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption8 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/Thighs_2.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 2,
+                        groupValue: selectedOption8,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption8= value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/Thighs_3.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 3,
+                        groupValue: selectedOption8,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption8 = value!;
+
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  ), Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                              "assets/images/Thighs_4.jpeg"
+                          ),
+                        ),
+                      ),
+                      Radio<int>(
+                        value: 4,
+                        groupValue: selectedOption8,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedOption8 = value!;
+                            print("Button value: $value");
+                          });   },
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
         ElevatedButton(onPressed: ()
         {
@@ -1143,17 +1190,25 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
                 selectedOption8;
             if(result>=8)
               {
-                resultString="You might have hirsutism";
-                print("You might have hirsutism");
+                resultString="You might have hirsutism!";
+                print("You might have hirsutism!");
               }
             else{
-              resultString="You are marked save from hirsutism";
-              print("You are marked save from hirsutism");
+              resultString="You are marked save from hirsutism!";
+              print("You are marked save from hirsutism!");
             }
           });
+
         
-        }, child: Text(
-          "Calculate Score"
+        },
+            style:ElevatedButton.styleFrom(
+              backgroundColor: Color(0xfffFF91A4)
+            ),
+            child: Text(
+          "Calculate Score",
+              style: TextStyle(
+                color: Colors.white
+              ),
         )),
             // Text("Score: ${result}",style: TextStyle(
             //   fontSize: 20,
