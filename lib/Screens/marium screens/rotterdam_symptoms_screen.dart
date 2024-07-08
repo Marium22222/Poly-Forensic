@@ -77,32 +77,33 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
     }
   }
 
-  Future<void> openCamera() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+  // Future<void> openCamera() async {
+  //   final picker = ImagePicker();
+  //   final pickedFile = await picker.pickImage(source: ImageSource.camera);
+  //
+  //   if (pickedFile != null) {
+  //     // You can handle the picked image file here
+  //     print('Image picked from camera: ${pickedFile.path}');
+  //   } else {
+  //     print('No image selected from camera.');
+  //   }
+  // }
 
-    if (pickedFile != null) {
-      // You can handle the picked image file here
-      print('Image picked from camera: ${pickedFile.path}');
-    } else {
-      print('No image selected from camera.');
-    }
-  }
-
-  Future<void> openGallery() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      // You can handle the picked image file here
-      print('Image picked from gallery: ${pickedFile.path}');
-    } else {
-      print('No image selected from gallery.');
-    }
-  }
+  // Future<void> openGallery() async {
+  //   final picker = ImagePicker();
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  //
+  //   if (pickedFile != null) {
+  //     // You can handle the picked image file here
+  //     print('Image picked from gallery: ${pickedFile.path}');
+  //   } else {
+  //     print('No image selected from gallery.');
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Prediction Screen"),
         centerTitle: true,
@@ -130,7 +131,13 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: Text('Rotterdam Criteria'),
-                            content: Text('PCOS is usually diagnosed based on the Rotterdam criteria if 2 of 3 criteria are present: (1) oligo- and/or anovulation, (2) hyperandrogenism (HA) (clinical and/or biochemical), and (3) polycystic ovary morphology (PCOM) on ultrasonography (either 12 or more follicles measuring 2-9 mm in diameter and/or an increased ovarian volume >10 cm3). Irregular menstruation  is defined as less than 21 days or more than 35 days or fewer than 8 cycles per year. Clinical HA includes hirsutism, acne, or alopecia. Biochemical HA typically refers to an elevated serum testosterone level.'),
+                            content: Text('PCOS is usually diagnosed'
+                                ' based on the Rotterdam criteria if 2 of 3'
+                                ' criteria are present: (1) oligo- and/or'
+                                ' anovulation, (2) hyperandrogenism (HA) '
+                                '(clinical and/or biochemical), and (3) '
+                                'polycystic ovary morphology (PCOM) on '
+                                'ultrasonography (either 12 or more follicles measuring 2-9 mm in diameter and/or an increased ovarian volume >10 cm3). Irregular menstruation  is defined as less than 21 days or more than 35 days or fewer than 8 cycles per year. Clinical HA includes hirsutism, acne, or alopecia. Biochemical HA typically refers to an elevated serum testosterone level.'),
                             actions: [
                               TextButton(
                                 onPressed: () {
@@ -149,7 +156,8 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                       ),),
                   ),
                   SizedBox(height: 20,),
-                  Text("1. BMI(Body Mass Index)",style: TextStyle(fontWeight: FontWeight.bold,
+                  Text("1. BMI(Body Mass Index)",style:
+                  TextStyle(fontWeight: FontWeight.bold,
                       fontSize: 18),),
 SizedBox(height: 20,),
                   TextField(
@@ -380,22 +388,22 @@ SizedBox(height: 20,),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue[200]
                         ),
-                        child: Text("Capture",  style: TextStyle(
+                        child: Text("Check Now",  style: TextStyle(
                             color: Colors.white
                         ),),),
 
-                      ElevatedButton(onPressed: (){
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
-                        // );
-                      },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[200]
-                        ),
-                        child: Text("Upload",  style: TextStyle(
-                            color: Colors.white
-                        ),),)
+                      // ElevatedButton(onPressed: (){
+                      //   // Navigator.push(
+                      //   //   context,
+                      //   //   MaterialPageRoute(builder: (context) =>KnowFerriman()),
+                      //   // );
+                      // },
+                      //   style: ElevatedButton.styleFrom(
+                      //       backgroundColor: Colors.blue[200]
+                      //   ),
+                      //   child: Text("Upload",  style: TextStyle(
+                      //       color: Colors.white
+                      //   ),),)
                     ],
                   ),
 
@@ -439,7 +447,7 @@ SizedBox(height: 20,),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Select Menstrual Cycle Condition",
+                            Text("Select Menstrual Cycle Every",
                             style: TextStyle(
                               fontSize: 15
                             ),),
@@ -618,7 +626,7 @@ SizedBox(height: 20,),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Select if experienced hirsutism hairgrowth ?"),
+                            Text("Select if noticed hirsutism hairgrowth?"),
                             DropdownButton<String>(
                               value: dropdownValue4,
                               onChanged: (String? newValue) {
@@ -798,10 +806,12 @@ SizedBox(height: 20,),
                         "pimples":dropdownValue6,
                         "fastfood":dropdownValue7,
                         "folliclesL":folliclesInL.text,
-                        "folliclesR":folliclesinR.text
+                        "folliclesR":folliclesinR.text,
+                        "acneLevel":widget.acneResponse.substring(0,1)
 
 
                       },
+
 
                           SetOptions(merge: true))
                           .then((_) {
@@ -823,11 +833,11 @@ SizedBox(height: 20,),
                         dv = 5;
                       };
                       int acne=0;
-                      if(widget.acneResponse=='1'||widget.acneResponse=='2'||dropdownValue6=="Yes")
+                      if(widget.acneResponse.substring(0,1)=='1'||widget.acneResponse.substring(0,1)=='2'||dropdownValue6=="Yes")
                         {
                           acne=1;
                         }
-                      else if(widget.acneResponse=='0'||dropdownValue6=="No")
+                      else if(widget.acneResponse.substring(0,1)=='0'||dropdownValue6=="No")
                         {
                           acne=0;
                         };
@@ -848,6 +858,7 @@ SizedBox(height: 20,),
                         "folliclesL":folliclesInL.text,
                         "folliclesR":folliclesinR.text};
                       getPrediction(data);
+
                     }, style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue[200]
                     ),

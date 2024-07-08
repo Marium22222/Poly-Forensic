@@ -29,7 +29,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.pink[100],
+                  color:
+                    Color(0xfffFF91A4),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
 
@@ -54,7 +55,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.pink[100],
+                  color:
+    Color(0xfffFF91A4),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
 
@@ -76,7 +78,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.pink[100],
+                  color:
+    Color(0xfffFF91A4),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
 

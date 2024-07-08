@@ -66,9 +66,12 @@ class _KnowFerrimanState extends State<KnowFerriman> {
                         MaterialPageRoute(
                             builder: (context) => FerrimanGallwey()));
                   },
-                  child: Text("Check Hirsutism"),
+                  child: Text("Check Hirsutism",
+                  style: TextStyle(
+                    color: Colors.white
+                  ),),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffffd6ef)),
+                      backgroundColor:  Color(0xfffFF91A4)),
                 )
               ],
             ),

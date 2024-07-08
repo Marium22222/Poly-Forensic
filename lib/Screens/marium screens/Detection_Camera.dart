@@ -52,6 +52,7 @@ class _TestGalCamState extends State<TestGalCam> {
           : 'No results';
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => RotterdamSymptomsScreen(acneResponse: _result),));
     });
+    print(_result);
   }
 
   @override

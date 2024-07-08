@@ -12,21 +12,27 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         body: Column(
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          width: 500,
-          height: 500,
+          width: 400,
+          height: 400,
           child: Image(
               image: AssetImage(
-            "assets/images/POlyForensic.png",
+            "assets/images/POlyForensic1.png",
           )),
+          // #FF91A4 color pink for whole application.
         ),
-        Text(
-          "PCOS Detection Mobile Application",
-          style: TextStyle(
-              color: Color(0xffffcbcae), fontSize: 17, fontFamily: "Arial"),
+        Center(
+          child: Text(
+            "PCOS Detection Mobile Application",
+            style: TextStyle(
+                color:Color(0xfffFF91A4),
+                fontSize: 17, fontFamily: "Arial",
+            fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           width: 200,
@@ -40,7 +46,8 @@ class _SplashScreenState extends State<SplashScreen> {
               );
             },
             style:
-                ElevatedButton.styleFrom(backgroundColor: Color(0xffffcbcae)),
+                ElevatedButton.styleFrom(backgroundColor:
+                Color(0xfffFF91A4)),
             child: Text(
               "Get Started ",
               style: TextStyle(
