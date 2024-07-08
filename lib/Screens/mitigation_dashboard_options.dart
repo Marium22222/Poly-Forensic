@@ -14,7 +14,9 @@ class _MitigationDashboardOptionsState
     extends State<MitigationDashboardOptions> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LayoutBuilder(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: LayoutBuilder(
       builder: (context, constraints) {
         return SafeArea(
           child: Container(

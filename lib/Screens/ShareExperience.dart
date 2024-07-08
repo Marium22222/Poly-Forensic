@@ -41,6 +41,7 @@ class _ShareExperienceState extends State<ShareExperience> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(
           "SHARE YOUR EXPERIENCE",
           style: TextStyle(fontWeight: FontWeight.bold),

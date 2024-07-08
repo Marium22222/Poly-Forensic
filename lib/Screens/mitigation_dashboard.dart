@@ -23,6 +23,7 @@ class _MitigationDashboardState extends State<MitigationDashboard> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         onTap: (value) {
           if (value == 0) {
             pageController.animateToPage(0,

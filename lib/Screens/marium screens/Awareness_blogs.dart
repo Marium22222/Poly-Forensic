@@ -13,7 +13,7 @@ class _AwarenessBlogsState extends State<AwarenessBlogs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "PCOS Awareness Blogs",

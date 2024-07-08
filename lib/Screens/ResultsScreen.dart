@@ -31,9 +31,17 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                 image: AssetImage(
                                     "assets/images/doctorReport.webp"),
                                 opacity: 0.75))),
-                    Icon(
-                      Icons.arrow_back_ios_sharp,
-                      size: 25,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios_sharp,
+                          size: 25,
+                        ),
+                      ),
                     ),
                     Positioned(
                         top: constraints.maxHeight * 0.27,

@@ -55,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           centerTitle: true,
-          // backgroundColor: Colors.white,
+          backgroundColor: Colors.white,
         ),
         drawer: SizedBox(
           height: MediaQuery.sizeOf(context).height,

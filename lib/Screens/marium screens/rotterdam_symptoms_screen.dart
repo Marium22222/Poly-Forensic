@@ -105,6 +105,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text("Prediction Screen"),
         centerTitle: true,
       ),

@@ -12,6 +12,7 @@ class _DietRecommendationsDosState extends State<DietRecommendationsDos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
           padding: EdgeInsets.all(20),
           child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
