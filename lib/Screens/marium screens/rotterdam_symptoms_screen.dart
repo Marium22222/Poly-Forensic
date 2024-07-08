@@ -11,7 +11,7 @@ import 'package:poly_forensic/globals.dart' as globals;
 import 'function.dart';
 class RotterdamSymptomsScreen extends StatefulWidget {
   const RotterdamSymptomsScreen({Key? key}) : super(key: key);
-
+//
   @override
   State<RotterdamSymptomsScreen> createState() => _RotterdamSymptomsScreenState();
 }
