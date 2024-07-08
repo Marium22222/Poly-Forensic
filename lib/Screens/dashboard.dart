@@ -7,6 +7,7 @@ import 'package:poly_forensic/Dialogs/BMIResultDialog.dart';
 import 'package:poly_forensic/Dialogs/RotterdamCardDialog.dart';
 import 'package:poly_forensic/Dialogs/periodsSymptomsDialog.dart';
 import 'package:poly_forensic/Dialogs/storyDialog.dart';
+import 'package:poly_forensic/Screens/dataPolicy.dart';
 import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
 import 'package:poly_forensic/globals.dart';
 import 'package:poly_forensic/reusable_widgets/dashboardCards.dart';
@@ -155,7 +156,7 @@ class _DashboardState extends State<Dashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RotterdamSymptomsScreen(),
+                            builder: (context) => RotterdamSymptomsScreen(acneResponse: '4',),
                           ));
                     },
                     leading: Icon(Icons.online_prediction_outlined),
@@ -195,6 +196,17 @@ class _DashboardState extends State<Dashboard> {
                     },
                     leading: Icon(Icons.offline_share),
                     title: Text("SHARE YOUR EXPERIENCE"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DataPolicy()
+                          ));
+                    },
+                    leading: Icon(Icons.policy),
+                    title: Text("DATA POLICY"),
                   ),
                   ListTile(
                     onTap: () async {
@@ -425,7 +437,7 @@ class _DashboardState extends State<Dashboard> {
                         Container(
                           width: MediaQuery.sizeOf(context).width * 0.9,
                           decoration: BoxDecoration(
-                          color: Colors.grey
+                          color: Colors.red.shade200
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

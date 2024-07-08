@@ -10,8 +10,8 @@ import 'package:poly_forensic/Screens/ResultsScreen.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 import 'function.dart';
 class RotterdamSymptomsScreen extends StatefulWidget {
-  const RotterdamSymptomsScreen({Key? key}) : super(key: key);
-//
+  final String acneResponse;
+  const RotterdamSymptomsScreen({Key? key, required this.acneResponse}) : super(key: key);
   @override
   State<RotterdamSymptomsScreen> createState() => _RotterdamSymptomsScreenState();
 }
@@ -61,7 +61,6 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
       "Follicle No. (L)": [data["folliclesL"]],
       "Follicle No. (R)": [data["folliclesR"]]
     };
-
     print(data);
     try {
       print("hit");
@@ -822,7 +821,16 @@ SizedBox(height: 20,),
                       else
                       {
                         dv = 5;
-                      }
+                      };
+                      int acne=0;
+                      if(widget.acneResponse=='1'||widget.acneResponse=='2'||dropdownValue6=="Yes")
+                        {
+                          acne=1;
+                        }
+                      else if(widget.acneResponse=='0'||dropdownValue6=="No")
+                        {
+                          acne=0;
+                        };
                       Map<String,dynamic> data = {"ultrasonography": values,
                         "oligoAnovulation": dropdownValue,
                         "PeriodsRegularity":dv,
@@ -835,7 +843,7 @@ SizedBox(height: 20,),
                         "weightgain":dropdownValue3 == "Yes"?1:0,
                         "hairgrowth":dropdownValue4 == "Yes"?1:0,
                         "darkskin":dropdownValue5 == "Yes"?1:0,
-                        "pimples":dropdownValue6 == "Yes"?1:0,
+                        "pimples":acne,
                         "fastfood":dropdownValue7 == "Yes"?1:0,
                         "folliclesL":folliclesInL.text,
                         "folliclesR":folliclesinR.text};

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
+import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
 
 class TestGalCam extends StatefulWidget {
   const TestGalCam({Key? key}) : super(key: key);
@@ -49,6 +50,7 @@ class _TestGalCamState extends State<TestGalCam> {
       _result = output != null && output.isNotEmpty
           ? output.map((e) => e['label']).join(', ')
           : 'No results';
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => RotterdamSymptomsScreen(acneResponse: _result),));
     });
   }
 
