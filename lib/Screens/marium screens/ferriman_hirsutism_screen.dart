@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 
 class FerrimanGallwey extends StatefulWidget {
@@ -12,6 +13,7 @@ class FerrimanGallwey extends StatefulWidget {
 }
 
 class _FerrimanGallweyState extends State<FerrimanGallwey> {
+
 
   int selectedOption = 0;
   int selectedOption1 = 0;
@@ -1167,12 +1169,17 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
                       //     .collection("users")
                       //     .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
                       //     .update({"ferrimanGallweyScore": result});
-                      FirebaseFirestore.instance
-                          .collection("users")
-                          .doc(globals.login).collection("symptoms").doc("pcos_symptoms")
-                          .set({"ferrimanGallweyScore": result},
+                      FirebaseFirestore.instance.collection('users').doc(globals.login).set({"ferrimanGallweyScore": result},
                           SetOptions(merge: true));
-                      Navigator.pop(context);
+
+
+                      globals.ferriman=result;
+                      //this part
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
+                          RotterdamSymptomsScreen()));
+
+                      // Navigator.pop(context);
+                      // Navigator.pop(context);
                     },
                     child: Text('Save'),
                   ),
@@ -1197,9 +1204,11 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
               resultString="You are marked save from hirsutism!";
               print("You are marked save from hirsutism!");
             }
+
           });
 
-        
+
+        print("sending from ferriman to rotterdam"+result.toString());
         },
             style:ElevatedButton.styleFrom(
               backgroundColor: Color(0xfffFF91A4)

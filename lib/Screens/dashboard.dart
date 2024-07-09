@@ -46,16 +46,16 @@ class _DashboardState extends State<Dashboard> {
           title: Text(
             "POLY-FORENSIC",
             style: TextStyle(fontFamily: "Merriweather",
-              shadows: [
-                Shadow(
-                  color: Colors.grey,
-                  offset: Offset(1,1)
-                )
-              ]
+                shadows: [
+                  Shadow(
+                      color: Colors.grey,
+                      offset: Offset(1,1)
+                  )
+                ]
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.white,
+          // backgroundColor: Colors.white,
         ),
         drawer: SizedBox(
           height: MediaQuery.sizeOf(context).height,
@@ -66,58 +66,60 @@ class _DashboardState extends State<Dashboard> {
                 children: [
                   DrawerHeader(
                       child: FutureBuilder<DocumentSnapshot>(
-                    future: FirebaseFirestore.instance
-                        .collection("users")
-                        .doc(login)
-                        .get(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                            child:
+                        future: FirebaseFirestore.instance
+                            .collection("users")
+                            .doc(login)
+                            .get(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(
+                                child:
                                 CircularProgressIndicator()); //return means the bottom code wont run
-                      }
-                      if (snapshot.data == null || snapshot.hasError) {
-                        return const Center(child: Text("DATA NOT AVAILABLE"));
-                      }
-                      data = snapshot.data!.data() as Map<String, dynamic>;
-                      if (data['expectedPeriodDate'] == "" ||
-                          data['lastPeriodDate'] == "") {
-                        toShowDiff = false;
-                      } else {
-                        toShowDiff = true;
-                        final date_today = DateTime.now();
-                        final year = int.parse(
-                            data['expectedPeriodDate'].substring(0, 4));
-                        final month = int.parse(
-                            data['expectedPeriodDate'].substring(5, 7));
-                        final day = int.parse(
-                            data['expectedPeriodDate'].substring(8, 10));
-                        final expected_date = DateTime(year, month, day);
+                          }
+                          if (snapshot.data == null || snapshot.hasError) {
+                            return const Center(child: Text("DATA NOT AVAILABLE"));
+                          }
+                          data = snapshot.data!.data() as Map<String, dynamic>;
+                          if (data['expectedPeriodDate'] == "" ||
+                              data['lastPeriodDate'] == "") {
+                            toShowDiff = false;
+                          } else {
+                            toShowDiff = true;
+                            final date_today = DateTime.now();
+                            final year = int.parse(
+                                data['expectedPeriodDate'].substring(0, 4));
+                            final month = int.parse(
+                                data['expectedPeriodDate'].substring(5, 7));
+                            final day = int.parse(
+                                data['expectedPeriodDate'].substring(8, 10));
+                            final expected_date = DateTime(year, month, day);
 
-                        difference =
-                            expected_date.difference(date_today).inDays;
-                      }
+                            difference =
+                                expected_date.difference(date_today).inDays;
+                            // globals.ferrimantext=data['ferrimanGallweyScore'];
+                            // globals.bmitext=data['BMI'];
+                          }
 
-                      return toShowDiff == true
-                          ? Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              // crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("${data['username']}"),
-                                Text("Periods Due In:"),
-                                Container(
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Colors.red, width: 8)),
-                                    child: Text("${difference}")),
-                                Text("days"),
-                              ],
-                            )
-                          : Text("${data['username']}");
-                    },
-                  )),
+                          return toShowDiff == true
+                              ? Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("${data['username']}"),
+                              Text("Periods Due In:"),
+                              Container(
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          color: Colors.red, width: 8)),
+                                  child: Text("${difference}")),
+                              Text("days"),
+                            ],
+                          )
+                              : Text("${data['username']}");
+                        },
+                      )),
                   ListTile(
                     onTap: () {
                       Navigator.push(
@@ -156,7 +158,7 @@ class _DashboardState extends State<Dashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RotterdamSymptomsScreen(acneResponse: '4',),
+                            builder: (context) => RotterdamSymptomsScreen(),
                           ));
                     },
                     leading: Icon(Icons.online_prediction_outlined),
@@ -202,7 +204,7 @@ class _DashboardState extends State<Dashboard> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DataPolicy()
+                              builder: (context) => DataPolicy()
                           ));
                     },
                     leading: Icon(Icons.policy),
@@ -210,9 +212,10 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   ListTile(
                     onTap: () async {
+                      globals.acne="-1 Level -1";
                       print(globals.login);
                       SharedPreferences pref =
-                          await SharedPreferences.getInstance();
+                      await SharedPreferences.getInstance();
                       pref.remove("email");
                       setState(() {});
 
@@ -245,7 +248,7 @@ class _DashboardState extends State<Dashboard> {
                               image: DecorationImage(
                                   opacity: 0.7,
                                   image:
-                                      AssetImage("assets/images/pcosSlideBg.png"),
+                                  AssetImage("assets/images/pcosSlideBg.png"),
                                   fit: BoxFit.cover)),
                           child: Column(
                             children: [
@@ -258,7 +261,7 @@ class _DashboardState extends State<Dashboard> {
                               Text(
                                 "PCOS is a common hormonal condition that affects women of reproductive age.",
                                 style: TextStyle(
-                                    // fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                     fontSize: 16,
                                     letterSpacing: 2.0,
@@ -270,7 +273,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         Container(
                             padding:
-                                EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+                            EdgeInsets.symmetric(horizontal: 3, vertical: 10),
                             width: MediaQuery.sizeOf(context).width * 0.85,
                             // decoration: BoxDecoration(
                             //   color:Colors.lightBlue[50],
@@ -287,15 +290,15 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                                 Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
                                         Image.asset(
                                           'assets/images/infertility.jpg',
                                           width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.27,
+                                          MediaQuery.sizeOf(context).width *
+                                              0.27,
                                         ),
                                         Text(
                                           "INFERTILITY",
@@ -309,8 +312,8 @@ class _DashboardState extends State<Dashboard> {
                                       children: [
                                         Image.asset('assets/images/diabetes.png',
                                             width:
-                                                MediaQuery.sizeOf(context).width *
-                                                    0.27,
+                                            MediaQuery.sizeOf(context).width *
+                                                0.27,
                                             height: 100),
                                         SizedBox(
                                           width: 67,
@@ -329,8 +332,8 @@ class _DashboardState extends State<Dashboard> {
                                         Image.asset(
                                             'assets/images/uterusCancer.jpg',
                                             width:
-                                                MediaQuery.sizeOf(context).width *
-                                                    0.27,
+                                            MediaQuery.sizeOf(context).width *
+                                                0.27,
                                             height: 100),
                                         SizedBox(
                                           width: 67,
@@ -435,28 +438,28 @@ class _DashboardState extends State<Dashboard> {
                         ),
 
                         Container(
-                          width: MediaQuery.sizeOf(context).width * 0.9,
-                          decoration: BoxDecoration(
-                          color: Colors.red.shade200
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("PCOS SYMPTOMS",textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 30,
-                                color:Colors.white,
-                                fontFamily: "Times New Roman",
-                                shadows: [
-                                  Shadow(
-                                    color: Colors.white70,
-                                    offset: Offset(1,2),
+                            width: MediaQuery.sizeOf(context).width * 0.9,
+                            decoration: BoxDecoration(
+                                color: Colors.red.shade200
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("PCOS SYMPTOMS",textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color:Colors.white,
+                                      fontFamily: "Times New Roman",
+                                      shadows: [
+                                        Shadow(
+                                          color: Colors.white70,
+                                          offset: Offset(1,2),
 
-                                  )
-                                ]
-                              ),),
-                            ],
-                          )
+                                        )
+                                      ]
+                                  ),),
+                              ],
+                            )
                         ),
 
                         Container(
@@ -605,10 +608,10 @@ class _DashboardState extends State<Dashboard> {
                             color: Colors.grey[50],
                             // border: Border.all(color: Colors.grey,width: 0.5),
                             gradient: LinearGradient(
-                              colors: [Colors.pink.shade100,Colors.pink.shade200],
-                              stops: [0,0.4],
-                              begin: Alignment.topLeft,
-                              end:Alignment.bottomRight
+                                colors: [Colors.pink.shade100,Colors.pink.shade200],
+                                stops: [0,0.4],
+                                begin: Alignment.topLeft,
+                                end:Alignment.bottomRight
                             ),
                           ),
                           child: new CircularPercentIndicator(
@@ -705,17 +708,17 @@ class _DashboardState extends State<Dashboard> {
                           image: "assets/images/awareness.png",
                           title: "Awareness",
                           descritpion:
-                              "Our app serves as a comprehensive resource to educate users about PCOS, offering detailed information on symptoms, treatments, and lifestyle adjustments. By providing personalized insights and interactive tools, it empowers users to take proactive steps in managing their health and spreading awareness about PCOS in their communities."),
+                          "Our app serves as a comprehensive resource to educate users about PCOS, offering detailed information on symptoms, treatments, and lifestyle adjustments. By providing personalized insights and interactive tools, it empowers users to take proactive steps in managing their health and spreading awareness about PCOS in their communities."),
                       DashboardCards(
                           image: "assets/images/prediction.png",
                           title: "Efficient Predictions",
                           descritpion:
-                              "With advanced predictive analytics, our app enables efficient forecasting of PCOS symptom patterns and potential flare-ups. This empowers users to take timely preventive measures, enhancing their ability to manage the condition proactively."),
+                          "With advanced predictive analytics, our app enables efficient forecasting of PCOS symptom patterns and potential flare-ups. This empowers users to take timely preventive measures, enhancing their ability to manage the condition proactively."),
                       DashboardCards(
                           image: "assets/images/mitigation.png",
                           title: "Mitigation Plan",
                           descritpion:
-                              "Our app equips users with tailored mitigation plans for PCOS, including diet and exercise to help manage symptoms effectively. By offering personalized strategies, it supports users in making informed decisions to improve their overall well-being.")
+                          "Our app equips users with tailored mitigation plans for PCOS, including diet and exercise to help manage symptoms effectively. By offering personalized strategies, it supports users in making informed decisions to improve their overall well-being.")
                     ],
                   ),
                 ),
@@ -735,7 +738,7 @@ class _DashboardState extends State<Dashboard> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                           child:
-                              CircularProgressIndicator()); //return means the bottom code wont run
+                          CircularProgressIndicator()); //return means the bottom code wont run
                     }
                     if (snapshot.data == null || snapshot.hasError) {
                       return const Center(child: Text("DATA NOT AVAILABLE"));
@@ -748,10 +751,10 @@ class _DashboardState extends State<Dashboard> {
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         DocumentSnapshot documentSnapshot =
-                            snapshot.data!.docs[index];
+                        snapshot.data!.docs[index];
 
                         Map<String, dynamic> data =
-                            documentSnapshot.data() as Map<String, dynamic>;
+                        documentSnapshot.data() as Map<String, dynamic>;
 
                         if (data['status'] == 'pending') {
                           return Text("");
@@ -771,7 +774,7 @@ class _DashboardState extends State<Dashboard> {
                               border: Border(
                                 right: BorderSide(color: Colors.grey, width: 3),
                                 bottom:
-                                    BorderSide(color: Colors.grey, width: 3),
+                                BorderSide(color: Colors.grey, width: 3),
                               ),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -784,7 +787,7 @@ class _DashboardState extends State<Dashboard> {
                                       horizontal: 0, vertical: 10),
                                   padding: EdgeInsets.all(8.0),
                                   height:
-                                      MediaQuery.sizeOf(context).height * 0.2,
+                                  MediaQuery.sizeOf(context).height * 0.2,
                                   child: Image.network(data['Image'],
                                       fit: BoxFit.cover,
                                       width: 150,
@@ -795,11 +798,11 @@ class _DashboardState extends State<Dashboard> {
                                   padding: EdgeInsets.all(5),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                             "${data["Title"]}",
@@ -822,13 +825,13 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           SizedBox(),
                                           Text(
                                             "~${data["Author"]}",
                                             style:
-                                                TextStyle(color: Colors.pink),
+                                            TextStyle(color: Colors.pink),
                                           )
                                         ],
                                       )

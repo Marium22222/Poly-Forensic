@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
 import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
-
+import 'package:poly_forensic/globals.dart' as globals;
 class TestGalCam extends StatefulWidget {
   const TestGalCam({Key? key}) : super(key: key);
 
@@ -16,6 +16,7 @@ class _TestGalCamState extends State<TestGalCam> {
   Uint8List? _image;
   File? selectedImage;
   String _result = '';
+
 
   @override
   void initState() {
@@ -50,7 +51,12 @@ class _TestGalCamState extends State<TestGalCam> {
       _result = output != null && output.isNotEmpty
           ? output.map((e) => e['label']).join(', ')
           : 'No results';
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => RotterdamSymptomsScreen(acneResponse: _result),));
+globals.acne="";
+globals.acne=_result;
+      //this part
+      // Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
+      //     RotterdamSymptomsScreen(acne:_result),));
+      Navigator.pop(context);
     });
     print(_result);
   }

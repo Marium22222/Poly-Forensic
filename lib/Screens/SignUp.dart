@@ -260,6 +260,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "BMI":"",
                         "lastPeriodDate":"",
                         "expectedPeriodDate":"",
+                        "ferrimanGallweyScore":-1
                       }).then((value) {
                         print("Added user!");
                         // Navigator.push(context,

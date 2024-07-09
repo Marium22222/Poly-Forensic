@@ -31,17 +31,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                 image: AssetImage(
                                     "assets/images/doctorReport.webp"),
                                 opacity: 0.75))),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_sharp,
-                          size: 25,
-                        ),
-                      ),
+                    Icon(
+                      Icons.arrow_back_ios_sharp,
+                      size: 25,
                     ),
                     Positioned(
                         top: constraints.maxHeight * 0.27,
@@ -50,14 +42,14 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           "RESULT",
                           textAlign: TextAlign.end,
                           style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2.0,
-                            fontFamily: "Times New Roman",
-                            shadows: [
-                              Shadow(color: Colors.grey,offset: Offset(0,3),blurRadius: 2),
-                            ]
+                              fontSize: 30,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                              fontFamily: "Times New Roman",
+                              shadows: [
+                                Shadow(color: Colors.grey,offset: Offset(0,3),blurRadius: 2),
+                              ]
                           ),
                         ))
                   ],
@@ -68,7 +60,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     leading: Text(
                       "PREDICTION:",
                       style:
-                          TextStyle(fontSize: 18, fontFamily: "Times New Roman",fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 18, fontFamily: "Times New Roman",fontWeight: FontWeight.bold),
                     ),
                     trailing: Text(
                       widget.result == '1' ? "POSITIVE" : "NEGATIVE",
@@ -141,6 +133,12 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 //   child: Text("ADVICED MATERIAL HERE"),
                 // ),
                 // ElevatedButton(onPressed: (){}, child: Text("CONTINUE"))
+                ElevatedButton(onPressed: ()
+                {
+                  Navigator.pop(context);
+                }, child: Text("Close"
+
+                ))
               ],
             );
           },
@@ -149,3 +147,5 @@ class _ResultsScreenState extends State<ResultsScreen> {
     );
   }
 }
+
+
