@@ -82,6 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     }
 
                     var bmi = userDocument!['BMI'];
+
                     return Container(
                       child: Stack(
                         children: <Widget>[
@@ -140,10 +141,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         MainAxisAlignment.center,
                                         children: <Widget>[
                                           headerChild('BMI',
-                                              userDocument['BMI']==""?"N/A":  userDocument['BMI']+
-                                                  "kg/m2"),
+                                              //
+                                              // userDocument['BMI'].parseInt().toStringAsFixed(3)+
+                                              //     "kg/m2"),
+                                            userDocument['BMI']==""?"N/A":
+                                            (double.parse(bmi).toStringAsFixed(3)).toString()+" kg/m2",
+                                          ),
+
+
                                           headerChild('Acne', acne),
-                                          headerChild('Hirsutism', userDocument['ferrimanGallweyScore']<8?"No":"Yes"),
+                                          headerChild('Hirsutism',
+                                              userDocument['ferrimanGallweyScore']<8?"No":"Yes"),
                                         ]),
                                   ),
                                 ),

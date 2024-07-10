@@ -32,7 +32,9 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
           }
           var documents = snapshot.data!.docs.where((doc) => doc['status'] != 'approved').toList();
           if (documents.isEmpty) {
-            return const Center(child: Text("No stories to approve"));
+            return Column(children:[
+              Text("No stories to approve")
+            ]);
           }
 
           return ListView.builder(
@@ -49,8 +51,12 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
 
               if(data['status']=='approved')
               {
-                return Text("");
+                return SizedBox.shrink();
               }
+              else if(data['status']=='Disapproved')
+                  {
+                    return SizedBox.shrink();
+                  }
               return GestureDetector(
                 onTap: () {
                   showDialog(
@@ -59,8 +65,8 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.all(8),
-                  padding: EdgeInsets.all(2),
+
+
                   decoration: BoxDecoration(
                     color: Colors.grey[50],
                     border:Border(
@@ -90,8 +96,8 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
                       ),
                       Container(
                         width:
-                        MediaQuery.sizeOf(context).width * 0.52,
-                        padding: EdgeInsets.all(5),
+                        MediaQuery.sizeOf(context).width * 0.4,
+                        padding: EdgeInsets.all(10),
                         child: Column(
                           crossAxisAlignment:
                           CrossAxisAlignment.start,
@@ -107,17 +113,13 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
-                                  "${data["Date"]}",
-                                  style:
-                                  TextStyle(color: Colors.grey),
-                                ),
+
                               ],
                             ),
                             Text(
-                              "${data["story"]}",
-                              textAlign: TextAlign.justify,
-                              maxLines: 4,
+                              "${data["Date"]}",
+                              style:
+                              TextStyle(color: Colors.grey),
                             ),
                             Row(
                               mainAxisAlignment:
@@ -125,11 +127,11 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
                               children: [
                                 Text(data['status']),
                                 SizedBox(),
-                                Text(
-                                  "~${data["Author"]}",
-                                  style:
-                                  TextStyle(color: Colors.pink),
-                                )
+                                // Text(
+                                //   "~${data["Author"]}",
+                                //   style:
+                                //   TextStyle(color: Colors.pink),
+                                // )
                               ],
                             ),
                             ElevatedButton(onPressed: (){
@@ -138,14 +140,28 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
                                   .doc(documentSnapshot.id)
                                   .set({"status": "approved"},
                                   SetOptions(merge: true));
-                            }, child: Text("Approve")),
+                            },  style:ElevatedButton.styleFrom(
+
+                              backgroundColor: Color(0xfffFF91A4),
+                            ),
+                                child: Text("Approve",style: TextStyle(
+                                    color: Colors.white
+                                ),)),
                             ElevatedButton(onPressed: (){
                               FirebaseFirestore.instance
                                   .collection("stories")
                                   .doc(documentSnapshot.id)
                                   .set({"status": "Disapproved"},
                                   SetOptions(merge: true));
-                            }, child: Text("Disapprove"))
+
+                            },
+                                style:ElevatedButton.styleFrom(
+
+                                  backgroundColor: Color(0xfffFF91A4),
+                                ),
+                                child: Text("Disapprove",style: TextStyle(
+                                  color: Colors.white
+                                ),))
                           ],
                         ),
                       )

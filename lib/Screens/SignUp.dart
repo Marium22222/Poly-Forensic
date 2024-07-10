@@ -164,7 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                 Text(
-                  'Enter Pasword',
+                  'Enter Password',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
