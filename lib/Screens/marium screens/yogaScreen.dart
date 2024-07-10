@@ -14,6 +14,7 @@ class _YogaScreenState extends State<YogaScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title:Text(widget.data['Text'],style: TextStyle(
             fontSize: 22,
             color: Colors.black,

@@ -154,6 +154,13 @@ class _ShareExperienceState extends State<ShareExperience> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () async {
+                                    if (published == false) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text('Processing Data')),
+                                      );
+                                    }
                                     final ref = storage.FirebaseStorage.instance
                                         .ref()
                                         .child('images')
@@ -197,45 +204,42 @@ class _ShareExperienceState extends State<ShareExperience> {
                       ),
                     ],
                   ),
-                ): Center(
-            child: Text(
-              "STORY SENT FOR REVIEW",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: "Times New Roman",
-                  shadows: [
-                    Shadow(
-                        color: Colors.black,
-                        offset: Offset(1,1)
-                    )
-                  ]
-              ),
-            ),
-          );
-              // : Stack(
-              //   children: [
-              //     Container(
-              //         width: MediaQuery.of(context).size.width,
-              //         child: Image.asset("assets/images/poppers.gif",fit: BoxFit.cover,),),
-              //     Center(
-              //         child: Text(
-              //           "STORY SENT FOR REVIEW",
-              //           style: TextStyle(
-              //               fontWeight: FontWeight.bold,
-              //             fontSize: 20,
-              //             fontFamily: "Times New Roman",
-              //             shadows: [
-              //               Shadow(
-              //                 color: Colors.black,
-              //                 offset: Offset(1,1)
-              //               )
-              //             ]
-              //           ),
-              //         ),
-              //       ),
-              //   ],
-              // );
+                )
+              : Center(
+                  child: Text(
+                    "STORY SENT FOR REVIEW",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: "Times New Roman",
+                        shadows: [
+                          Shadow(color: Colors.black, offset: Offset(1, 1))
+                        ]),
+                  ),
+                );
+          // : Stack(
+          //   children: [
+          //     Container(
+          //         width: MediaQuery.of(context).size.width,
+          //         child: Image.asset("assets/images/poppers.gif",fit: BoxFit.cover,),),
+          //     Center(
+          //         child: Text(
+          //           "STORY SENT FOR REVIEW",
+          //           style: TextStyle(
+          //               fontWeight: FontWeight.bold,
+          //             fontSize: 20,
+          //             fontFamily: "Times New Roman",
+          //             shadows: [
+          //               Shadow(
+          //                 color: Colors.black,
+          //                 offset: Offset(1,1)
+          //               )
+          //             ]
+          //           ),
+          //         ),
+          //       ),
+          //   ],
+          // );
         },
       ),
     );

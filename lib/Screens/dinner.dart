@@ -14,6 +14,7 @@ class _BreakfastPlansState extends State<DinnerPlans> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

@@ -14,7 +14,9 @@ class _ApprovalUserStoryState extends State<ApprovalUserStory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
           title:
           Text("Approval User Story")),
       body:  StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

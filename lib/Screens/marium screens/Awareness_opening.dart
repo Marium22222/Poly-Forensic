@@ -14,6 +14,7 @@ class _AwarenessOpeningState extends State<AwarenessOpening> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("PCOS Blogs"),
         centerTitle: true,

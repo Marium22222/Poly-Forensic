@@ -370,15 +370,18 @@ class _TrialState extends State<Trial> {
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
                                       ),
+
                                     ),
                                     // SizedBox(
                                     //   height: 10,
                                     // ),
                                     Card(
+                                      color: Colors.white,
                                       child: TextField(
                                         controller: _notes,
                                         decoration: InputDecoration(
-                                            border: OutlineInputBorder()),
+                                            border: OutlineInputBorder(),
+                                        ),
                                       ),
                                     ),
                                     Row(
@@ -452,6 +455,7 @@ class _TrialState extends State<Trial> {
                                       });
                                     }
                                   },
+                                  backgroundColor: Colors.grey[50],
                                   child: Text("Save"))
                             ],
                           )

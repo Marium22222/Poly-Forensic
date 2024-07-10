@@ -756,7 +756,7 @@ class _DashboardState extends State<Dashboard> {
                         documentSnapshot.data() as Map<String, dynamic>;
 
                         if (data['status'] == 'pending') {
-                          return Text("");
+                          return SizedBox.shrink();
                         }
                         return GestureDetector(
                           onTap: () {
