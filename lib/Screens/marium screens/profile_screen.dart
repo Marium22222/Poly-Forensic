@@ -145,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               // userDocument['BMI'].parseInt().toStringAsFixed(3)+
                                               //     "kg/m2"),
                                             userDocument['BMI']==""?"N/A":
-                                            (double.parse(bmi).toStringAsFixed(3)).toString()+" kg/m2",
+                                            (double.parse(bmi).toStringAsFixed(2)).toString()+" kg/m2",
                                           ),
 
 

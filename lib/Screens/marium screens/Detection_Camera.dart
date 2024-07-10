@@ -65,39 +65,53 @@ globals.acne=_result;
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
-      body: Center(
-        child: Stack(
-          children: [
-            _image != null
-                ? CircleAvatar(
-                radius: 100, backgroundImage: MemoryImage(_image!))
-                : const CircleAvatar(
-              radius: 100,
-              backgroundImage: NetworkImage(
-                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"),
-            ),
-            Positioned(
-                bottom: -0,
-                left: 140,
-                child: IconButton(
-                    onPressed: () {
-                      showImagePickerOption(context);
-                    },
-                    icon: const Icon(Icons.add_a_photo))),
-            if (_result.isNotEmpty)
-              Positioned(
-                bottom: 70,
-                left: 40,
-                child: Text(
-                  'Result: $_result',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text("Note: Please take a closeup picture of your face, "
+                "avoid wearing glasses and scarfs while taking picture.",
+            style: TextStyle(
+              color:Colors.red
+            ),),
+          ),
+          Center(
+            child: Stack(
+              children: [
+                _image != null
+                    ? CircleAvatar(
+                    radius: 100, backgroundImage: MemoryImage(_image!))
+                    : const CircleAvatar(
+                  radius: 100,
+                  backgroundImage: NetworkImage(
+                      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"),
                 ),
-              ),
-          ],
-        ),
+                Positioned(
+                    bottom: -0,
+                    left: 140,
+                    child: IconButton(
+                        onPressed: () {
+                          showImagePickerOption(context);
+                        },
+                        icon: const Icon(Icons.add_a_photo))),
+                if (_result.isNotEmpty)
+                  Positioned(
+                    bottom: 70,
+                    left: 40,
+                    child: Text(
+                      'Result: $_result',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

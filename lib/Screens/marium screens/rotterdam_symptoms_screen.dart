@@ -87,9 +87,14 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text("Prediction Screen"),
+        backgroundColor: Colors.black,
+        title: Text("Prediction Screen",
+        style: TextStyle(
+          color: Colors.white
+        ),),
+
         centerTitle: true,
+
       ),
       body:StreamBuilder(
         stream: FirebaseFirestore.instance.collection('users').doc(globals.login).snapshots(),
@@ -652,6 +657,11 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 20,),
+                        Text("Note: Enter number of follicles in left and right ovary if known, Enter 6 in both fields otherwise.",
+                          style: TextStyle(
+                              color:Colors.red
+                          ),),
                         SizedBox(height: 20,),
                         TextFormField(
                           validator: (value) {

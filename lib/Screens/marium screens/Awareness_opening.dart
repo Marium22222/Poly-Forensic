@@ -74,12 +74,13 @@ Divider(
               Text("Was this helpful?"),
               ElevatedButton(
                   onPressed: () async {
-                    final Uri url = Uri.parse(widget.data['Link']);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
+                    // final Uri url = Uri.parse(widget.data['Link']);
+                    // if (await canLaunchUrl(url)) {
+                    //   await launchUrl(url);
+                    // } else {
+                    //   throw 'Could not launch $url';
+                    // }
+                    Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:  Color(0xfffFF91A4),
