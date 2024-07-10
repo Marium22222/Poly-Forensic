@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poly_forensic/Screens/dashboard.dart';
 import 'package:poly_forensic/globals.dart' as globals;
 import 'package:poly_forensic/screens/mitigation_dashboard.dart';
 
@@ -14,6 +15,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.white,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -31,9 +33,17 @@ class _ResultsScreenState extends State<ResultsScreen> {
                                 image: AssetImage(
                                     "assets/images/doctorReport.webp"),
                                 opacity: 0.75))),
-                    Icon(
-                      Icons.arrow_back_ios_sharp,
-                      size: 25,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Dashboard(),));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.arrow_back_ios_sharp,
+                          size: 25,
+                        ),
+                      ),
                     ),
                     Positioned(
                         top: constraints.maxHeight * 0.27,
@@ -91,54 +101,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     )
                   ],
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Text("SYMPTOMS LIST"),
-                //       Column(
-                //         children: [
-                //           Text('SYMPTOM1'),
-                //           Text('SYMPTOM1'),
-                //           Text('SYMPTOM1'),
-                //           Text('SYMPTOM1'),
-                //         ],
-                //       )
-                //     ],
-                //   ),
-                // ),
-                // Text("ADVICE",style: TextStyle(
-                //   fontWeight: FontWeight.bold,
-                //   fontSize: 18
-                // ),),
-                // Container(
-                //   width: constraints.maxWidth*0.9,
-                //   height: constraints.maxHeight*0.3,
-                //   padding: EdgeInsets.all(20),
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(20),
-                //
-                //     gradient: LinearGradient(
-                //       colors: [
-                //         Colors.grey.shade100.withOpacity(0.8),
-                //         Colors.grey.shade200.withOpacity(0.8),
-                //         Colors.grey.shade300.withOpacity(0.8)
-                //         ,
-                //       ],
-                //       begin: Alignment.topLeft,
-                //       end: Alignment.bottomRight
-                //     )
-                //   ),
-                //   child: Text("ADVICED MATERIAL HERE"),
-                // ),
-                // ElevatedButton(onPressed: (){}, child: Text("CONTINUE"))
-                ElevatedButton(onPressed: ()
-                {
-                  Navigator.pop(context);
-                }, child: Text("Close"
 
-                ))
               ],
             );
           },

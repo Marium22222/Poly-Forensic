@@ -25,35 +25,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _ageTextController = TextEditingController();
 
   CollectionReference users = FirebaseFirestore.instance.collection("users");
-  AsciiEncoder asciEncoder=new AsciiEncoder();
-  validEmail(){
-    final bool emailValid =
-    RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+  AsciiEncoder asciEncoder = new AsciiEncoder();
+  validEmail() {
+    final bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_emailTextController.text);
     return emailValid;
   }
+
   bool isNotStringOnly(String str) {
-    for(var i=0;i<str.length;i++){
-      if(str[i]=='1'||str[i]=='2'||str[i]=='3'||str[i]=='4'||str[i]=='5'||str[i]=='6'||str[i]=='7'||str[i]=='8'||str[i]=='9'||str[i]=='#'||str[i]=='@'||str[i]=='!'||str[i]=='/'||str[i]=='\/'||str[i]=='*'||str[i]=='\$'){
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] == '1' ||
+          str[i] == '2' ||
+          str[i] == '3' ||
+          str[i] == '4' ||
+          str[i] == '5' ||
+          str[i] == '6' ||
+          str[i] == '7' ||
+          str[i] == '8' ||
+          str[i] == '9' ||
+          str[i] == '#' ||
+          str[i] == '@' ||
+          str[i] == '!' ||
+          str[i] == '/' ||
+          str[i] == '\/' ||
+          str[i] == '*' ||
+          str[i] == '\$') {
         return true;
         break;
       }
     }
     return false;
   }
-  validPassword(){
-    final bool passValid=_passwordTextController.text.length>8 && isNotStringOnly(_passwordTextController.text)?true:false;
+
+  validPassword() {
+    final bool passValid = _passwordTextController.text.length > 8 &&
+            isNotStringOnly(_passwordTextController.text)
+        ? true
+        : false;
     return passValid;
   }
-  validPhoneNumber(){
-    final bool validPhoneNumber= _phnoTextController.text.length==11 && int.parse(_phnoTextController.text)!=null?true:false;
+
+  validPhoneNumber() {
+    final bool validPhoneNumber = _phnoTextController.text.length == 11 &&
+            int.parse(_phnoTextController.text) != null
+        ? true
+        : false;
     return validPhoneNumber;
   }
 
   // String imageUrl = '';
-  bool emailValid=true;
-  bool phoneValid=true;
-  bool passValid=true;
+  bool emailValid = true;
+  bool phoneValid = true;
+  bool passValid = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,8 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                textField("", Icons.person_outline, false,
-                    _nameTextController),
+                textField("", Icons.person_outline, false, _nameTextController),
                 const SizedBox(
                   height: 25,
                 ),
@@ -127,14 +150,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                textField("", Icons.email_outlined, false,
-                    _emailTextController),
+                textField(
+                    "", Icons.email_outlined, false, _emailTextController),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
-                  child: Text("Incorrect Email",style:TextStyle(
-                    color: emailValid==true?Colors.pink.shade200:Colors.black,
-                    fontWeight: FontWeight.bold
-                  )),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                  child: Text("Incorrect Email",
+                      style: TextStyle(
+                          color: emailValid == true
+                              ? Colors.pink.shade200
+                              : Colors.red,
+                          fontWeight: FontWeight.bold)),
                 ),
 
                 Text(
@@ -148,14 +174,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                textField("", Icons.lock_outline, true,
-                    _passwordTextController),
+                textField(
+                    "", Icons.lock_outline, true, _passwordTextController),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
-                  child: Text("Incorrect Password",style:TextStyle(
-                      color: passValid==true?Colors.pink.shade200:Colors.black,
-                      fontWeight: FontWeight.bold
-                  )),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                  child: Text("Incorrect Password: 8+ characters, letters & symbols.",
+                      style: TextStyle(
+                          color: passValid == true
+                              ? Colors.pink.shade200
+                              : Colors.red,
+                          fontWeight: FontWeight.bold)),
                 ),
 
                 Text(
@@ -171,11 +200,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 textField("", Icons.phone_android_outlined, false,
                     _phnoTextController),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 5),
-                  child: Text("Incorrect Phone Number",style:TextStyle(
-                      color: phoneValid==true?Colors.pink.shade200:Colors.black,
-                      fontWeight: FontWeight.bold
-                  )),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                  child: Text("Incorrect Phone Number",
+                      style: TextStyle(
+                          color: phoneValid == true
+                              ? Colors.pink.shade200
+                              : Colors.red,
+                          fontWeight: FontWeight.bold)),
                 ),
                 Text(
                   'Enter Age',
@@ -187,109 +219,103 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                textField("", Icons.female, false,
-                    _ageTextController),
+                textField("", Icons.female, false, _ageTextController),
                 const SizedBox(
                   height: 40,
                 ),
-                // Center(
-                //   child: UserImage(
-                //       onFileChanged: (imageUrl) {
-                //         setState(() {
-                //           this.imageUrl = imageUrl;
-                //         });
-                //       }
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
                 Center(
                   child: signinSignupButton(context, false, () async {
-                    if(!validPhoneNumber())
-                      {
-                        setState(() {
-                          phoneValid=false;
-                        });
-                      }
-                    else{
+                    if (!validPhoneNumber()) {
                       setState(() {
-                        phoneValid=true;
+                        phoneValid = false;
+                      });
+                    } else {
+                      setState(() {
+                        phoneValid = true;
                       });
                     }
-                    if(!validEmail())
-                    {
+                    if (!validEmail()) {
                       setState(() {
-                        emailValid=false;
+                        emailValid = false;
+                      });
+                    } else {
+                      setState(() {
+                        emailValid = true;
                       });
                     }
-                    else{
+                    if (!validPassword()) {
                       setState(() {
-                        emailValid=true;
+                        passValid = false;
+                      });
+                    } else {
+                      setState(() {
+                        passValid = true;
                       });
                     }
-                    if(!validPassword())
-                    {
-                      setState(() {
-                        passValid=false;
-                      });
-                    }
-                    else{
-                      setState(() {
-                        passValid=true;
-                      });
-                    }
-                    if(validPhoneNumber()&&validEmail()&&validPassword()){
-                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text).then((value) {
+                    if (validPhoneNumber() && validEmail() && validPassword()) {
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
                         print("New Account Created!");
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => LoginScreen()));
-                      }).onError((error, stackTrace){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                      }).onError((error, stackTrace) {
                         print("Error ${error.toString()}");
                       });
 
                       await users.doc(_emailTextController.text).set({
-                        "username":_nameTextController.text,
-                        "password":_passwordTextController.text,
-                        "Phoneno":_phnoTextController.text,
-                        "age":_ageTextController.text,
-                        "height":"",
-                        "weight":"",
-                        "BMI":"",
-                        "lastPeriodDate":"",
-                        "expectedPeriodDate":"",
-                        "ferrimanGallweyScore":-1
+                        "username": _nameTextController.text,
+                        "password": _passwordTextController.text,
+                        "Phoneno": _phnoTextController.text,
+                        "age": _ageTextController.text,
+                        "height": "",
+                        "weight": "",
+                        "BMI": "",
+                        "lastPeriodDate": "",
+                        "expectedPeriodDate": "",
+                        "ferrimanGallweyScore": -1
                       }).then((value) {
                         print("Added user!");
                         // Navigator.push(context,
                         //     MaterialPageRoute(builder: (context) => ResultsScreen()));
-                      }).onError((error, stackTrace){
+                      }).onError((error, stackTrace) {
                         print("Error ${error.toString()}");
                       });
 
-                      await users.doc(_emailTextController.text).collection("symptoms").doc("periods_symptoms").set({});
-                      await users.doc(_emailTextController.text).collection("symptoms").doc("pcos_symptoms").set({
-                        "PeriodsRegularity":"",
-                        "abortions":"",
-                        "darkskin":"",
-                        "fastfood":"",
-                        "folliclesL":"",
-                        "folliclesR":"",
-                        "hairgrowth":"",
-                        "hipcircumference":"",
-                        "hyperandrogenism":{""," "},
-                        "oligoAnovulation":"",
-                        "menstrualduration":"",
-                        "pimples":"",
-                        "pregnancy":"",
-                        "ratiohiptowaist":"",
-                        "ultrasonography":{""," ","  "},
-                        "waistcircumference":"",
-                        "weightgain":"",
+                      await users
+                          .doc(_emailTextController.text)
+                          .collection("symptoms")
+                          .doc("periods_symptoms")
+                          .set({});
+                      await users
+                          .doc(_emailTextController.text)
+                          .collection("symptoms")
+                          .doc("pcos_symptoms")
+                          .set({
+                        "PeriodsRegularity": "",
+                        "abortions": "",
+                        "darkskin": "",
+                        "fastfood": "",
+                        "folliclesL": "",
+                        "folliclesR": "",
+                        "hairgrowth": "",
+                        "hipcircumference": "",
+                        "hyperandrogenism": {"", " "},
+                        "oligoAnovulation": "",
+                        "menstrualduration": "",
+                        "pimples": "",
+                        "pregnancy": "",
+                        "ratiohiptowaist": "",
+                        "ultrasonography": {"", " ", "  "},
+                        "waistcircumference": "",
+                        "weightgain": "",
                       });
-                    }}),
+                    }
+                  }),
                 )
               ],
             ),

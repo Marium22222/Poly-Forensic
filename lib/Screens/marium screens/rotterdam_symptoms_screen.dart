@@ -87,6 +87,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text("Prediction Screen"),
         centerTitle: true,
       ),
@@ -321,7 +322,6 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                 value: dropdownValue1,
                                 onChanged: (String? newValue) {
                                   setState(() {
-
                                     FirebaseFirestore.instance
                                         .collection("users")
                                         .doc(globals.login)
@@ -338,6 +338,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     child: Text(value),
                                   );
                                 }).toList(),
+                                dropdownColor: Colors.blue[200],
                               ),
                             ],
                           ),
@@ -391,6 +392,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     dropdownValue2 = newValue!;
                                   });
                                 },
+                                dropdownColor: Colors.blue[200],
                                 items: <String>['No', 'Yes'].map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -519,6 +521,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     dropdownValue3 = newValue!;
                                   });
                                 },
+                                dropdownColor: Colors.blue[200],
                                 items: <String>['No', 'Yes'].map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -559,6 +562,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     dropdownValue5 = newValue!;
                                   });
                                 },
+                                dropdownColor: Colors.blue[200],
                                 items: <String>['No', 'Yes'].map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -597,6 +601,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     dropdownValue6 = newValue!;
                                   });
                                 },
+                                dropdownColor: Colors.blue[200],
                                 items: <String>['No', 'Yes'].map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -635,6 +640,7 @@ class _RotterdamSymptomsScreenState extends State<RotterdamSymptomsScreen> {
                                     dropdownValue7 = newValue!;
                                   });
                                 },
+                                dropdownColor: Colors.blue[200],
                                 items: <String>['No', 'Yes'].map((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,

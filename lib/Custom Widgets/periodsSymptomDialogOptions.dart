@@ -18,7 +18,7 @@ class _PeriodSymptomsDialogOptionsState extends State<PeriodSymptomsDialogOption
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          padding: EdgeInsets.fromLTRB(20,10,20,10),
+          padding: EdgeInsets.fromLTRB(15,10,15,10),
           decoration: BoxDecoration(
               color: widget.color1,
               borderRadius: BorderRadius.circular(10)

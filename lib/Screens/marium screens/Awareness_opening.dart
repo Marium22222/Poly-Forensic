@@ -17,6 +17,7 @@ class _AwarenessOpeningState extends State<AwarenessOpening> {
       appBar: AppBar(
         title: Text("PCOS Blogs"),
         centerTitle: true,
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Padding(

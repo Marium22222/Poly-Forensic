@@ -12,7 +12,9 @@ class _StressBusterScreenState extends State<StressBusterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(
           "Stress Busters"
         ),

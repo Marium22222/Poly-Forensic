@@ -16,6 +16,7 @@ class _KnowFerrimanState extends State<KnowFerriman> {
       //   title: Text("Know ferriman"),
       //   centerTitle: true,
       // ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(

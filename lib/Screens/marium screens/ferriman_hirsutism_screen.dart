@@ -31,6 +31,7 @@ class _FerrimanGallweyState extends State<FerrimanGallwey> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text("Ferriman Gallwey Screen"),
         centerTitle: true,
       ),

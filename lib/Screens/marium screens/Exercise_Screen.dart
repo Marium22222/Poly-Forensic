@@ -15,7 +15,9 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text("Workouts"),
       ),
       body: SingleChildScrollView(

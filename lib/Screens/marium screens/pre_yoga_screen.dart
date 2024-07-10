@@ -15,6 +15,7 @@ class _PreYogaScreenState extends State<PreYogaScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(
             "Yoga Exercises"
         ),

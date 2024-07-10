@@ -14,7 +14,9 @@ class _MitigationBlogsState extends State<MitigationBlogs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(
           "BLOGS",
           style: TextStyle(

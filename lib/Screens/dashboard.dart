@@ -43,6 +43,7 @@ class _DashboardState extends State<Dashboard> {
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.white,
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: Text(
             "POLY-FORENSIC",
             style: TextStyle(fontFamily: "Merriweather",
@@ -96,8 +97,6 @@ class _DashboardState extends State<Dashboard> {
 
                             difference =
                                 expected_date.difference(date_today).inDays;
-                            // globals.ferrimantext=data['ferrimanGallweyScore'];
-                            // globals.bmitext=data['BMI'];
                           }
 
                           return toShowDiff == true

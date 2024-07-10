@@ -12,7 +12,9 @@ class _BenefitsExercisesState extends State<BenefitsExercises> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text("Benefits of PCOS Exercises"),
       ),
       body:StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

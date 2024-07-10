@@ -19,7 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'globals.dart';
 
-Future<void>  main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -29,6 +29,6 @@ Future<void>  main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: email == null ? SplashScreen() : Dashboard(),));
+    home: email == null ? SplashScreen() : Dashboard(),
+  ));
 }
-
