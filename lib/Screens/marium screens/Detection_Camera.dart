@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
-import 'package:poly_forensic/Screens/marium%20screens/rotterdam_symptoms_screen.dart';
-import 'package:poly_forensic/globals.dart' as globals;
+
 class TestGalCam extends StatefulWidget {
   const TestGalCam({Key? key}) : super(key: key);
 
@@ -16,7 +16,6 @@ class _TestGalCamState extends State<TestGalCam> {
   Uint8List? _image;
   File? selectedImage;
   String _result = '';
-
 
   @override
   void initState() {
@@ -32,8 +31,8 @@ class _TestGalCamState extends State<TestGalCam> {
 
   Future<void> loadTfModel() async {
     String? res = await Tflite.loadModel(
-      model: "assets/model/tflite_model.tflite",
-      labels: "assets/model/labels.txt",
+      model: "assets/tflite_model.tflite",
+      labels: "assets/labels.txt",
     );
     print("Model loaded: $res");
   }
@@ -51,74 +50,71 @@ class _TestGalCamState extends State<TestGalCam> {
       _result = output != null && output.isNotEmpty
           ? output.map((e) => e['label']).join(', ')
           : 'No results';
-globals.acne="";
-globals.acne=_result;
-      //this part
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
-      //     RotterdamSymptomsScreen(acne:_result),));
-      Navigator.pop(context);
     });
-    print(_result);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text("Note: Please take a closeup picture of your face, "
-                "avoid wearing glasses and scarfs while taking picture.",
-            style: TextStyle(
-              color:Colors.red
-            ),),
-          ),
-          Center(
-            child: Stack(
+      //backgroundColor: Colors.lightBlue[50],
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              //width: 100,
+                height: 100
+            ),
+            Stack(
               children: [
                 _image != null
-                    ? CircleAvatar(
-                    radius: 100, backgroundImage: MemoryImage(_image!))
+                    ? Container(
+                  width: 300.0,
+                  height: 450.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                      image: MemoryImage(_image!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
                     : const CircleAvatar(
                   radius: 100,
                   backgroundImage: NetworkImage(
                       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"),
                 ),
                 Positioned(
-                    bottom: -0,
-                    left: 140,
-                    child: IconButton(
-                        onPressed: () {
-                          showImagePickerOption(context);
-                        },
-                        icon: const Icon(Icons.add_a_photo))),
-                if (_result.isNotEmpty)
-                  Positioned(
-                    bottom: 70,
-                    left: 40,
-                    child: Text(
-                      'Result: $_result',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+                  bottom: 0,
+                  left: 140,
+                  child: IconButton(
+                    onPressed: () {
+                      showImagePickerOption(context);
+                    },
+                    icon: const Icon(Icons.add_a_photo),
                   ),
+                ),
               ],
             ),
-          ),
-        ],
+            SizedBox(
+                width: 100,
+                height: 50
+            ),
+            if (_result.isNotEmpty)
+              Text('Result: $_result',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
 
   void showImagePickerOption(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.blue[50],
       context: context,
       builder: (builder) {
         return Padding(
