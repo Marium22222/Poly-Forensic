@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<Map<String, dynamic>> fetchPrediction(Map<String, dynamic> inputData) async {
-  final url = Uri.parse('http://192.168.100.10:5000/api'); // Replace with your Flask API URL
+  final url = Uri.parse('http://192.168.161.110:5000/api'); // Replace with your Flask API URL
   final response = await http.post(
     url,
     headers: {'Content-Type': 'application/json'},
