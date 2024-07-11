@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -51,12 +52,13 @@ class _TestGalCamState extends State<TestGalCam> {
       _result = output != null && output.isNotEmpty
           ? output.map((e) => e['label']).join(', ')
           : 'No results';
-globals.acne="";
-globals.acne=_result;
+      globals.acne="";
+      globals.acne=_result;
       //this part
       // Navigator.of(context).push(MaterialPageRoute(builder: (context) =>
       //     RotterdamSymptomsScreen(acne:_result),));
-      Navigator.pop(context);
+      Timer(Duration(seconds: 2),(){Navigator.pop(context);});
+
     });
     print(_result);
   }
@@ -73,9 +75,9 @@ globals.acne=_result;
             padding: const EdgeInsets.all(20.0),
             child: Text("Note: Please take a closeup picture of your face, "
                 "avoid wearing glasses and scarfs while taking picture.",
-            style: TextStyle(
-              color:Colors.red
-            ),),
+              style: TextStyle(
+                  color:Colors.red
+              ),),
           ),
           Center(
             child: Stack(
